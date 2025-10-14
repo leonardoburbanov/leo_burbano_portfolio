@@ -12,21 +12,26 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>('light');
+  const [theme, setTheme] = useState<Theme>('dark');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // Only access localStorage after component mounts (client-side)
+    // Get the current theme from localStorage or default to dark
     const savedTheme = localStorage.getItem('theme') as Theme;
+    
     if (savedTheme && (savedTheme === 'light' || savedTheme === 'dark')) {
       setTheme(savedTheme);
+    } else {
+      // No saved theme, default to dark and save it
+      setTheme('dark');
+      localStorage.setItem('theme', 'dark');
     }
     setMounted(true);
   }, []);
 
   useEffect(() => {
     if (mounted) {
-      // Update document class and localStorage
+      // Update document class when theme changes
       document.documentElement.classList.toggle('dark', theme === 'dark');
       localStorage.setItem('theme', theme);
     }

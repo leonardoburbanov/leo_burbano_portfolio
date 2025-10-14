@@ -47,23 +47,12 @@ export default function NavBar() {
               Home
             </a>
             <a 
-              href="#about" 
-              className="text-muted-foreground hover:text-foreground transition-colors font-medium"
-            >
-              About
-            </a>
-            <a 
               href="#projects" 
               className="text-muted-foreground hover:text-foreground transition-colors font-medium"
             >
               Projects
             </a>
-            <a 
-              href="#contact" 
-              className="text-muted-foreground hover:text-foreground transition-colors font-medium"
-            >
-              Contact
-            </a>
+
           </div>
 
           {/* Right side - Social links and theme toggle */}
@@ -71,7 +60,7 @@ export default function NavBar() {
             {/* Social Links */}
             <div className="hidden sm:flex items-center space-x-2">
               <a
-                href="https://github.com"
+                href="https://github.com/leonardoburbanov"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-accent"
@@ -80,7 +69,7 @@ export default function NavBar() {
                 <Github className="w-4 h-4" />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/leoburbano/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-accent"
@@ -89,11 +78,11 @@ export default function NavBar() {
                 <LinkedinIcon className="w-4 h-4" />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.instagram.com/leo.data.ai/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-accent"
-                aria-label="LinkedIn"
+                aria-label="Instagram"
               >
                 <Instagram className="w-4 h-4" />
               </a>

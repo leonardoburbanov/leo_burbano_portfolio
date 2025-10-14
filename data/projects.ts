@@ -29,6 +29,15 @@ export const projects: Project[] = [
     featured: true
   },
   {
+    id: "natural-language-processing",
+    title: "Natural Language Processing",
+    description: "Natural language processing with AI agents for inventory management, customer support, and sales optimization",
+    technologies: ["Python", "FastAPI", "AI/ML", "Ecommerce", "Automation", "PostgreSQL"],
+    githubUrl: "https://github.com/your-username/natural-language-processing",
+    liveUrl: "https://natural-language-processing.demo.com",
+    featured: true
+  },
+  {
     id: "ai-ecommerce-agents",
     title: "AI Agents for Ecommerce",
     description: "Intelligent ecommerce automation with AI agents for inventory management, customer support, and sales optimization",

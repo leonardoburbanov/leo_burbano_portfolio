@@ -1,8 +1,8 @@
 export const heroData = {
   profile: {
     name: "Leonardo Burbano",
-    title: "Senior AI and Machine Learning Engineer",
-    description: "Helping companies build AI-powered products and services.",
+    title: "Tech Lead, Senior AI and Machine Learning Engineer",
+    description: "Turning complex AI workflows into simple, reliable and scalable solutions.",
     avatar: {
       image: "/foto_white.png",
       alt: "Leonardo Burbano",
@@ -35,17 +35,17 @@ export const heroData = {
   socialLinks: [
     {
       platform: "GitHub",
-      url: "https://github.com",
+      url: "https://github.com/leonardoburbanov",
       ariaLabel: "GitHub"
     },
     {
       platform: "LinkedIn", 
-      url: "https://linkedin.com",
+      url: "https://www.linkedin.com/in/leoburbano/",
       ariaLabel: "LinkedIn"
     },
     {
       platform: "Instagram",
-      url: "https://instagram.com",
+      url: "https://www.instagram.com/leo.data.ai/",
       ariaLabel: "Instagram"
     }
   ],
