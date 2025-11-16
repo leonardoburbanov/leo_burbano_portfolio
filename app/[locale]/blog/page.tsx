@@ -4,12 +4,30 @@ import { getTranslations, getLocale } from "next-intl/server";
 import { Link } from '@/i18n/routing';
 import NavBar from "@/components/NavBar";
 
+type BlogPost = {
+  title: string;
+  title_es?: string;
+  summary: string;
+  summary_es?: string;
+  date: string;
+  author?: string;
+  tags?: string[];
+  tags_es?: string[];
+  locale?: string;
+  slug?: string;
+  mdx: unknown;
+  _meta: {
+    path: string;
+  };
+  [key: string]: unknown;
+};
+
 export default async function BlogPage() {
   const t = await getTranslations('Blog');
   const locale = await getLocale();
   
   // Helper function to extract slug from post
-  const getPostSlug = (post: any): string => {
+  const getPostSlug = (post: BlogPost): string => {
     // First try to use the slug from frontmatter
     if (post.slug) {
       return post.slug;
@@ -22,10 +40,10 @@ export default async function BlogPage() {
   
   // Filter posts by locale and get unique posts by slug
   // Prefer posts in current locale, fallback to English
-  const postsBySlug = new Map<string, any>();
+  const postsBySlug = new Map<string, BlogPost>();
   
   // First pass: add posts in current locale
-  allPosts.forEach((post: any) => {
+  allPosts.forEach((post: BlogPost) => {
     // Ensure we have a valid locale (default to 'en' if not set)
     const postLocale = (post.locale && (post.locale === 'en' || post.locale === 'es')) 
       ? post.locale 
@@ -40,7 +58,7 @@ export default async function BlogPage() {
   
   // Second pass: add English posts as fallback for missing slugs (only if locale is not 'en')
   if (locale !== 'en') {
-    allPosts.forEach((post: any) => {
+    allPosts.forEach((post: BlogPost) => {
       const postLocale = post.locale || 'en';
       const postSlug = getPostSlug(post);
       
@@ -52,15 +70,16 @@ export default async function BlogPage() {
   }
   
   // Helper function to get localized field
-  const getLocalizedField = (post: any, field: string) => {
-    if (locale === 'es' && post[`${field}_es`]) {
-      return post[`${field}_es`];
+  const getLocalizedField = (post: BlogPost, field: 'title' | 'summary' | 'tags'): string | string[] | undefined => {
+    const postWithIndex = post as unknown as BlogPost & { [key: string]: string | string[] | undefined };
+    if (locale === 'es' && postWithIndex[`${field}_es`]) {
+      return postWithIndex[`${field}_es`];
     }
-    return post[field];
+    return postWithIndex[field];
   };
   
   // Convert map to array and sort by date (newest first)
-  const sortedPosts = Array.from(postsBySlug.values()).sort((a: any, b: any) => {
+  const sortedPosts = Array.from(postsBySlug.values()).sort((a: BlogPost, b: BlogPost) => {
     const dateA = new Date(a.date).getTime();
     const dateB = new Date(b.date).getTime();
     return dateB - dateA;
@@ -91,12 +110,12 @@ export default async function BlogPage() {
               >
                 <Link href={`/blog/${postSlug}`}>
                   <h2 className="text-2xl font-semibold text-foreground mb-3 hover:text-primary transition-colors">
-                    {getLocalizedField(post, 'title')}
+                    {getLocalizedField(post, 'title') as string}
                   </h2>
                 </Link>
                 
                 <p className="text-muted-foreground mb-4 leading-relaxed">
-                  {getLocalizedField(post, 'summary')}
+                  {getLocalizedField(post, 'summary') as string}
                 </p>
 
                 <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-4">
@@ -119,7 +138,7 @@ export default async function BlogPage() {
                   )}
 
                   {(() => {
-                    const tags = getLocalizedField(post, 'tags') || post.tags || [];
+                    const tags = (getLocalizedField(post, 'tags') as string[] | undefined) || post.tags || [];
                     return tags.length > 0 ? (
                       <div className="flex items-center gap-2 flex-wrap">
                         <Tag className="w-4 h-4" />
