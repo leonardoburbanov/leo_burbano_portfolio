@@ -2,31 +2,24 @@
 
 import { Globe } from 'lucide-react';
 import { useLocale } from 'next-intl';
-import { useState } from 'react';
+import { useRouter, usePathname } from '@/i18n/routing';
 
 export default function LanguageToggle() {
   const locale = useLocale();
-  const [isChanging, setIsChanging] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
 
   const toggleLanguage = () => {
-    if (isChanging) return;
-    
     const newLocale = locale === 'en' ? 'es' : 'en';
     
-    setIsChanging(true);
-    
-    // Set cookie
-    document.cookie = `locale=${newLocale}; path=/; max-age=31536000; SameSite=Lax`;
-    
-    // Reload the page to apply the new locale
-    window.location.reload();
+    // Navigate to the same path but with the new locale
+    router.replace(pathname, { locale: newLocale });
   };
 
   return (
     <button
       onClick={toggleLanguage}
-      disabled={isChanging}
-      className="p-2 text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-accent disabled:opacity-50"
+      className="p-2 text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-accent"
       aria-label={`Switch to ${locale === 'en' ? 'Spanish' : 'English'}`}
       title={`Current: ${locale === 'en' ? 'English' : 'Español'}`}
     >

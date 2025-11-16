@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Github, Instagram, LinkedinIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/routing';
 import ThemeToggle from './ThemeToggle';
 import LanguageToggle from './LanguageToggle';
 import { Avatar, AvatarImage, AvatarFallback } from './ui/avatar';
@@ -55,12 +56,12 @@ export default function NavBar() {
             >
               {t('projects')}
             </a>
-            <a 
+            <Link 
               href="/blog" 
               className="text-muted-foreground hover:text-foreground transition-colors font-medium"
             >
               {t('blog')}
-            </a>
+            </Link>
 
           </div>
 

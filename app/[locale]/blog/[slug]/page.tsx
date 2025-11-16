@@ -1,30 +1,36 @@
 import { allPosts } from "content-collections";
 import { notFound } from "next/navigation";
 import { MDXContent } from "@content-collections/mdx/react";
-import Link from "next/link";
 import { Calendar, User, Tag, ArrowLeft } from "lucide-react";
 import { getTranslations, getLocale } from "next-intl/server";
+import { Link } from '@/i18n/routing';
 import NavBar from "@/components/NavBar";
 
 export async function generateStaticParams() {
   // Get unique slugs from all posts
   const slugs = new Set<string>();
   allPosts.forEach((post: any) => {
-    const slug = post.slug || post._meta.path.replace(/\.(en|es)?\.mdx$/, '');
+    const slug = post.slug || post._meta.path.replace(/\.(en|es)$/, '');
     slugs.add(slug);
   });
   
-  return Array.from(slugs).map((slug) => ({
-    slug,
-  }));
+  // Generate params for each locale and slug combination
+  const params: Array<{locale: string; slug: string}> = [];
+  ['en', 'es'].forEach((locale) => {
+    slugs.forEach((slug) => {
+      params.push({locale, slug});
+    });
+  });
+  
+  return params;
 }
 
 export default async function BlogPostPage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }) {
-  const { slug } = await params;
+  const { slug, locale: urlLocale } = await params;
   const t = await getTranslations('Blog');
   const locale = await getLocale();
 
@@ -32,7 +38,7 @@ export default async function BlogPostPage({
   const getPostSlug = (p: any): string => {
     if (p.slug) return p.slug;
     const path = p._meta.path || '';
-    return path.replace(/\.(en|es)?\.mdx$/, '').replace(/\.mdx$/, '');
+    return path.replace(/\.(en|es)$/, '');
   };
 
   // Find post matching slug and locale
@@ -55,7 +61,7 @@ export default async function BlogPostPage({
     });
   }
   
-  // If still not found and we're in English, try to find any post with this slug (shouldn't happen)
+  // If still not found and we're in English, try to find any post with this slug
   if (!post && locale === 'en') {
     post = allPosts.find((p: any) => {
       const postSlug = getPostSlug(p);

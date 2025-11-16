@@ -1,7 +1,7 @@
 import { allPosts } from "content-collections";
-import Link from "next/link";
 import { Calendar, User, Tag } from "lucide-react";
 import { getTranslations, getLocale } from "next-intl/server";
+import { Link } from '@/i18n/routing';
 import NavBar from "@/components/NavBar";
 
 export default async function BlogPage() {
@@ -16,8 +16,8 @@ export default async function BlogPage() {
     }
     // Otherwise extract from path
     const path = post._meta.path || '';
-    // Remove .mdx, .en.mdx, or .es.mdx extension
-    return path.replace(/\.(en|es)?\.mdx$/, '').replace(/\.mdx$/, '');
+    // Remove .es or .en suffix (path doesn't include .mdx)
+    return path.replace(/\.(en|es)$/, '');
   };
   
   // Filter posts by locale and get unique posts by slug
