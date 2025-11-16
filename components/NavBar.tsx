@@ -3,14 +3,18 @@
 import { useState, useEffect } from 'react';
 import { Github, Instagram, LinkedinIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { Link } from '@/i18n/routing';
+import { Link, usePathname } from '@/i18n/routing';
 import ThemeToggle from './ThemeToggle';
 import LanguageToggle from './LanguageToggle';
 import { Avatar, AvatarImage, AvatarFallback } from './ui/avatar';
 
 export default function NavBar() {
   const t = useTranslations('NavBar');
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
+
+  // Check if we're on a blog page
+  const isBlogPage = pathname?.startsWith('/blog') || false;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,38 +35,62 @@ export default function NavBar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo/Brand */}
           <div className="flex items-center space-x-2">
-            <Avatar className="w-8 h-8">
-              <AvatarImage src="/foto_white.png" alt="Leonardo Burbano" />
-              <AvatarFallback className="bg-gradient-to-br from-primary to-accent text-primary-foreground font-bold text-sm">
-                LB
-              </AvatarFallback>
-            </Avatar>
-            <span className="font-semibold text-lg bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
-              Leonardo Burbano
-            </span>
+            <Link href="/">
+              <Avatar className="w-8 h-8 cursor-pointer">
+                <AvatarImage src="/foto_white.png" alt="Leonardo Burbano" />
+                <AvatarFallback className="bg-gradient-to-br from-primary to-accent text-primary-foreground font-bold text-sm">
+                  LB
+                </AvatarFallback>
+              </Avatar>
+            </Link>
+            <Link href="/">
+              <span className="font-semibold text-lg bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent cursor-pointer hover:opacity-80 transition-opacity">
+                Leonardo Burbano
+              </span>
+            </Link>
           </div>
 
           {/* Navigation Links */}
           <div className="hidden md:flex items-center space-x-8">
-            <a 
-              href="#home" 
-              className="text-muted-foreground hover:text-foreground transition-colors font-medium"
-            >
-              {t('home')}
-            </a>
-            <a 
-              href="#projects" 
-              className="text-muted-foreground hover:text-foreground transition-colors font-medium"
-            >
-              {t('projects')}
-            </a>
-            <Link 
-              href="/blog" 
-              className="text-muted-foreground hover:text-foreground transition-colors font-medium"
-            >
-              {t('blog')}
-            </Link>
-
+            {isBlogPage ? (
+              // Blog navigation
+              <>
+                <Link 
+                  href="/blog" 
+                  className="text-muted-foreground hover:text-foreground transition-colors font-medium"
+                >
+                  {t('blog')}
+                </Link>
+                <Link 
+                  href="/" 
+                  className="text-muted-foreground hover:text-foreground transition-colors font-medium"
+                >
+                  {t('portfolio')}
+                </Link>
+              </>
+            ) : (
+              // Portfolio navigation
+              <>
+                <a 
+                  href="#home" 
+                  className="text-muted-foreground hover:text-foreground transition-colors font-medium"
+                >
+                  {t('home')}
+                </a>
+                <a 
+                  href="#projects" 
+                  className="text-muted-foreground hover:text-foreground transition-colors font-medium"
+                >
+                  {t('projects')}
+                </a>
+                <Link 
+                  href="/blog" 
+                  className="text-muted-foreground hover:text-foreground transition-colors font-medium"
+                >
+                  {t('blog')}
+                </Link>
+              </>
+            )}
           </div>
 
           {/* Right side - Social links and theme toggle */}

@@ -2,7 +2,8 @@
   "NavBar": {
     "home": "Inicio",
     "projects": "Proyectos",
-    "blog": "Blog"
+    "blog": "Blog",
+    "portfolio": "Portafolio"
   },
   "HeroSection": {
     "profile": {
