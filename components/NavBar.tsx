@@ -2,10 +2,13 @@
 
 import { useState, useEffect } from 'react';
 import { Github, Instagram, LinkedinIcon } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import ThemeToggle from './ThemeToggle';
+import LanguageToggle from './LanguageToggle';
 import { Avatar, AvatarImage, AvatarFallback } from './ui/avatar';
 
 export default function NavBar() {
+  const t = useTranslations('NavBar');
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -44,13 +47,19 @@ export default function NavBar() {
               href="#home" 
               className="text-muted-foreground hover:text-foreground transition-colors font-medium"
             >
-              Home
+              {t('home')}
             </a>
             <a 
               href="#projects" 
               className="text-muted-foreground hover:text-foreground transition-colors font-medium"
             >
-              Projects
+              {t('projects')}
+            </a>
+            <a 
+              href="/blog" 
+              className="text-muted-foreground hover:text-foreground transition-colors font-medium"
+            >
+              {t('blog')}
             </a>
 
           </div>
@@ -87,6 +96,9 @@ export default function NavBar() {
                 <Instagram className="w-4 h-4" />
               </a>
             </div>
+
+            {/* Language Toggle */}
+            <LanguageToggle />
 
             {/* Theme Toggle */}
             <ThemeToggle />

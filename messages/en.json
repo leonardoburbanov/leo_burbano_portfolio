@@ -1,0 +1,65 @@
+{
+  "NavBar": {
+    "home": "Home",
+    "projects": "Projects",
+    "blog": "Blog"
+  },
+  "HeroSection": {
+    "profile": {
+      "name": "Leonardo Burbano",
+      "title": "Tech Lead, Senior AI and Machine Learning Engineer",
+      "description": "Turning complex AI workflows into simple, reliable and scalable solutions.",
+      "avatar": {
+        "alt": "Leonardo Burbano",
+        "fallback": "LB"
+      }
+    },
+    "buttons": {
+      "exploreProjects": "Explore ML & AI Projects"
+    }
+  },
+  "ProjectsSection": {
+    "title": "Featured Projects",
+    "description": "Here are some of the projects I've worked on, showcasing my expertise in AI, machine learning, and software engineering.",
+    "buttons": {
+      "code": "Code",
+      "liveDemo": "Live Demo",
+      "viewMore": "View More Projects"
+    },
+    "projects": {
+      "navbe-ai": {
+        "title": "Navbe AI",
+        "description": "Open source testing and monitoring for reliable voice, chat and sales AI Agents"
+      },
+      "ai-seo-agents": {
+        "title": "AI Agents for SEO",
+        "description": "Automated SEO optimization using AI agents powered by n8n workflow automation"
+      },
+      "natural-language-processing": {
+        "title": "Natural Language Processing",
+        "description": "Natural language processing with AI agents for inventory management, customer support, and sales optimization"
+      },
+      "ai-ecommerce-agents": {
+        "title": "AI Agents for Ecommerce",
+        "description": "Intelligent ecommerce automation with AI agents for inventory management, customer support, and sales optimization"
+      },
+      "small-llm-finetuning": {
+        "title": "Fine-tuning a Small LLM",
+        "description": "Custom fine-tuning of small language models for domain-specific tasks with optimized performance and reduced resource requirements"
+      }
+    }
+  },
+  "Metadata": {
+    "title": "Leonardo Burbano - Senior AI and Machine Learning Engineer",
+    "description": "Portfolio of Leonardo Burbano, a senior AI and machine learning engineer specialized in AI-powered products and services."
+  },
+  "Blog": {
+    "title": "Blog",
+    "description": "Insights, tutorials, and thoughts on AI, Machine Learning, and Software Engineering",
+    "readMore": "Read more",
+    "backToBlog": "Back to Blog",
+    "noPosts": "No blog posts yet. Check back soon!",
+    "author": "Author"
+  }
+}
+

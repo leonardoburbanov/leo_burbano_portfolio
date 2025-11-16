@@ -2,10 +2,12 @@
 
 import { useState, useEffect } from 'react';
 import { Github, LinkedinIcon, Download, Instagram, Sparkles } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { heroData } from '@/data/hero-section';
 
 export default function HeroSection() {
+  const t = useTranslations('HeroSection');
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -29,9 +31,9 @@ export default function HeroSection() {
           <div className="flex justify-center mb-8">
             <div className="relative">
               <Avatar className="w-32 h-32 sm:w-40 sm:h-40 border-4 border-background shadow-2xl">
-                <AvatarImage src={heroData.profile.avatar.image} alt={heroData.profile.avatar.alt} />
+                <AvatarImage src={heroData.profile.avatar.image} alt={t('profile.avatar.alt')} />
                 <AvatarFallback className="bg-gradient-to-br from-primary to-accent text-primary-foreground text-4xl font-bold">
-                  {heroData.profile.avatar.fallback}
+                  {t('profile.avatar.fallback')}
                 </AvatarFallback>
               </Avatar>
               <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-green-500 rounded-full border-4 border-background animate-pulse"></div>
@@ -42,13 +44,13 @@ export default function HeroSection() {
           <div className={`space-y-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <div className="space-y-4">
               <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
-                {heroData.profile.name}
+                {t('profile.name')}
               </h1>
               <h2 className="text-xl sm:text-2xl lg:text-3xl font-medium text-muted-foreground">
-                {heroData.profile.title}
+                {t('profile.title')}
               </h2>
               <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                {heroData.profile.description}
+                {t('profile.description')}
               </p>
             </div>
 
@@ -76,9 +78,9 @@ export default function HeroSection() {
 
             {/* CTA buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
-              {heroData.buttons.map((button) => (
+              {heroData.buttons.map((button, index) => (
                 <a 
-                  key={button.text}
+                  key={`button-${index}`}
                   href={button.url}
                   onClick={(e) => {
                     if (button.url.startsWith('#')) {
@@ -111,7 +113,7 @@ export default function HeroSection() {
                   
                   {/* Text with enhanced underline */}
                   <span className="relative z-10">
-                    {button.text}
+                    {t('buttons.exploreProjects')}
                   </span>
                   
                   {/* Sparkle effect on hover */}

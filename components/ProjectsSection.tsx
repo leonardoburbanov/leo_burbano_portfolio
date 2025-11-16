@@ -2,9 +2,11 @@
 
 import { useState, useEffect } from 'react';
 import { Github, ExternalLink, ArrowRight } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import { projects } from '@/data/projects';
 
 export default function ProjectsSection() {
+  const t = useTranslations('ProjectsSection');
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -32,10 +34,10 @@ export default function ProjectsSection() {
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent mb-4">
-            Featured Projects
+            {t('title')}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Here are some of the projects I&apos;ve worked on, showcasing my expertise in AI, machine learning, and software engineering.
+            {t('description')}
           </p>
         </div>
 
@@ -52,10 +54,10 @@ export default function ProjectsSection() {
               <div className="flex items-start justify-between mb-4">
                 <div>
                   <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
-                    {project.title}
+                    {t(`projects.${project.id}.title`)}
                   </h3>
                   <p className="text-muted-foreground leading-relaxed">
-                    {project.description}
+                    {t(`projects.${project.id}.description`)}
                   </p>
                 </div>
               </div>
@@ -82,7 +84,7 @@ export default function ProjectsSection() {
                     className="inline-flex items-center gap-2 px-4 py-2 bg-secondary text-secondary-foreground rounded-lg hover:bg-accent transition-colors border border-border"
                   >
                     <Github className="w-4 h-4" />
-                    <span className="text-sm font-medium">Code</span>
+                    <span className="text-sm font-medium">{t('buttons.code')}</span>
                   </a>
                 )}
                 {project.liveUrl && (
@@ -93,7 +95,7 @@ export default function ProjectsSection() {
                     className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
                   >
                     <ExternalLink className="w-4 h-4" />
-                    <span className="text-sm font-medium">Live Demo</span>
+                    <span className="text-sm font-medium">{t('buttons.liveDemo')}</span>
                   </a>
                 )}
               </div>
@@ -114,7 +116,7 @@ export default function ProjectsSection() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 bg-secondary text-secondary-foreground rounded-lg hover:bg-accent transition-colors border border-border"
           >
-            <span className="font-medium">View More Projects</span>
+            <span className="font-medium">{t('buttons.viewMore')}</span>
             <ArrowRight className="w-4 h-4" />
           </a>
         </div>

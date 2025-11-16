@@ -1,0 +1,65 @@
+{
+  "NavBar": {
+    "home": "Inicio",
+    "projects": "Proyectos",
+    "blog": "Blog"
+  },
+  "HeroSection": {
+    "profile": {
+      "name": "Leonardo Burbano",
+      "title": "Tech Lead, Ingeniero Senior de IA y Machine Learning",
+      "description": "Transformando flujos de trabajo complejos de IA en soluciones simples, confiables y escalables.",
+      "avatar": {
+        "alt": "Leonardo Burbano",
+        "fallback": "LB"
+      }
+    },
+    "buttons": {
+      "exploreProjects": "Explorar Proyectos de ML e IA"
+    }
+  },
+  "ProjectsSection": {
+    "title": "Proyectos Destacados",
+    "description": "Aquí hay algunos de los proyectos en los que he trabajado, mostrando mi experiencia en IA, machine learning e ingeniería de software.",
+    "buttons": {
+      "code": "Código",
+      "liveDemo": "Demo en Vivo",
+      "viewMore": "Ver Más Proyectos"
+    },
+    "projects": {
+      "navbe-ai": {
+        "title": "Navbe AI",
+        "description": "Pruebas y monitoreo de código abierto para agentes de IA confiables de voz, chat y ventas"
+      },
+      "ai-seo-agents": {
+        "title": "Agentes de IA para SEO",
+        "description": "Optimización automatizada de SEO usando agentes de IA impulsados por automatización de flujos de trabajo n8n"
+      },
+      "natural-language-processing": {
+        "title": "Procesamiento de Lenguaje Natural",
+        "description": "Procesamiento de lenguaje natural con agentes de IA para gestión de inventario, soporte al cliente y optimización de ventas"
+      },
+      "ai-ecommerce-agents": {
+        "title": "Agentes de IA para Ecommerce",
+        "description": "Automatización inteligente de ecommerce con agentes de IA para gestión de inventario, soporte al cliente y optimización de ventas"
+      },
+      "small-llm-finetuning": {
+        "title": "Fine-tuning de un LLM Pequeño",
+        "description": "Fine-tuning personalizado de modelos de lenguaje pequeños para tareas específicas de dominio con rendimiento optimizado y requisitos de recursos reducidos"
+      }
+    }
+  },
+  "Metadata": {
+    "title": "Leonardo Burbano - Ingeniero Senior de IA y Machine Learning",
+    "description": "Portafolio de Leonardo Burbano, un ingeniero senior de IA y machine learning especializado en productos y servicios impulsados por IA."
+  },
+  "Blog": {
+    "title": "Blog",
+    "description": "Perspectivas, tutoriales y reflexiones sobre IA, Machine Learning e Ingeniería de Software",
+    "readMore": "Leer más",
+    "backToBlog": "Volver al Blog",
+    "noPosts": "Aún no hay publicaciones. ¡Vuelve pronto!",
+    "author": "Autor"
+  }
+}
+

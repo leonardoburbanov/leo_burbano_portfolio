@@ -26,7 +26,6 @@ export const heroData = {
   ],
   buttons: [
     {
-      text: "Explore ML & AI Projects", 
       variant: "primary" as const,
       url: "#projects",
       icon: "Sparkles"
