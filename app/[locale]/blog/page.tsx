@@ -91,8 +91,8 @@ export default async function BlogPage() {
       <div className="min-h-screen pt-20 pb-20 bg-gradient-to-b from-background to-muted/20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent mb-4">
+          <div className="text-center mb-12 overflow-visible">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent mb-4 leading-tight break-words overflow-visible">
               {t('title')}
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">

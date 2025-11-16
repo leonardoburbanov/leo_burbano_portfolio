@@ -119,8 +119,8 @@ export default async function BlogPostPage({
 
           {/* Article header */}
           <article className="bg-card border border-border rounded-xl p-8 lg:p-12">
-            <header className="mb-8">
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent mb-4">
+            <header className="mb-8 overflow-visible">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent mb-4 leading-tight break-words overflow-visible">
                 {getLocalizedField('title') as string}
               </h1>
 
