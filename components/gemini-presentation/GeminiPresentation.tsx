@@ -7,16 +7,22 @@ import { useTranslations } from 'next-intl';
 import 'keen-slider/keen-slider.min.css';
 import TitleSlide from './slides/TitleSlide';
 import PrerequisitesSlide from './slides/PrerequisitesSlide';
-import WorkshopSlide from './slides/WorkshopSlide';
+import RepoSetupSlide from './slides/RepoSetupSlide';
+import PlaygroundSlide from './slides/PlaygroundSlide';
+import GoogleCloudSlide from './slides/GoogleCloudSlide';
+import ProductionArchitectureSlide from './slides/ProductionArchitectureSlide';
+import LiveDemoSlide from './slides/LiveDemoSlide';
+import GeminiPlatformSlide from './slides/GeminiPlatformSlide';
+import ThanksSlide from './slides/ThanksSlide';
 
-const SLIDE_COUNT = 3;
+const SLIDE_COUNT = 9;
 
 interface GeminiPresentationProps {
   chromeHidden?: boolean;
   onToggleChrome?: () => void;
 }
 
-/** Interactive 3-slide deck with arrows, dots, counter, and keyboard nav. */
+/** Interactive 9-slide deck with arrows, dots, counter, and keyboard nav. */
 export default function GeminiPresentation({
   chromeHidden = false,
   onToggleChrome,
@@ -82,7 +88,25 @@ export default function GeminiPresentation({
               <PrerequisitesSlide />
             </div>
             <div className="keen-slider__slide select-text">
-              <WorkshopSlide />
+              <RepoSetupSlide />
+            </div>
+            <div className="keen-slider__slide select-text">
+              <PlaygroundSlide />
+            </div>
+            <div className="keen-slider__slide select-text">
+              <GoogleCloudSlide />
+            </div>
+            <div className="keen-slider__slide select-text">
+              <ProductionArchitectureSlide />
+            </div>
+            <div className="keen-slider__slide select-text">
+              <LiveDemoSlide />
+            </div>
+            <div className="keen-slider__slide select-text">
+              <GeminiPlatformSlide />
+            </div>
+            <div className="keen-slider__slide select-text">
+              <ThanksSlide />
             </div>
           </div>
 

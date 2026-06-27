@@ -110,13 +110,11 @@ export default function TitleSlide() {
         <div className="relative w-full shrink-0 md:w-[52%] lg:w-[48%]">
           <div className="flex flex-col items-center gap-3 md:items-end">
             <div className="relative aspect-[4/1] w-full min-h-[4.5rem] sm:min-h-[5.5rem] md:min-h-[6rem]">
-              <Image
+              {/* ponytail: plain img — external Cloudinary URL, no next/image host config needed */}
+              <img
                 src={BUILD_WITH_AI_BANNER}
                 alt={t('badge')}
-                fill
-                className="object-contain object-center md:object-right"
-                sizes="(max-width: 768px) 100vw, 480px"
-                priority
+                className="absolute inset-0 h-full w-full object-contain object-center md:object-right"
               />
             </div>
             <div className="flex flex-wrap items-end justify-center gap-3 sm:gap-4 md:justify-end">

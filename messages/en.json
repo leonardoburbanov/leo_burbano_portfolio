@@ -126,17 +126,118 @@
           "docsLink": "Agents CLI documentation"
         }
       },
-      "workshop": {
-        "heading": "Workshop & Live Demo",
-        "bullets": {
-          "learn": "Learn to build agents with Google ADK and the Gemini Enterprise platform.",
-          "deploy": "Deploy both backend and frontend to Google Cloud Run.",
-          "pattern": "Reference implementation of a production-ready full-stack agent pattern."
+      "repoSetup": {
+        "heading": "Clone and create your agent",
+        "subtitle": "Set up the local project from the workshop repository",
+        "repoLink": "View GitHub repository",
+        "aiStudioLink": "Open AI Studio",
+        "steps": {
+          "clone": {
+            "title": "Clone the GitHub repository",
+            "description": "Download the workshop code to your machine.",
+            "command": "git clone https://github.com/leonardoburbanov/gemini-enterprise-agent-platform-workshop.git"
+          },
+          "enter": {
+            "title": "Enter the repository",
+            "description": "Move into the cloned project directory.",
+            "command": "cd gemini-enterprise-agent-platform-workshop"
+          },
+          "apiKey": {
+            "title": "Get a Gemini API key",
+            "description": "Create an API key in AI Studio with your Google account."
+          },
+          "createAgent": {
+            "title": "Create your first agent",
+            "description": "Scaffold a prototype ADK agent with your API key."
+          }
+        }
+      },
+      "playground": {
+        "heading": "Test in the playground",
+        "subtitle": "Iterate on tools and instructions before deploying",
+        "steps": {
+          "open": {
+            "title": "Open the playground",
+            "description": "Launch the local ADK UI with hot reload.",
+            "command": "agents-cli playground"
+          }
+        }
+      },
+      "googleCloud": {
+        "heading": "Optional: Google Cloud",
+        "subtitle": "If you want to do it with Google Cloud, follow these steps",
+        "steps": {
+          "login": {
+            "title": "Log in to Google Cloud",
+            "description": "Authenticate your GCP account interactively.",
+            "command": "agents-cli login -i"
+          },
+          "create": {
+            "title": "Create an agent step by step",
+            "description": "Interactive wizard to configure the agent in the cloud.",
+            "command": "agents-cli create -i"
+          },
+          "deploy": {
+            "title": "Deploy the agent",
+            "description": "Publish the agent to Vertex AI Agent Runtime.",
+            "command": "agents-cli deploy --deployment-target agent_runtime --project navbeai"
+          }
+        }
+      },
+      "productionArchitecture": {
+        "heading": "Production architecture",
+        "subtitle": "What we will deploy and demo in the workshop",
+        "nodes": {
+          "ui": {
+            "title": "nextjs-agent-client",
+            "subtitle": "Chat UI + sessions"
+          },
+          "api": {
+            "title": "fastapi-agent-client",
+            "subtitle": "Sessions + stream proxy"
+          },
+          "runtime": {
+            "title": "Agent Runtime",
+            "subtitle": "Reasoning Engine"
+          },
+          "adk": {
+            "title": "sales-agent-cloud",
+            "subtitle": "ADK agent + tools"
+          },
+          "db": {
+            "title": "SQLite",
+            "subtitle": "sessions.db"
+          }
         },
-        "links": {
-          "github": "Workshop Repo",
-          "backend": "Backend Demo",
-          "frontend": "Frontend Demo"
+        "edges": {
+          "chat": "POST /api/chat",
+          "sessions": "GET/POST /api/sessions",
+          "stream": "POST /query/stream",
+          "db": "SQLite sessions.db"
+        }
+      },
+      "liveDemo": {
+        "heading": "Local playground of the production agent",
+        "paragraph1": "Now let's look at the local playground of the agent that is in production.",
+        "paragraph2": "We'll try it out to see what's happening in Google Cloud."
+      },
+      "geminiPlatform": {
+        "heading": "Gemini Enterprise Agent Platform",
+        "imageAlt": "Gemini Enterprise Agent Platform architecture diagram"
+      },
+      "thanks": {
+        "heading": "Thank you!",
+        "subtitle": "We hope you enjoyed the workshop",
+        "demoLinks": "Demo links",
+        "extraResources": "Extra resources",
+        "presenter": "Presenter",
+        "presenterLinks": {
+          "linkedin": "linkedin.com/in/leoburbano",
+          "github": "github.com/leonardoburbanov"
+        },
+        "resources": {
+          "platformDiagram": "Gemini Enterprise Agent Platform — diagram",
+          "adkIntegrations": "ADK — Tools and Integrations"
         }
       }
     }

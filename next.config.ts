@@ -9,7 +9,12 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'res.cloudinary.com',
-        pathname: '/startup-grind/**',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'docs.cloud.google.com',
+        pathname: '/gemini-enterprise-agent-platform/**',
       },
     ],
   },
