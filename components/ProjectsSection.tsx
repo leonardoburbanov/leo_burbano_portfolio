@@ -1,8 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Github, ExternalLink, ArrowRight } from 'lucide-react';
+import { Github, ExternalLink, ArrowRight, Presentation } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/routing';
 import { projects } from '@/data/projects';
 
 export default function ProjectsSection() {
@@ -129,6 +130,15 @@ export default function ProjectsSection() {
                     <ExternalLink className="w-4 h-4" />
                     <span className="text-sm font-medium">{t('buttons.frontend')}</span>
                   </a>
+                )}
+                {project.presentationPath && (
+                  <Link
+                    href={project.presentationPath}
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-secondary text-secondary-foreground rounded-lg hover:bg-accent transition-colors border border-border"
+                  >
+                    <Presentation className="w-4 h-4" />
+                    <span className="text-sm font-medium">{t('buttons.presentation')}</span>
+                  </Link>
                 )}
                   </>
                 )}

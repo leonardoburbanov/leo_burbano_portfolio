@@ -10,6 +10,7 @@ export interface Project {
   image?: string;
   featured?: boolean;
   comingSoon?: boolean;
+  presentationPath?: string;
 }
 
 export const projects: Project[] = [
@@ -31,6 +32,7 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/leonardoburbanov/gemini-enterprise-agent-platform-workshop",
     liveUrl: "https://fastapi-agent-client-363304624491.us-central1.run.app",
     frontendLiveUrl: "https://nextjs-agent-client-363304624491.us-central1.run.app",
+    presentationPath: "/projects/gemini-enterprise-sales-agent",
     featured: true
   },
   {

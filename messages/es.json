@@ -28,6 +28,7 @@
       "frontend": "Frontend",
       "liveDemo": "Demo en Vivo",
       "comingSoon": "Próximamente",
+      "presentation": "Presentación",
       "viewMore": "Ver Más Proyectos"
     },
     "projects": {
@@ -42,6 +43,59 @@
       "small-llm-finetuning": {
         "title": "Fine-tuning de un LLM Pequeño",
         "description": "Fine-tuning personalizado de modelos de lenguaje pequeños para tareas específicas de dominio con rendimiento optimizado y requisitos de recursos reducidos"
+      }
+    }
+  },
+  "GeminiPresentation": {
+    "backToProjects": "Volver a proyectos",
+    "prev": "Diapositiva anterior",
+    "next": "Siguiente diapositiva",
+    "slide": "Diapositiva",
+    "fullscreen": "Pantalla completa",
+    "exitFullscreen": "Salir de pantalla completa",
+    "hideHeader": "Ocultar encabezado",
+    "showHeader": "Mostrar encabezado",
+    "slides": {
+      "title": {
+        "gdg": "Google Developer Group",
+        "gdgChapter": "Quito – Tsáchilas",
+        "heading": "Gemini Enterprise Sales Agent",
+        "subtitle": "Usando",
+        "platform": "Gemini Enterprise Agent Platform",
+        "presenterName": "Leonardo Burbano",
+        "presenterTitle": "Senior AI Engineer & Tech Lead | @Mercately [Techstars]",
+        "badge": "Build with AI"
+      },
+      "architecture": {
+        "heading": "Arquitectura",
+        "footnote": "Patrón full-stack: ADK impulsa el agente, FastAPI expone la API y Next.js entrega la experiencia de chat.",
+        "steps": {
+          "adk": {
+            "title": "Agente Google ADK",
+            "description": "Núcleo del agente de ventas con herramientas, memoria e integración con Gemini Enterprise."
+          },
+          "fastapi": {
+            "title": "Cliente FastAPI",
+            "description": "Capa API desplegada en Google Cloud Run, conectando el agente con los clientes."
+          },
+          "nextjs": {
+            "title": "Cliente Next.js",
+            "description": "UI de chat interactiva desplegada en Cloud Run para conversaciones con usuarios."
+          }
+        }
+      },
+      "workshop": {
+        "heading": "Workshop y Demo en Vivo",
+        "bullets": {
+          "learn": "Aprende a construir agentes con Google ADK y la plataforma Gemini Enterprise.",
+          "deploy": "Despliega backend y frontend en Google Cloud Run.",
+          "pattern": "Implementación de referencia de un patrón de agente full-stack listo para producción."
+        },
+        "links": {
+          "github": "Repositorio del Workshop",
+          "backend": "Demo Backend",
+          "frontend": "Demo Frontend"
+        }
       }
     }
   },

@@ -4,6 +4,15 @@ import { withContentCollections } from "@content-collections/next";
 
 const nextConfig: NextConfig = {
   output: 'standalone',
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        pathname: '/startup-grind/**',
+      },
+    ],
+  },
 };
 
 const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
