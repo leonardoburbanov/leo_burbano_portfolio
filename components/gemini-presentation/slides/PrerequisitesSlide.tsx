@@ -40,21 +40,16 @@ export default function PrerequisitesSlide() {
   const t = useTranslations('GeminiPresentation.slides.prerequisites');
 
   return (
-    <SlideFrame className="gap-4">
+    <SlideFrame className="gap-4" slideNumber={2}>
       <div className="shrink-0">
-        <h2 className="text-2xl font-bold leading-tight sm:text-3xl">{t('heading')}</h2>
-        <p className="mt-1 text-sm text-neutral-600">{t('subtitle')}</p>
+        <h2 className="gdg-headline text-2xl leading-tight sm:text-3xl">{t('heading')}</h2>
+        <p className="gdg-subhead mt-1 text-sm">{t('subtitle')}</p>
       </div>
 
       <ol className="flex min-h-0 flex-1 flex-col justify-center gap-2.5">
         {ITEMS.map((key, index) => (
-          <li
-            key={key}
-            className="flex items-start gap-3 rounded-xl border border-neutral-200 bg-neutral-50 px-4 py-3"
-          >
-            <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-neutral-900 text-xs font-bold text-white">
-              {index + 1}
-            </span>
+          <li key={key} className="gdg-card flex items-start gap-3 px-4 py-3">
+            <span className={`gdg-step-badge gdg-step-badge-${index % 4}`}>{index + 1}</span>
             <Image
               src={ITEM_META[key].src}
               alt=""
@@ -65,39 +60,37 @@ export default function PrerequisitesSlide() {
             />
             <div className="min-w-0 flex-1">
               <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                <h3 className="text-sm font-bold text-neutral-900">{t(`items.${key}.title`)}</h3>
+                <h3 className="gdg-headline text-sm">{t(`items.${key}.title`)}</h3>
                 <a
                   href={ITEM_META[key].href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-xs font-medium text-blue-600 hover:underline"
+                  className="gdg-link inline-flex items-center gap-1 text-xs"
                 >
                   {t('installLink')}
                   <ExternalLink className="h-3 w-3" />
                 </a>
               </div>
-              <p className="mt-0.5 text-xs leading-snug text-neutral-600">
+              <p className="gdg-subhead mt-0.5 text-xs leading-snug">
                 {t(`items.${key}.description`)}
               </p>
             </div>
           </li>
         ))}
 
-        <li className="flex items-start gap-3 rounded-xl border-2 border-neutral-900 bg-neutral-50 px-4 py-3">
-          <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-neutral-900 text-xs font-bold text-white">
-            6
-          </span>
+        <li className="gdg-card-highlight flex items-start gap-3 px-4 py-3">
+          <span className="gdg-step-badge gdg-step-badge-0">6</span>
           <div className="min-w-0 flex-1">
-            <h3 className="text-sm font-bold text-neutral-900">{t('agentsCli.title')}</h3>
-            <p className="mt-0.5 text-xs leading-snug text-neutral-600">{t('agentsCli.description')}</p>
-            <code className="mt-2 block overflow-x-auto whitespace-nowrap rounded bg-neutral-900 px-2.5 py-1 font-mono text-xs text-neutral-100">
+            <h3 className="gdg-headline text-sm">{t('agentsCli.title')}</h3>
+            <p className="gdg-subhead mt-0.5 text-xs leading-snug">{t('agentsCli.description')}</p>
+            <code className="gdg-code mt-2 block overflow-x-auto whitespace-nowrap px-2.5 py-1 text-xs">
               {t('agentsCli.command')}
             </code>
             <a
               href={AGENTS_CLI_DOCS}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-blue-600 hover:underline"
+              className="gdg-link mt-2 inline-flex items-center gap-1 text-xs"
             >
               {t('agentsCli.docsLink')}
               <ExternalLink className="h-3 w-3" />

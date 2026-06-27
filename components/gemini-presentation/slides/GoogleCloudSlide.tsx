@@ -11,6 +11,7 @@ export default function GoogleCloudSlide() {
     <StepSlide
       heading={t('heading')}
       subtitle={t('subtitle')}
+      slideNumber={5}
       steps={[
         {
           number: 1,

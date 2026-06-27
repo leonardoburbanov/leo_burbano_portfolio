@@ -11,6 +11,8 @@ export default function PlaygroundSlide() {
     <StepSlide
       heading={t('heading')}
       subtitle={t('subtitle')}
+      slideNumber={4}
+      image={{ src: '/playground.png', alt: t('imageAlt') }}
       steps={[
         {
           number: 11,

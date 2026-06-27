@@ -55,6 +55,7 @@
     "exitFullscreen": "Exit full screen",
     "hideHeader": "Hide header",
     "showHeader": "Show header",
+    "slideFooter": "Build an AI Sales Agent - Leonardo Burbano",
     "slides": {
       "title": {
         "gdg": "Google Developer Group",
@@ -161,7 +162,8 @@
             "description": "Launch the local ADK UI with hot reload.",
             "command": "agents-cli playground"
           }
-        }
+        },
+        "imageAlt": "Agent Development Kit screenshot showing a laptop query with product results and events"
       },
       "googleCloud": {
         "heading": "Optional: Google Cloud",
@@ -219,15 +221,25 @@
       "liveDemo": {
         "heading": "Local playground of the production agent",
         "paragraph1": "Now let's look at the local playground of the agent that is in production.",
-        "paragraph2": "We'll try it out to see what's happening in Google Cloud."
+        "paragraph2": "We'll try it out to see what's happening in Google Cloud.",
+        "imageAlt": "Google Cloud Console screenshot showing the Agent Platform welcome page"
       },
       "geminiPlatform": {
         "heading": "Gemini Enterprise Agent Platform",
         "imageAlt": "Gemini Enterprise Agent Platform architecture diagram"
       },
+      "cloudProduction": {
+        "heading": "Production agent on Google Cloud",
+        "deploymentsLabel": "Traces and sessions",
+        "deploymentsAlt": "Google Cloud Console showing traces and session metrics for the deployed agent",
+        "playgroundLabel": "Cloud playground",
+        "playgroundAlt": "sales-agent-cloud playground in Google Cloud with a laptop product query"
+      },
       "thanks": {
         "heading": "Thank you!",
         "subtitle": "We hope you enjoyed the workshop",
+        "finalResult": "Final result",
+        "imageAlt": "Sales Agent Tecno screenshot answering a laptop query with products and prices",
         "demoLinks": "Demo links",
         "extraResources": "Extra resources",
         "presenter": "Presenter",

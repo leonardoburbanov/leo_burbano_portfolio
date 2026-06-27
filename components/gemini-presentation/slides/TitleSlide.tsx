@@ -65,7 +65,7 @@ export default function TitleSlide() {
   const t = useTranslations('GeminiPresentation.slides.title');
 
   return (
-    <SlideFrame className="justify-between gap-3">
+    <SlideFrame className="justify-between gap-3" slideNumber={1}>
       {/* GDG header */}
       <div className="flex shrink-0 items-center gap-3">
         <Image
@@ -76,20 +76,20 @@ export default function TitleSlide() {
           className="h-10 w-10 object-contain"
         />
         <div>
-          <p className="text-sm font-semibold leading-tight sm:text-base">{t('gdg')}</p>
-          <p className="text-xs text-neutral-600 sm:text-sm">{t('gdgChapter')}</p>
+          <p className="gdg-headline text-sm leading-tight sm:text-base">{t('gdg')}</p>
+          <p className="gdg-subhead text-xs sm:text-sm">{t('gdgChapter')}</p>
         </div>
       </div>
 
       {/* Title + Build with AI banner */}
       <div className="flex min-h-0 flex-1 flex-col items-stretch gap-4 py-1 md:flex-row md:items-center md:gap-6">
         <div className="flex flex-1 flex-col justify-center">
-          <h1 className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl md:text-[2.75rem]">
+          <h1 className="gdg-headline text-3xl leading-tight tracking-tight sm:text-4xl md:text-[2.75rem]">
             {t('heading')}
           </h1>
-          <p className="mt-3 text-lg text-neutral-700 sm:text-xl">
+          <p className="gdg-body mt-3 text-lg sm:text-xl">
             {t('subtitle')}{' '}
-            <span className="font-bold text-neutral-900">{t('platform')}</span>
+            <span className="gdg-headline">{t('platform')}</span>
           </p>
           <div className="mt-4 flex flex-wrap gap-2">
             {TITLE_LINKS.map(({ key, href, icon: Icon }) => (
@@ -98,7 +98,7 @@ export default function TitleSlide() {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg border border-neutral-300 bg-neutral-50 px-3 py-1.5 text-xs font-medium text-neutral-900 transition-colors hover:bg-neutral-100 sm:px-4 sm:py-2 sm:text-sm"
+                className="gdg-btn text-xs sm:text-sm"
               >
                 <Icon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                 {t(`links.${key}`)}
@@ -120,7 +120,7 @@ export default function TitleSlide() {
             <div className="flex flex-wrap items-end justify-center gap-3 sm:gap-4 md:justify-end">
               {QR_CODES.map(({ key, src }) => (
                 <div key={key} className="flex flex-col items-center gap-1.5">
-                  <span className="rounded-full border border-neutral-200 bg-neutral-50 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-neutral-600 sm:text-xs">
+                  <span className="gdg-tag sm:text-xs">
                     {t(`qrTags.${key}`)}
                   </span>
                   <Image
@@ -146,16 +146,16 @@ export default function TitleSlide() {
               alt={t('presenterName')}
               width={56}
               height={56}
-              className="h-12 w-12 rounded-full border-2 border-neutral-900 object-cover sm:h-14 sm:w-14"
+              className="h-12 w-12 rounded-full border-2 border-[#1e1e1e] object-cover sm:h-14 sm:w-14"
             />
             <div>
-              <p className="font-semibold text-neutral-900">{t('presenterName')}</p>
-              <p className="text-xs text-neutral-600 sm:text-sm">{t('presenterTitle')}</p>
+              <p className="gdg-headline">{t('presenterName')}</p>
+              <p className="gdg-subhead text-xs sm:text-sm">{t('presenterTitle')}</p>
               <a
                 href="https://www.linkedin.com/in/leoburbano/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-[11px] text-neutral-500 transition-colors hover:text-blue-600 hover:underline sm:text-xs"
+                className="gdg-link inline-flex items-center gap-1 text-[11px] sm:text-xs"
               >
                 <Image
                   src="/logos/linkedin.png"
@@ -194,8 +194,8 @@ export default function TitleSlide() {
           </div>
         </div>
 
-        <div className="rounded-xl border border-neutral-200 bg-neutral-50 px-3 py-2.5 sm:px-4 sm:py-3">
-          <p className="mb-2 text-center text-[10px] font-semibold uppercase tracking-wide text-neutral-600 sm:text-xs md:text-right">
+        <div className="gdg-card px-3 py-2.5 sm:px-4 sm:py-3">
+          <p className="gdg-section-label mb-2 text-center md:text-right">
             {t('prerequisites.title')}
           </p>
           <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 md:justify-end">
@@ -206,7 +206,7 @@ export default function TitleSlide() {
                 target="_blank"
                 rel="noopener noreferrer"
                 title={t(`prerequisites.hints.${key}`)}
-                className="inline-flex items-center gap-1.5 rounded-lg border border-neutral-200 bg-white px-2 py-1 text-[10px] font-medium text-neutral-800 transition-colors hover:border-neutral-300 hover:bg-neutral-100 sm:px-2.5 sm:py-1.5 sm:text-xs"
+                className="gdg-pill text-[10px] sm:text-xs"
               >
                 <Image
                   src={src}

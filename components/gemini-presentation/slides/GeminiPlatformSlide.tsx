@@ -11,9 +11,9 @@ export default function GeminiPlatformSlide() {
   const t = useTranslations('GeminiPresentation.slides.geminiPlatform');
 
   return (
-    <SlideFrame className="gap-4">
-      <h2 className="shrink-0 text-2xl font-bold leading-tight sm:text-3xl">{t('heading')}</h2>
-      <div className="relative min-h-0 flex-1">
+    <SlideFrame className="gap-4" slideNumber={8}>
+      <h2 className="gdg-headline shrink-0 text-2xl leading-tight sm:text-3xl">{t('heading')}</h2>
+      <div className="gdg-diagram-frame relative min-h-0 flex-1 p-3 sm:p-4">
         {/* ponytail: plain img — Next/Image blocks remote SVG without extra config */}
         <img
           src={PLATFORM_DIAGRAM}

@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import { GDG } from '../gdg-tokens';
 import SlideFrame from '../SlideFrame';
 
 type NodeVariant = 'start' | 'process' | 'accent' | 'secondary' | 'end';
@@ -10,34 +11,34 @@ const NODE_VARIANTS: Record<
   { fill: string; stroke: string; title: string; subtitle: string }
 > = {
   start: {
-    fill: '#86EFAC',
-    stroke: '#15803D',
-    title: '#14532D',
-    subtitle: '#166534',
+    fill: GDG.pastelGreen,
+    stroke: GDG.green,
+    title: GDG.black,
+    subtitle: GDG.subheadGray,
   },
   process: {
-    fill: '#DBEAFE',
-    stroke: '#1D4ED8',
-    title: '#1E3A8A',
-    subtitle: '#1E40AF',
+    fill: GDG.pastelBlue,
+    stroke: GDG.blue,
+    title: GDG.black,
+    subtitle: GDG.subheadGray,
   },
   accent: {
-    fill: '#93C5FD',
-    stroke: '#1D4ED8',
-    title: '#1E3A8A',
-    subtitle: '#1E40AF',
+    fill: GDG.halftoneBlue,
+    stroke: GDG.blue,
+    title: GDG.black,
+    subtitle: GDG.subheadGray,
   },
   secondary: {
-    fill: '#FECDD3',
-    stroke: '#BE123C',
-    title: '#881337',
-    subtitle: '#9F1239',
+    fill: GDG.pastelRed,
+    stroke: GDG.red,
+    title: GDG.black,
+    subtitle: GDG.subheadGray,
   },
   end: {
-    fill: '#FDE68A',
-    stroke: '#D97706',
-    title: '#92400E',
-    subtitle: '#B45309',
+    fill: GDG.pastelYellow,
+    stroke: GDG.yellow,
+    title: GDG.black,
+    subtitle: GDG.subheadGray,
   },
 };
 
@@ -106,10 +107,10 @@ function FlowPill({ x, y, text }: { x: number; y: number; text: string }) {
         rx={9}
         ry={9}
         fill="#FFFFFF"
-        stroke="#171717"
+        stroke={GDG.black}
         strokeWidth={1}
       />
-      <text x={x} y={y + 4} textAnchor="middle" fill="#404040" fontSize={8} fontWeight={600}>
+      <text x={x} y={y + 4} textAnchor="middle" fill={GDG.subheadGray} fontSize={8} fontWeight={600}>
         {text}
       </text>
     </g>
@@ -129,15 +130,17 @@ function FlowConnector({
   labelX?: number;
   labelY?: number;
 }) {
+  const markerId = `arrow-${color.replace('#', '')}`;
+
   return (
     <g>
-      <path d={d} fill="none" stroke={color} strokeWidth={2} markerEnd={`url(#arrow-${color.replace('#', '')})`} />
+      <path d={d} fill="none" stroke={color} strokeWidth={2} markerEnd={`url(#${markerId})`} />
       {label && labelX != null && labelY != null && <FlowPill x={labelX} y={labelY} text={label} />}
     </g>
   );
 }
 
-/** Production architecture flow diagram (flow-chart style). */
+/** Production architecture flow diagram (GDG flow-chart style). */
 function ArchitectureFlowDiagram({
   labels,
 }: {
@@ -154,10 +157,10 @@ function ArchitectureFlowDiagram({
   };
 }) {
   const markers = [
-    { id: '22c55e', color: '#22C55E' },
-    { id: '3b82f6', color: '#3B82F6' },
-    { id: 'f59e0b', color: '#F59E0B' },
-    { id: 'f472b6', color: '#F472B6' },
+    { id: GDG.green.replace('#', ''), color: GDG.green },
+    { id: GDG.blue.replace('#', ''), color: GDG.blue },
+    { id: GDG.yellow.replace('#', ''), color: GDG.yellow },
+    { id: GDG.red.replace('#', ''), color: GDG.red },
   ];
 
   return (
@@ -178,17 +181,15 @@ function ArchitectureFlowDiagram({
         ))}
       </defs>
 
-      {/* Main row nodes */}
       <FlowNode x={24} y={108} w={128} h={58} variant="start" title={labels.ui.title} subtitle={labels.ui.subtitle} />
       <FlowNode x={196} y={108} w={136} h={58} variant="process" title={labels.api.title} subtitle={labels.api.subtitle} />
       <FlowNode x={388} y={108} w={128} h={58} variant="accent" title={labels.runtime.title} subtitle={labels.runtime.subtitle} />
       <FlowNode x={572} y={108} w={128} h={58} variant="end" title={labels.adk.title} subtitle={labels.adk.subtitle} />
       <FlowNode x={214} y={214} w={100} h={52} variant="secondary" title={labels.db.title} subtitle={labels.db.subtitle} />
 
-      {/* Connectors */}
       <FlowConnector
         d="M 152 137 L 196 137"
-        color="#22C55E"
+        color={GDG.green}
         label={labels.chat}
         labelX={174}
         labelY={118}
@@ -197,21 +198,20 @@ function ArchitectureFlowDiagram({
 
       <FlowConnector
         d="M 332 137 L 388 137"
-        color="#3B82F6"
+        color={GDG.blue}
         label={labels.stream}
         labelX={360}
         labelY={118}
       />
 
-      <FlowConnector d="M 516 137 L 572 137" color="#F59E0B" />
+      <FlowConnector d="M 516 137 L 572 137" color={GDG.yellow} />
 
-      {/* API → DB (orthogonal) */}
       <path
         d="M 264 166 L 264 188 L 264 214"
         fill="none"
-        stroke="#F472B6"
+        stroke={GDG.red}
         strokeWidth={2}
-        markerEnd="url(#arrow-f472b6)"
+        markerEnd={`url(#arrow-${GDG.red.replace('#', '')})`}
       />
       <FlowPill x={264} y={200} text={labels.dbEdge} />
     </svg>
@@ -223,13 +223,13 @@ export default function ProductionArchitectureSlide() {
   const t = useTranslations('GeminiPresentation.slides.productionArchitecture');
 
   return (
-    <SlideFrame className="gap-3">
+    <SlideFrame className="gap-3" slideNumber={6}>
       <div className="shrink-0">
-        <h2 className="text-2xl font-bold leading-tight sm:text-3xl">{t('heading')}</h2>
-        <p className="mt-1 text-sm text-neutral-600">{t('subtitle')}</p>
+        <h2 className="gdg-headline text-2xl leading-tight sm:text-3xl">{t('heading')}</h2>
+        <p className="gdg-subhead mt-1 text-sm">{t('subtitle')}</p>
       </div>
 
-      <div className="min-h-0 flex-1 rounded-3xl border border-neutral-300 bg-neutral-50/80 p-3 sm:p-4">
+      <div className="gdg-diagram-frame min-h-0 flex-1 p-3 sm:p-4">
         <ArchitectureFlowDiagram
           labels={{
             ui: { title: t('nodes.ui.title'), subtitle: t('nodes.ui.subtitle') },

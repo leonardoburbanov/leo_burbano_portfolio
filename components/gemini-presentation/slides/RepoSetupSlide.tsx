@@ -21,6 +21,7 @@ export default function RepoSetupSlide() {
     <StepSlide
       heading={t('heading')}
       subtitle={t('subtitle')}
+      slideNumber={3}
       steps={[
         {
           number: 7,

@@ -1,0 +1,218 @@
+/* GDG style scope — only under .gemini-presentation */
+.gemini-presentation {
+  --gdg-black: #1e1e1e;
+  --gdg-off-white: #f0f0f0;
+  --gdg-blue: #4285f4;
+  --gdg-red: #ea4335;
+  --gdg-yellow: #fbbc04;
+  --gdg-green: #34a853;
+  --gdg-pastel-blue: #c3ecf6;
+  --gdg-pastel-red: #f8d8d8;
+  --gdg-pastel-yellow: #ffe7a5;
+  --gdg-pastel-green: #ccf6c5;
+  --gdg-subhead: #5f6368;
+  --font-gdg-sans: var(--font-gdg-sans-loaded, Roboto, system-ui, sans-serif);
+  --font-gdg-mono: var(--font-gdg-mono-loaded, 'Roboto Mono', ui-monospace, monospace);
+
+  font-family: var(--font-gdg-sans);
+  color: var(--gdg-black);
+}
+
+.gemini-presentation .gdg-headline {
+  font-family: var(--font-gdg-sans);
+  font-weight: 700;
+  color: var(--gdg-black);
+}
+
+.gemini-presentation .gdg-subhead {
+  font-family: var(--font-gdg-mono);
+  font-weight: 300;
+  color: var(--gdg-subhead);
+}
+
+.gemini-presentation .gdg-body {
+  font-family: var(--font-gdg-sans);
+  font-weight: 400;
+  color: var(--gdg-black);
+}
+
+.gemini-presentation .gdg-section-label {
+  font-family: var(--font-gdg-mono);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--gdg-subhead);
+}
+
+.gemini-presentation .gdg-card {
+  border-radius: 1rem;
+  border: 1px solid var(--gdg-black);
+  background-color: var(--gdg-off-white);
+}
+
+.gemini-presentation .gdg-card-highlight {
+  border-radius: 1rem;
+  border: 2px solid var(--gdg-blue);
+  background-color: var(--gdg-pastel-blue);
+}
+
+.gemini-presentation .gdg-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--gdg-black);
+  background-color: white;
+  padding: 0.25rem 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--gdg-black);
+  transition: background-color 0.15s;
+}
+
+.gemini-presentation .gdg-pill:hover {
+  background-color: var(--gdg-pastel-blue);
+}
+
+.gemini-presentation .gdg-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--gdg-black);
+  background-color: var(--gdg-off-white);
+  padding: 0.375rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--gdg-black);
+  transition: background-color 0.15s;
+}
+
+.gemini-presentation .gdg-btn:hover {
+  background-color: var(--gdg-pastel-blue);
+}
+
+.gemini-presentation .gdg-link {
+  font-weight: 500;
+  color: var(--gdg-blue);
+  transition: color 0.15s;
+}
+
+.gemini-presentation .gdg-link:hover {
+  text-decoration: underline;
+}
+
+.gemini-presentation .gdg-code {
+  font-family: var(--font-gdg-mono);
+  border-radius: 0.375rem;
+  background-color: var(--gdg-black);
+  color: var(--gdg-off-white);
+}
+
+.gemini-presentation .gdg-step-badge {
+  display: flex;
+  height: 1.75rem;
+  width: 1.75rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: white;
+}
+
+.gemini-presentation .gdg-step-badge-0 { background-color: var(--gdg-blue); }
+.gemini-presentation .gdg-step-badge-1 { background-color: var(--gdg-red); }
+.gemini-presentation .gdg-step-badge-2 { background-color: var(--gdg-yellow); }
+.gemini-presentation .gdg-step-badge-3 { background-color: var(--gdg-green); }
+
+.gemini-presentation .gdg-nav-btn {
+  border-radius: 9999px;
+  border: 1px solid var(--gdg-black);
+  background-color: white;
+  color: var(--gdg-black);
+  transition: background-color 0.15s;
+}
+
+.gemini-presentation .gdg-nav-btn:hover:not(:disabled) {
+  background-color: var(--gdg-pastel-blue);
+}
+
+.gemini-presentation .gdg-dot {
+  height: 0.5rem;
+  border-radius: 9999px;
+  background-color: var(--gdg-off-white);
+  border: 1px solid var(--gdg-black);
+  transition: all 0.15s;
+}
+
+.gemini-presentation .gdg-dot-active {
+  width: 1.5rem;
+  background-color: var(--gdg-blue);
+  border-color: var(--gdg-blue);
+}
+
+.gemini-presentation .gdg-dot-inactive {
+  width: 0.5rem;
+}
+
+.gemini-presentation .gdg-buildwithai-logo {
+  height: 2rem;
+  width: auto;
+  object-fit: contain;
+  object-position: top right;
+}
+
+@media (min-width: 640px) {
+  .gemini-presentation .gdg-buildwithai-logo {
+    height: 2.25rem;
+  }
+}
+
+.gemini-presentation .gdg-slide-chrome {
+  z-index: 10;
+  border-radius: 0.5rem;
+  border: 1px solid var(--gdg-black);
+  background-color: white;
+  padding: 0.25rem 0.5rem;
+  font-family: var(--font-gdg-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--gdg-subhead);
+  box-shadow: 0 1px 3px rgba(30, 30, 30, 0.1);
+}
+
+.gemini-presentation .gdg-slide-footer {
+  white-space: nowrap;
+}
+
+.gemini-presentation .gdg-slide-number {
+  white-space: nowrap;
+}
+
+.gemini-presentation .gdg-tag {
+  border-radius: 9999px;
+  border: 1px solid var(--gdg-black);
+  background-color: var(--gdg-off-white);
+  padding: 0.125rem 0.625rem;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--gdg-subhead);
+}
+
+.gemini-presentation .gdg-diagram-frame {
+  border-radius: 1.5rem;
+  border: 1px solid var(--gdg-black);
+  background-color: color-mix(in srgb, var(--gdg-pastel-blue) 40%, white);
+}
+
+.gemini-presentation .keen-slider__slide,
+.gemini-presentation .keen-slider__slide * {
+  -webkit-user-select: text;
+  user-select: text;
+}

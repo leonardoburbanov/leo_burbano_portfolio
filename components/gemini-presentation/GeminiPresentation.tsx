@@ -13,16 +13,16 @@ import GoogleCloudSlide from './slides/GoogleCloudSlide';
 import ProductionArchitectureSlide from './slides/ProductionArchitectureSlide';
 import LiveDemoSlide from './slides/LiveDemoSlide';
 import GeminiPlatformSlide from './slides/GeminiPlatformSlide';
+import CloudProductionSlide from './slides/CloudProductionSlide';
 import ThanksSlide from './slides/ThanksSlide';
-
-const SLIDE_COUNT = 9;
+import { SLIDE_TOTAL } from './SlideFrame';
 
 interface GeminiPresentationProps {
   chromeHidden?: boolean;
   onToggleChrome?: () => void;
 }
 
-/** Interactive 9-slide deck with arrows, dots, counter, and keyboard nav. */
+/** Interactive 10-slide deck with arrows, dots, and keyboard nav. */
 export default function GeminiPresentation({
   chromeHidden = false,
   onToggleChrome,
@@ -60,14 +60,14 @@ export default function GeminiPresentation({
   }, [goPrev, goNext]);
 
   return (
-    <div className="gemini-presentation w-full">
+    <div className="w-full">
       {onToggleChrome && (
         <div className="mx-auto mb-2 flex max-w-5xl justify-end">
           <button
             type="button"
             onClick={onToggleChrome}
             aria-label={chromeHidden ? t('showHeader') : t('hideHeader')}
-            className="inline-flex items-center justify-center rounded-md border border-neutral-200 bg-white/80 p-1 text-neutral-500 shadow-sm transition-colors hover:bg-white hover:text-neutral-700"
+            className="gdg-nav-btn inline-flex items-center justify-center p-1 shadow-sm"
           >
             {chromeHidden ? (
               <PanelTop className="h-3.5 w-3.5" />
@@ -106,6 +106,9 @@ export default function GeminiPresentation({
               <GeminiPlatformSlide />
             </div>
             <div className="keen-slider__slide select-text">
+              <CloudProductionSlide />
+            </div>
+            <div className="keen-slider__slide select-text">
               <ThanksSlide />
             </div>
           </div>
@@ -117,16 +120,16 @@ export default function GeminiPresentation({
                 onClick={goPrev}
                 disabled={current === 0}
                 aria-label={t('prev')}
-                className="absolute left-0 top-1/2 z-10 -translate-x-3 -translate-y-1/2 rounded-full border border-neutral-300 bg-white p-2 text-neutral-700 shadow-md transition-opacity hover:bg-neutral-50 disabled:opacity-30 sm:-translate-x-5"
+                className="gdg-nav-btn absolute left-0 top-1/2 z-10 -translate-x-3 -translate-y-1/2 p-2 shadow-md disabled:opacity-30 sm:-translate-x-5"
               >
                 <ChevronLeft className="h-5 w-5" />
               </button>
               <button
                 type="button"
                 onClick={goNext}
-                disabled={current === SLIDE_COUNT - 1}
+                disabled={current === SLIDE_TOTAL - 1}
                 aria-label={t('next')}
-                className="absolute right-0 top-1/2 z-10 -translate-y-1/2 translate-x-3 rounded-full border border-neutral-300 bg-white p-2 text-neutral-700 shadow-md transition-opacity hover:bg-neutral-50 disabled:opacity-30 sm:translate-x-5"
+                className="gdg-nav-btn absolute right-0 top-1/2 z-10 -translate-y-1/2 translate-x-3 p-2 shadow-md disabled:opacity-30 sm:translate-x-5"
               >
                 <ChevronRight className="h-5 w-5" />
               </button>
@@ -136,21 +139,16 @@ export default function GeminiPresentation({
 
         <div className="mt-6 flex flex-col items-center gap-3">
           <div className="flex gap-2">
-            {Array.from({ length: SLIDE_COUNT }).map((_, i) => (
+            {Array.from({ length: SLIDE_TOTAL }).map((_, i) => (
               <button
                 key={i}
                 type="button"
                 aria-label={`${t('slide')} ${i + 1}`}
                 onClick={() => instanceRef.current?.moveToIdx(i)}
-                className={`h-2 rounded-full transition-all ${
-                  i === current ? 'w-6 bg-neutral-900' : 'w-2 bg-neutral-300'
-                }`}
+                className={`gdg-dot ${i === current ? 'gdg-dot-active' : 'gdg-dot-inactive'}`}
               />
             ))}
           </div>
-          <p className="text-sm font-medium text-neutral-600">
-            {current + 1} / {SLIDE_COUNT}
-          </p>
         </div>
       </div>
     </div>

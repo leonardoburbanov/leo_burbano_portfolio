@@ -55,11 +55,12 @@
     "exitFullscreen": "Salir de pantalla completa",
     "hideHeader": "Ocultar encabezado",
     "showHeader": "Mostrar encabezado",
+    "slideFooter": "Construye un vendedor con IA - Leonardo Burbano",
     "slides": {
       "title": {
         "gdg": "Google Developer Group",
         "gdgChapter": "Quito – Tsáchilas",
-        "heading": "Gemini Enterprise Sales Agent",
+        "heading": "Construye un vendedor con IA",
         "subtitle": "Usando",
         "platform": "Gemini Enterprise Agent Platform",
         "presenterName": "Leonardo Burbano",
@@ -161,7 +162,8 @@
             "description": "Lanza la UI local de ADK con recarga en caliente.",
             "command": "agents-cli playground"
           }
-        }
+        },
+        "imageAlt": "Captura del Agent Development Kit mostrando una consulta de laptop con productos y eventos"
       },
       "googleCloud": {
         "heading": "Opcional: Google Cloud",
@@ -219,15 +221,25 @@
       "liveDemo": {
         "heading": "Playground local del agente en producción",
         "paragraph1": "Bien, ahora vamos a ver el playground local del agente que está en producción.",
-        "paragraph2": "Y vamos a probarlo para ver qué es lo que está pasando en Google Cloud."
+        "paragraph2": "Y vamos a probarlo para ver qué es lo que está pasando en Google Cloud.",
+        "imageAlt": "Captura de Google Cloud Console mostrando la página de bienvenida de Agent Platform"
       },
       "geminiPlatform": {
         "heading": "Gemini Enterprise Agent Platform",
         "imageAlt": "Diagrama de arquitectura de Gemini Enterprise Agent Platform"
       },
+      "cloudProduction": {
+        "heading": "Agente en producción en Google Cloud",
+        "deploymentsLabel": "Traces y sesiones",
+        "deploymentsAlt": "Google Cloud Console mostrando traces y métricas de sesiones del agente desplegado",
+        "playgroundLabel": "Playground en la nube",
+        "playgroundAlt": "Playground del agente sales-agent-cloud en Google Cloud con consulta de laptops"
+      },
       "thanks": {
         "heading": "¡Gracias!",
         "subtitle": "Esperamos que hayas disfrutado el workshop",
+        "finalResult": "Resultado final",
+        "imageAlt": "Captura del agente de ventas Tecno respondiendo una consulta de laptops con productos y precios",
         "demoLinks": "Enlaces del demo",
         "extraResources": "Recursos extras",
         "presenter": "Expositor",
