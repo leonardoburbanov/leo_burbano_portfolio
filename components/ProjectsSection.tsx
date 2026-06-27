@@ -76,6 +76,12 @@ export default function ProjectsSection() {
 
               {/* Project links */}
               <div className="flex flex-wrap gap-3">
+                {project.comingSoon ? (
+                  <span className="inline-flex items-center px-4 py-2 bg-muted text-muted-foreground rounded-lg border border-border text-sm font-medium">
+                    {t('buttons.comingSoon')}
+                  </span>
+                ) : (
+                  <>
                 {project.githubUrl && (
                   <a
                     href={project.githubUrl}
@@ -123,6 +129,8 @@ export default function ProjectsSection() {
                     <ExternalLink className="w-4 h-4" />
                     <span className="text-sm font-medium">{t('buttons.frontend')}</span>
                   </a>
+                )}
+                  </>
                 )}
               </div>
 

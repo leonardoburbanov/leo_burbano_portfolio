@@ -9,6 +9,7 @@ export interface Project {
   frontendLiveUrl?: string;
   image?: string;
   featured?: boolean;
+  comingSoon?: boolean;
 }
 
 export const projects: Project[] = [
@@ -37,8 +38,7 @@ export const projects: Project[] = [
     title: "Fine-tuning a Small LLM",
     description: "Custom fine-tuning of small language models for domain-specific tasks with optimized performance and reduced resource requirements",
     technologies: ["Python", "PyTorch", "Transformers", "Hugging Face", "Machine Learning", "NLP"],
-    githubUrl: "https://github.com/your-username/small-llm-finetuning",
-    liveUrl: "https://small-llm-finetuning.demo.com",
+    comingSoon: true,
     featured: true
   }
 ] as const; 
