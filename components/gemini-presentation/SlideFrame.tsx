@@ -9,7 +9,7 @@ interface SlideFrameProps {
 export default function SlideFrame({ children, className = '' }: SlideFrameProps) {
   return (
     <div
-      className={`relative flex h-full w-full flex-col overflow-hidden rounded-3xl border border-neutral-900 bg-white p-6 sm:p-8 md:p-10 text-neutral-900 ${className}`}
+      className={`relative flex h-full w-full select-text flex-col overflow-hidden rounded-3xl border border-neutral-900 bg-white p-6 sm:p-8 md:p-10 text-neutral-900 ${className}`}
     >
       {children}
     </div>

@@ -27,6 +27,7 @@ export default function GeminiPresentation({
 
   const [sliderRef, instanceRef] = useKeenSlider({
     initial: 0,
+    drag: false,
     slideChanged(slider) {
       setCurrent(slider.track.details.rel);
     },
@@ -53,7 +54,7 @@ export default function GeminiPresentation({
   }, [goPrev, goNext]);
 
   return (
-    <div className="w-full">
+    <div className="gemini-presentation w-full">
       {onToggleChrome && (
         <div className="mx-auto mb-2 flex max-w-5xl justify-end">
           <button
@@ -73,14 +74,14 @@ export default function GeminiPresentation({
 
       <div className="relative mx-auto w-full max-w-5xl">
         <div className="relative">
-          <div ref={sliderRef} className="keen-slider aspect-[16/10]">
-            <div className="keen-slider__slide">
+          <div ref={sliderRef} className="keen-slider aspect-[16/10] select-text">
+            <div className="keen-slider__slide select-text">
               <TitleSlide />
             </div>
-            <div className="keen-slider__slide">
+            <div className="keen-slider__slide select-text">
               <ArchitectureSlide />
             </div>
-            <div className="keen-slider__slide">
+            <div className="keen-slider__slide select-text">
               <WorkshopSlide />
             </div>
           </div>
