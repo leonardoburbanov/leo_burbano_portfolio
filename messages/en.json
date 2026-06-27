@@ -64,24 +64,66 @@
         "platform": "Gemini Enterprise Agent Platform",
         "presenterName": "Leonardo Burbano",
         "presenterTitle": "Senior AI Engineer & Tech Lead | @Mercately [Techstars]",
-        "badge": "Build with AI"
-      },
-      "architecture": {
-        "heading": "Architecture",
-        "footnote": "A full-stack agent pattern: ADK powers the agent, FastAPI exposes the API, Next.js delivers the chat experience.",
-        "steps": {
-          "adk": {
-            "title": "Google ADK Agent",
-            "description": "Sales agent core with tools, memory, and Gemini Enterprise integration."
-          },
-          "fastapi": {
-            "title": "FastAPI Client",
-            "description": "API layer deployed on Google Cloud Run, bridging the agent to clients."
-          },
-          "nextjs": {
-            "title": "Next.js Client",
-            "description": "Interactive chat UI deployed on Cloud Run for end-user conversations."
+        "badge": "Build with AI",
+        "qrTags": {
+          "presentation": "Presentation",
+          "github": "GitHub Repo"
+        },
+        "qrAlt": {
+          "presentation": "QR code for the presentation",
+          "github": "QR code for the GitHub repository"
+        },
+        "links": {
+          "frontend": "Frontend Demo",
+          "backendRepo": "Backend Repo"
+        },
+        "prerequisites": {
+          "title": "Prerequisites",
+          "python": "Python",
+          "nodejs": "Node.js",
+          "uv": "uv",
+          "ide": "Antigravity / IDE",
+          "aiStudio": "AI Studio",
+          "hints": {
+            "python": "Download Python",
+            "nodejs": "Download Node.js",
+            "uv": "Install uv (Python package manager)",
+            "ide": "Google Antigravity or any IDE",
+            "aiStudio": "Sign in with a Google account"
           }
+        }
+      },
+      "prerequisites": {
+        "heading": "Prerequisites",
+        "subtitle": "Install and configure these tools before starting the workshop",
+        "installLink": "Install",
+        "items": {
+          "python": {
+            "title": "Python",
+            "description": "Language for the ADK agent and FastAPI backend. Download the latest stable release."
+          },
+          "nodejs": {
+            "title": "Node.js",
+            "description": "Runtime for the workshop Next.js frontend."
+          },
+          "uv": {
+            "title": "uv",
+            "description": "Python package and environment manager. Replaces pip and virtualenv."
+          },
+          "ide": {
+            "title": "Google Antigravity or any IDE",
+            "description": "Code editor with agent support. Antigravity, Cursor, or VS Code all work well."
+          },
+          "aiStudio": {
+            "title": "Google AI Studio",
+            "description": "Sign in with a Google account to access Gemini models and test prompts."
+          }
+        },
+        "agentsCli": {
+          "title": "Google Cloud Agents CLI",
+          "description": "Install the official CLI and skills to build agents on Agent Platform.",
+          "command": "uvx google-agents-cli setup",
+          "docsLink": "Agents CLI documentation"
         }
       },
       "workshop": {

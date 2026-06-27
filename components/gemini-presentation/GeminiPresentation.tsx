@@ -6,7 +6,7 @@ import { ChevronLeft, ChevronRight, PanelTop, PanelTopClose } from 'lucide-react
 import { useTranslations } from 'next-intl';
 import 'keen-slider/keen-slider.min.css';
 import TitleSlide from './slides/TitleSlide';
-import ArchitectureSlide from './slides/ArchitectureSlide';
+import PrerequisitesSlide from './slides/PrerequisitesSlide';
 import WorkshopSlide from './slides/WorkshopSlide';
 
 const SLIDE_COUNT = 3;
@@ -79,7 +79,7 @@ export default function GeminiPresentation({
               <TitleSlide />
             </div>
             <div className="keen-slider__slide select-text">
-              <ArchitectureSlide />
+              <PrerequisitesSlide />
             </div>
             <div className="keen-slider__slide select-text">
               <WorkshopSlide />
