@@ -75,7 +75,7 @@ export default function ProjectsSection() {
               </div>
 
               {/* Project links */}
-              <div className="flex gap-3">
+              <div className="flex flex-wrap gap-3">
                 {project.githubUrl && (
                   <a
                     href={project.githubUrl}
@@ -84,7 +84,20 @@ export default function ProjectsSection() {
                     className="inline-flex items-center gap-2 px-4 py-2 bg-secondary text-secondary-foreground rounded-lg hover:bg-accent transition-colors border border-border"
                   >
                     <Github className="w-4 h-4" />
-                    <span className="text-sm font-medium">{t('buttons.code')}</span>
+                    <span className="text-sm font-medium">
+                      {project.frontendGithubUrl ? t('buttons.backend') : t('buttons.code')}
+                    </span>
+                  </a>
+                )}
+                {project.frontendGithubUrl && (
+                  <a
+                    href={project.frontendGithubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-secondary text-secondary-foreground rounded-lg hover:bg-accent transition-colors border border-border"
+                  >
+                    <Github className="w-4 h-4" />
+                    <span className="text-sm font-medium">{t('buttons.frontend')}</span>
                   </a>
                 )}
                 {project.liveUrl && (
@@ -95,7 +108,20 @@ export default function ProjectsSection() {
                     className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
                   >
                     <ExternalLink className="w-4 h-4" />
-                    <span className="text-sm font-medium">{t('buttons.liveDemo')}</span>
+                    <span className="text-sm font-medium">
+                      {project.frontendLiveUrl ? t('buttons.backend') : t('buttons.liveDemo')}
+                    </span>
+                  </a>
+                )}
+                {project.frontendLiveUrl && (
+                  <a
+                    href={project.frontendLiveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    <span className="text-sm font-medium">{t('buttons.frontend')}</span>
                   </a>
                 )}
               </div>

@@ -24,25 +24,19 @@
     "description": "Here are some of the projects I've worked on, showcasing my expertise in AI, machine learning, and software engineering.",
     "buttons": {
       "code": "Code",
+      "backend": "Backend",
+      "frontend": "Frontend",
       "liveDemo": "Live Demo",
       "viewMore": "View More Projects"
     },
     "projects": {
       "navbe-ai": {
-        "title": "Navbe AI",
-        "description": "Open source testing and monitoring for reliable voice, chat and sales AI Agents"
+        "title": "Navbe",
+        "description": "The workflow brain for AI agents and teams — schedule recurring workflows with persistent context via MCP. Built with a FastAPI orchestrator and Next.js dashboard."
       },
-      "ai-seo-agents": {
-        "title": "AI Agents for SEO",
-        "description": "Automated SEO optimization using AI agents powered by n8n workflow automation"
-      },
-      "natural-language-processing": {
-        "title": "Natural Language Processing",
-        "description": "Natural language processing with AI agents for inventory management, customer support, and sales optimization"
-      },
-      "ai-ecommerce-agents": {
-        "title": "AI Agents for Ecommerce",
-        "description": "Intelligent ecommerce automation with AI agents for inventory management, customer support, and sales optimization"
+      "gemini-enterprise-sales-agent": {
+        "title": "Gemini Enterprise Sales Agent",
+        "description": "Workshop and reference implementation of a sales agent built with Google ADK and the Gemini Enterprise platform, with FastAPI and Next.js clients and cloud deployment."
       },
       "small-llm-finetuning": {
         "title": "Fine-tuning a Small LLM",

@@ -44,7 +44,7 @@ export const heroData = {
     },
     {
       platform: "Instagram",
-      url: "https://www.instagram.com/leo.data.ai/",
+      url: "https://www.instagram.com/leo.burbano.ai/",
       ariaLabel: "Instagram"
     }
   ],

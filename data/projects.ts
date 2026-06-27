@@ -4,7 +4,9 @@ export interface Project {
   description: string;
   technologies: string[];
   githubUrl?: string;
+  frontendGithubUrl?: string;
   liveUrl?: string;
+  frontendLiveUrl?: string;
   image?: string;
   featured?: boolean;
 }
@@ -12,38 +14,22 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: "navbe-ai",
-    title: "Navbe AI",
-    description: "Open source testing and monitoring for reliable voice, chat and sales AI Agents",
-    technologies: ["Python", "FastAPI", "LangChain", "React", "TypeScript", "Docker"],
-    githubUrl: "https://github.com/navbe-ai",
-    liveUrl: "https://navbe.ai",
+    title: "Navbe",
+    description: "The workflow brain for AI agents and teams — schedule recurring workflows with persistent context via MCP. Built with a FastAPI orchestrator and Next.js dashboard.",
+    technologies: ["Python", "FastAPI", "FastMCP", "Next.js", "React", "TypeScript", "DuckDB"],
+    githubUrl: "https://github.com/leonardoburbanov/navbe_ai_orchestrator_backend",
+    frontendGithubUrl: "https://github.com/leonardoburbanov/navbe_ai_orchestrator_frontend",
+    liveUrl: "https://navbeaiorchestratorwebpage.vercel.app/",
     featured: true
   },
   {
-    id: "ai-seo-agents",
-    title: "AI Agents for SEO",
-    description: "Automated SEO optimization using AI agents powered by n8n workflow automation",
-    technologies: ["n8n", "JavaScript", "Node.js", "AI/ML", "SEO", "Automation"],
-    githubUrl: "https://github.com/your-username/ai-seo-agents",
-    liveUrl: "https://ai-seo-agents.demo.com",
-    featured: true
-  },
-  {
-    id: "natural-language-processing",
-    title: "Natural Language Processing",
-    description: "Natural language processing with AI agents for inventory management, customer support, and sales optimization",
-    technologies: ["Python", "FastAPI", "AI/ML", "Ecommerce", "Automation", "PostgreSQL"],
-    githubUrl: "https://github.com/your-username/natural-language-processing",
-    liveUrl: "https://natural-language-processing.demo.com",
-    featured: true
-  },
-  {
-    id: "ai-ecommerce-agents",
-    title: "AI Agents for Ecommerce",
-    description: "Intelligent ecommerce automation with AI agents for inventory management, customer support, and sales optimization",
-    technologies: ["Python", "FastAPI", "AI/ML", "Ecommerce", "Automation", "PostgreSQL"],
-    githubUrl: "https://github.com/your-username/ai-ecommerce-agents",
-    liveUrl: "https://ai-ecommerce-agents.demo.com",
+    id: "gemini-enterprise-sales-agent",
+    title: "Gemini Enterprise Sales Agent",
+    description: "Workshop and reference implementation of a sales agent built with Google ADK and the Gemini Enterprise platform, with FastAPI and Next.js clients and cloud deployment.",
+    technologies: ["Python", "FastAPI", "Google ADK", "Gemini Enterprise", "Next.js", "TypeScript"],
+    githubUrl: "https://github.com/leonardoburbanov/gemini-enterprise-agent-platform-workshop",
+    liveUrl: "https://fastapi-agent-client-363304624491.us-central1.run.app",
+    frontendLiveUrl: "https://nextjs-agent-client-363304624491.us-central1.run.app",
     featured: true
   },
   {

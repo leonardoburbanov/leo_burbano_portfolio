@@ -24,25 +24,19 @@
     "description": "Aquí hay algunos de los proyectos en los que he trabajado, mostrando mi experiencia en IA, machine learning e ingeniería de software.",
     "buttons": {
       "code": "Código",
+      "backend": "Backend",
+      "frontend": "Frontend",
       "liveDemo": "Demo en Vivo",
       "viewMore": "Ver Más Proyectos"
     },
     "projects": {
       "navbe-ai": {
-        "title": "Navbe AI",
-        "description": "Pruebas y monitoreo de código abierto para agentes de IA confiables de voz, chat y ventas"
+        "title": "Navbe",
+        "description": "El cerebro de flujos de trabajo para agentes de IA y equipos — programa workflows recurrentes con contexto persistente vía MCP. Backend FastAPI y dashboard Next.js."
       },
-      "ai-seo-agents": {
-        "title": "Agentes de IA para SEO",
-        "description": "Optimización automatizada de SEO usando agentes de IA impulsados por automatización de flujos de trabajo n8n"
-      },
-      "natural-language-processing": {
-        "title": "Procesamiento de Lenguaje Natural",
-        "description": "Procesamiento de lenguaje natural con agentes de IA para gestión de inventario, soporte al cliente y optimización de ventas"
-      },
-      "ai-ecommerce-agents": {
-        "title": "Agentes de IA para Ecommerce",
-        "description": "Automatización inteligente de ecommerce con agentes de IA para gestión de inventario, soporte al cliente y optimización de ventas"
+      "gemini-enterprise-sales-agent": {
+        "title": "Agente de Ventas con Gemini Enterprise",
+        "description": "Workshop e implementación de referencia de un agente de ventas con Google ADK y la plataforma Gemini Enterprise, con clientes FastAPI y Next.js y despliegue en la nube."
       },
       "small-llm-finetuning": {
         "title": "Fine-tuning de un LLM Pequeño",

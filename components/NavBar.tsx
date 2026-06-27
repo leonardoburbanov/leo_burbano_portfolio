@@ -116,7 +116,7 @@ export default function NavBar() {
                 <LinkedinIcon className="w-4 h-4" />
               </a>
               <a
-                href="https://www.instagram.com/leo.data.ai/"
+                href="https://www.instagram.com/leo.burbano.ai/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-accent"
