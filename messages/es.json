@@ -56,6 +56,8 @@
     "hideHeader": "Ocultar encabezado",
     "showHeader": "Mostrar encabezado",
     "slideFooter": "Construye un vendedor con IA - Leonardo Burbano",
+    "rotateHint": "Gira tu dispositivo para una mejor vista",
+    "dismissHint": "Cerrar",
     "slides": {
       "title": {
         "gdg": "Google Developer Group",

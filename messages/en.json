@@ -56,6 +56,8 @@
     "hideHeader": "Hide header",
     "showHeader": "Show header",
     "slideFooter": "Build an AI Sales Agent - Leonardo Burbano",
+    "rotateHint": "Rotate your device for the best view",
+    "dismissHint": "Dismiss",
     "slides": {
       "title": {
         "gdg": "Google Developer Group",

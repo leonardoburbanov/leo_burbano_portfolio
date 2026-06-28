@@ -216,3 +216,61 @@
   -webkit-user-select: text;
   user-select: text;
 }
+
+/* Compact mode (scale < 0.65): float banner to top-right of SlideFrame, keep QR codes visible */
+.gemini-presentation .is-compact .gdg-title-right-col {
+  position: static; /* let banner escape to SlideFrame's relative context */
+}
+
+.gemini-presentation .is-compact .gdg-title-banner {
+  position: absolute;
+  top: 2.5rem;
+  right: 2.5rem;
+  width: 30%;
+  max-width: 16rem;
+  min-height: unset !important;
+  max-height: unset;
+  aspect-ratio: 4 / 1;
+}
+
+/* Scale-to-fit canvas: slide inner box is transformed, outer must clip */
+.gemini-presentation .gdg-fit-outer {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.gemini-presentation .gdg-fit-canvas {
+  transform-origin: center center;
+  flex-shrink: 0;
+}
+
+/* Rotate hint — hidden by default, shown only in portrait on narrow screens */
+.gemini-presentation .gdg-rotate-hint {
+  display: none;
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid var(--gdg-black);
+  background-color: white;
+  padding: 0.375rem 0.875rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--gdg-black);
+  box-shadow: 0 2px 8px rgba(30, 30, 30, 0.15);
+  white-space: nowrap;
+}
+
+@media (orientation: portrait) and (max-width: 639px) {
+  .gemini-presentation .gdg-rotate-hint:not(.is-dismissed) {
+    display: flex;
+  }
+}

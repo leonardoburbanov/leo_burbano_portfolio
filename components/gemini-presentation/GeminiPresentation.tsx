@@ -1,8 +1,8 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useKeenSlider } from 'keen-slider/react';
-import { ChevronLeft, ChevronRight, PanelTop, PanelTopClose } from 'lucide-react';
+import { ChevronLeft, ChevronRight, PanelTop, PanelTopClose, RotateCcw } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import 'keen-slider/keen-slider.min.css';
 import TitleSlide from './slides/TitleSlide';
@@ -17,6 +17,23 @@ import CloudProductionSlide from './slides/CloudProductionSlide';
 import ThanksSlide from './slides/ThanksSlide';
 import { SLIDE_TOTAL } from './SlideFrame';
 
+// Fixed design canvas dimensions (16:10)
+const CANVAS_W = 1024;
+const CANVAS_H = 640;
+
+const SLIDES = [
+  TitleSlide,
+  PrerequisitesSlide,
+  RepoSetupSlide,
+  PlaygroundSlide,
+  GoogleCloudSlide,
+  ProductionArchitectureSlide,
+  LiveDemoSlide,
+  GeminiPlatformSlide,
+  CloudProductionSlide,
+  ThanksSlide,
+];
+
 interface GeminiPresentationProps {
   chromeHidden?: boolean;
   onToggleChrome?: () => void;
@@ -30,6 +47,9 @@ export default function GeminiPresentation({
   const t = useTranslations('GeminiPresentation');
   const [current, setCurrent] = useState(0);
   const [loaded, setLoaded] = useState(false);
+  const [hintDismissed, setHintDismissed] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
   const [sliderRef, instanceRef] = useKeenSlider({
     initial: 0,
@@ -42,13 +62,35 @@ export default function GeminiPresentation({
     },
   });
 
-  const goPrev = useCallback(() => {
-    instanceRef.current?.prev();
+  // Combine refs: keen-slider needs sliderRef, we also need containerRef for ResizeObserver
+  const setRefs = useCallback(
+    (el: HTMLDivElement | null) => {
+      (containerRef as React.MutableRefObject<HTMLDivElement | null>).current = el;
+      (sliderRef as unknown as (el: HTMLDivElement | null) => void)(el);
+    },
+    [sliderRef],
+  );
+
+  // Compute uniform scale factor and apply as CSS custom property — no re-render on resize
+  useLayoutEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const applyScale = () => {
+      const s = Math.min(el.clientWidth / CANVAS_W, el.clientHeight / CANVAS_H);
+      el.style.setProperty('--fit-scale', String(s));
+      wrapperRef.current?.classList.toggle('is-compact', s < 0.65);
+      instanceRef.current?.update();
+    };
+
+    applyScale();
+    const ro = new ResizeObserver(applyScale);
+    ro.observe(el);
+    return () => ro.disconnect();
   }, [instanceRef]);
 
-  const goNext = useCallback(() => {
-    instanceRef.current?.next();
-  }, [instanceRef]);
+  const goPrev = useCallback(() => instanceRef.current?.prev(), [instanceRef]);
+  const goNext = useCallback(() => instanceRef.current?.next(), [instanceRef]);
 
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
@@ -59,8 +101,11 @@ export default function GeminiPresentation({
     return () => window.removeEventListener('keydown', onKeyDown);
   }, [goPrev, goNext]);
 
+  // Reserve space for navbar/back-link/dots depending on chrome visibility
+  const deckChrome = chromeHidden ? '5rem' : '13rem';
+
   return (
-    <div className="w-full">
+    <div ref={wrapperRef} className="w-full">
       {onToggleChrome && (
         <div className="mx-auto mb-2 flex max-w-5xl justify-end">
           <button
@@ -80,37 +125,25 @@ export default function GeminiPresentation({
 
       <div className="relative mx-auto w-full max-w-5xl">
         <div className="relative">
-          <div ref={sliderRef} className="keen-slider aspect-[16/10] select-text">
-            <div className="keen-slider__slide select-text">
-              <TitleSlide />
-            </div>
-            <div className="keen-slider__slide select-text">
-              <PrerequisitesSlide />
-            </div>
-            <div className="keen-slider__slide select-text">
-              <RepoSetupSlide />
-            </div>
-            <div className="keen-slider__slide select-text">
-              <PlaygroundSlide />
-            </div>
-            <div className="keen-slider__slide select-text">
-              <GoogleCloudSlide />
-            </div>
-            <div className="keen-slider__slide select-text">
-              <ProductionArchitectureSlide />
-            </div>
-            <div className="keen-slider__slide select-text">
-              <LiveDemoSlide />
-            </div>
-            <div className="keen-slider__slide select-text">
-              <GeminiPlatformSlide />
-            </div>
-            <div className="keen-slider__slide select-text">
-              <CloudProductionSlide />
-            </div>
-            <div className="keen-slider__slide select-text">
-              <ThanksSlide />
-            </div>
+          <div
+            ref={setRefs}
+            className="keen-slider select-text"
+            style={{ height: `min(${CANVAS_H}px, calc(100svh - ${deckChrome}))` }}
+          >
+            {SLIDES.map((Slide, i) => (
+              <div key={i} className="keen-slider__slide gdg-fit-outer select-text">
+                <div
+                  className="gdg-fit-canvas"
+                  style={{
+                    width: CANVAS_W,
+                    height: CANVAS_H,
+                    transform: 'scale(var(--fit-scale, 1))',
+                  }}
+                >
+                  <Slide />
+                </div>
+              </div>
+            ))}
           </div>
 
           {loaded && (
@@ -150,6 +183,20 @@ export default function GeminiPresentation({
             ))}
           </div>
         </div>
+      </div>
+
+      {/* Rotate hint — CSS media query (orientation:portrait + max-width:639px) controls visibility */}
+      <div className={`gdg-rotate-hint${hintDismissed ? ' is-dismissed' : ''}`}>
+        <RotateCcw className="h-3.5 w-3.5 shrink-0" />
+        <span>{t('rotateHint')}</span>
+        <button
+          type="button"
+          aria-label={t('dismissHint')}
+          onClick={() => setHintDismissed(true)}
+          className="ml-1 font-semibold opacity-60 hover:opacity-100"
+        >
+          ×
+        </button>
       </div>
     </div>
   );

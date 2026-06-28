@@ -107,9 +107,9 @@ export default function TitleSlide() {
           </div>
         </div>
 
-        <div className="relative w-full shrink-0 md:w-[52%] lg:w-[48%]">
+        <div className="gdg-title-right-col relative w-full shrink-0 md:w-[52%] lg:w-[48%]">
           <div className="flex flex-col items-center gap-3 md:items-end">
-            <div className="relative aspect-[4/1] w-full min-h-[4.5rem] sm:min-h-[5.5rem] md:min-h-[6rem]">
+            <div className="gdg-title-banner relative aspect-[4/1] w-full min-h-[4.5rem] sm:min-h-[5.5rem] md:min-h-[6rem]">
               {/* ponytail: plain img — external Cloudinary URL, no next/image host config needed */}
               <img
                 src={BUILD_WITH_AI_BANNER}
@@ -117,7 +117,7 @@ export default function TitleSlide() {
                 className="absolute inset-0 h-full w-full object-contain object-center md:object-right"
               />
             </div>
-            <div className="flex flex-wrap items-end justify-center gap-3 sm:gap-4 md:justify-end">
+            <div className="gdg-title-qr flex flex-wrap items-end justify-center gap-3 sm:gap-4 md:justify-end">
               {QR_CODES.map(({ key, src }) => (
                 <div key={key} className="flex flex-col items-center gap-1.5">
                   <span className="gdg-tag sm:text-xs">
