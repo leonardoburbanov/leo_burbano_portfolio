@@ -29,7 +29,7 @@ export default function ProjectsSection() {
   }, []);
 
   return (
-    <section id="projects" className="py-20 bg-gradient-to-b from-background to-muted/20">
+    <section id="projects" className="py-20 bg-gradient-to-b from-background to-muted/20 scroll-mt-28">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`text-center mb-16 transition-all duration-1000 overflow-visible ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'

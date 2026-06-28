@@ -12,9 +12,18 @@ export default function NavBar() {
   const t = useTranslations('NavBar');
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [bannerVisible, setBannerVisible] = useState(false);
 
   // Check if we're on a blog page
   const isBlogPage = pathname?.startsWith('/blog') || false;
+
+  useEffect(() => {
+    const checkBanner = () =>
+      setBannerVisible(pathname === '/' && localStorage.getItem('gdg-banner-dismissed') !== 'true');
+    checkBanner();
+    window.addEventListener('gdg-banner-dismissed', checkBanner);
+    return () => window.removeEventListener('gdg-banner-dismissed', checkBanner);
+  }, [pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,7 +35,7 @@ export default function NavBar() {
   }, []);
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+    <nav className={`fixed ${bannerVisible ? 'top-12' : 'top-0'} left-0 right-0 z-40 transition-all duration-300 ${
       isScrolled 
         ? 'bg-background/95 backdrop-blur-md border-b border-border/50 shadow-sm' 
         : 'bg-transparent'

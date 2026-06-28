@@ -6,8 +6,8 @@ import ProjectsSection from '../../components/ProjectsSection';
 export default async function Home() {
   return (
     <main>
-      <NavBar />
       <GdgEventBanner />
+      <NavBar />
       <HeroSection />
       <ProjectsSection />
     </main>
