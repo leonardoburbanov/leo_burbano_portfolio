@@ -61,7 +61,7 @@
     "slides": {
       "title": {
         "gdg": "Google Developer Group",
-        "gdgChapter": "Quito – Tsáchilas",
+        "gdgChapter": "Guayaquil – Cuenca",
         "heading": "Gemini Enterprise Sales Agent",
         "subtitle": "Using",
         "platform": "Gemini Enterprise Agent Platform",
@@ -80,6 +80,7 @@
           "frontend": "Frontend Demo",
           "backendRepo": "Backend Repo"
         },
+        "materialAvailable": "Material available at:",
         "prerequisites": {
           "title": "Prerequisites",
           "python": "Python",

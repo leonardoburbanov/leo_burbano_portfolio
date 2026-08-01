@@ -55,14 +55,14 @@
     "exitFullscreen": "Salir de pantalla completa",
     "hideHeader": "Ocultar encabezado",
     "showHeader": "Mostrar encabezado",
-    "slideFooter": "Construye un vendedor con IA - Leonardo Burbano",
+    "slideFooter": "Construye un Agente de IA que vende productos - Leonardo Burbano",
     "rotateHint": "Gira tu dispositivo para una mejor vista",
     "dismissHint": "Cerrar",
     "slides": {
       "title": {
         "gdg": "Google Developer Group",
-        "gdgChapter": "Quito – Tsáchilas",
-        "heading": "Construye un vendedor con IA",
+        "gdgChapter": "Guayaquil – Cuenca",
+        "heading": "Construye un Agente de IA que vende productos",
         "subtitle": "Usando",
         "platform": "Gemini Enterprise Agent Platform",
         "presenterName": "Leonardo Burbano",
@@ -80,6 +80,7 @@
           "frontend": "Demo Frontend",
           "backendRepo": "Repositorio Backend"
         },
+        "materialAvailable": "Material disponible en:",
         "prerequisites": {
           "title": "Requisitos previos",
           "python": "Python",

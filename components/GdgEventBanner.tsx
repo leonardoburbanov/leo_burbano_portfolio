@@ -43,8 +43,8 @@ export default function GdgEventBanner() {
               className="h-8 w-8 shrink-0 object-contain sm:h-9 sm:w-9"
             />
             <p className="min-w-0 flex-1 text-xs font-medium leading-snug text-neutral-100 sm:text-sm">
-              <span className="font-semibold text-white">Build with AI - EPN 2026:</span>{' '}
-              Construye un Vendedor con IA, Usando Gemini Enterprise Agent Platform
+              <span className="font-semibold text-white">Build with AI - Atenas del Ecuador 2026:</span>{' '}
+              Construye un Agente de IA que vende productos, Usando Gemini Enterprise Agent Platform
             </p>
             <ChevronRight className="h-4 w-4 shrink-0 text-neutral-400 transition-transform group-hover:translate-x-0.5 group-hover:text-white sm:h-5 sm:w-5" />
           </div>
