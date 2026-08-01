@@ -25,6 +25,11 @@ const PRESENTER_LINKS = [
     kind: 'linkedin',
   },
   {
+    key: 'instagram',
+    href: 'https://www.instagram.com/leo.burbano.ai/',
+    kind: 'instagram',
+  },
+  {
     key: 'github',
     href: 'https://github.com/leonardoburbanov',
     kind: 'github',
@@ -129,17 +134,21 @@ export default function ThanksSlide() {
                   rel="noopener noreferrer"
                   className="gdg-pill px-2 py-1 text-[11px]"
                 >
-                  {kind === 'linkedin' ? (
+                  {kind === 'github' ? (
+                    <Github className="h-3 w-3" />
+                  ) : (
                     <Image
-                      src="/logos/linkedin.png"
+                      src={
+                        kind === 'linkedin'
+                          ? '/logos/linkedin.png'
+                          : '/logos/instagram.png'
+                      }
                       alt=""
                       width={12}
                       height={12}
                       className="h-3 w-3 shrink-0 opacity-70"
                       aria-hidden
                     />
-                  ) : (
-                    <Github className="h-3 w-3" />
                   )}
                   {t(`presenterLinks.${key}`)}
                 </a>

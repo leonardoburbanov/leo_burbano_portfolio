@@ -162,22 +162,40 @@ export default function TitleSlide() {
             <div>
               <p className="gdg-headline">{t('presenterName')}</p>
               <p className="gdg-subhead text-xs sm:text-sm">{t('presenterTitle')}</p>
-              <a
-                href="https://www.linkedin.com/in/leoburbano/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="gdg-link inline-flex items-center gap-1 text-[11px] sm:text-xs"
-              >
-                <Image
-                  src="/logos/linkedin.png"
-                  alt=""
-                  width={12}
-                  height={12}
-                  className="h-3 w-3 shrink-0 opacity-70"
-                  aria-hidden
-                />
-                linkedin.com/in/leoburbano
-              </a>
+              <div className="mt-0.5 flex flex-wrap items-center gap-x-3 gap-y-1">
+                <a
+                  href="https://www.linkedin.com/in/leoburbano/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="gdg-link inline-flex items-center gap-1 text-[11px] sm:text-xs"
+                >
+                  <Image
+                    src="/logos/linkedin.png"
+                    alt=""
+                    width={12}
+                    height={12}
+                    className="h-3 w-3 shrink-0 opacity-70"
+                    aria-hidden
+                  />
+                  linkedin.com/in/leoburbano
+                </a>
+                <a
+                  href="https://www.instagram.com/leo.burbano.ai/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="gdg-link inline-flex items-center gap-1 text-[11px] sm:text-xs"
+                >
+                  <Image
+                    src="/logos/instagram.png"
+                    alt=""
+                    width={12}
+                    height={12}
+                    className="h-3 w-3 shrink-0 opacity-70"
+                    aria-hidden
+                  />
+                  @leo.burbano.ai
+                </a>
+              </div>
             </div>
           </div>
           <div className="flex flex-wrap items-center gap-3 sm:gap-4">
