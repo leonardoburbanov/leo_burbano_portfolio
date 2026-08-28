@@ -1,4 +1,5 @@
 import GdgEventBanner from '../../components/GdgEventBanner';
+import FeaturedEventSpotlight from '../../components/FeaturedEventSpotlight';
 import HeroSection from '../../components/HeroSection';
 import NavBar from '../../components/NavBar';
 import ProjectsSection from '../../components/ProjectsSection';
@@ -9,6 +10,7 @@ export default async function Home() {
       <GdgEventBanner />
       <NavBar />
       <HeroSection />
+      <FeaturedEventSpotlight />
       <ProjectsSection />
     </main>
   );

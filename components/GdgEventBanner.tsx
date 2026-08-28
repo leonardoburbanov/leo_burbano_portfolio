@@ -3,7 +3,8 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { usePathname } from '@/i18n/routing';
-import { ChevronRight, X } from 'lucide-react';
+import { useTranslations } from 'next-intl';
+import { X } from 'lucide-react';
 
 const STORAGE_KEY = 'devfest-banner-dismissed';
 const DEVFEST_URL =
@@ -11,6 +12,7 @@ const DEVFEST_URL =
 
 export default function GdgEventBanner() {
   const pathname = usePathname();
+  const t = useTranslations('FeaturedEvent');
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -36,7 +38,7 @@ export default function GdgEventBanner() {
           href={DEVFEST_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="group block border-b border-border/60 bg-gradient-to-r from-neutral-900 via-neutral-900 to-neutral-800 px-4 py-3 pr-12 transition-colors hover:from-neutral-800 hover:via-neutral-900 hover:to-neutral-800 sm:px-6 sm:pr-14"
+          className="group block border-b border-border/60 bg-gradient-to-r from-neutral-900 via-neutral-900 to-neutral-800 px-4 py-3.5 pr-12 transition-colors hover:from-neutral-800 hover:via-neutral-900 hover:to-neutral-800 sm:px-6 sm:py-4 sm:pr-14"
         >
           <div className="container mx-auto flex items-center gap-3 sm:gap-4">
             <Image
@@ -50,7 +52,9 @@ export default function GdgEventBanner() {
               <span className="font-semibold text-white">Google DevFest Quito 2026:</span>{' '}
               26 sept, 9:58 · Campus USFQ, Cumbayá · Por GDG Quito
             </p>
-            <ChevronRight className="h-4 w-4 shrink-0 text-neutral-400 transition-transform group-hover:translate-x-0.5 group-hover:text-white sm:h-5 sm:w-5" />
+            <span className="hidden shrink-0 rounded-md bg-white/10 px-3 py-1.5 text-xs font-semibold text-white group-hover:bg-white/20 transition-colors sm:inline-block">
+              {t('getTickets')}
+            </span>
           </div>
         </a>
 

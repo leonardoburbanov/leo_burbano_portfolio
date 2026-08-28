@@ -6,6 +6,7 @@ export interface Event {
   hosts: string;
   image: string;
   url: string;
+  featured?: boolean;
 }
 
 export const events: Event[] = [
@@ -35,5 +36,10 @@ export const events: Event[] = [
     hosts: "GDG Quito",
     image: "/event_images/devfest.png",
     url: "https://discover.multiticketing.com/gdg-quito/events/google-quito-devfest?ref=WTWE32Y0",
+    featured: true,
   },
 ] as const;
+
+export function getFeaturedEvent(): Event | undefined {
+  return events.find((event) => event.featured);
+}

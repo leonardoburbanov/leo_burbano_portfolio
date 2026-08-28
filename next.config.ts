@@ -3,7 +3,7 @@ import createNextIntlPlugin from 'next-intl/plugin';
 import { withContentCollections } from "@content-collections/next";
 
 const nextConfig: NextConfig = {
-  output: 'standalone',
+  output: process.platform === 'win32' ? undefined : 'standalone',
   images: {
     remotePatterns: [
       {

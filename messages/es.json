@@ -14,6 +14,11 @@
     "emptyPast": "Aún no hay eventos pasados.",
     "emptyUpcoming": "No hay eventos próximos."
   },
+  "FeaturedEvent": {
+    "badge": "Próximo evento",
+    "getTickets": "Obtener entradas",
+    "hostedBy": "Por"
+  },
   "HeroSection": {
     "profile": {
       "name": "Leonardo Burbano",

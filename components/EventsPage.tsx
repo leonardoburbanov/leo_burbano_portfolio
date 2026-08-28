@@ -4,6 +4,7 @@ import { useMemo, useState } from 'react';
 import Image from 'next/image';
 import { MapPin } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
+import FeaturedEventSpotlight from '@/components/FeaturedEventSpotlight';
 import { events } from '@/data/events';
 
 type Filter = 'upcoming' | 'past';
@@ -22,7 +23,9 @@ export default function EventsPage() {
     const today = startOfToday();
     const list = events.filter((event) => {
       const eventDate = new Date(event.datetime);
-      return filter === 'upcoming' ? eventDate >= today : eventDate < today;
+      const matchesFilter = filter === 'upcoming' ? eventDate >= today : eventDate < today;
+      const excludeFeatured = filter === 'upcoming' && event.featured;
+      return matchesFilter && !excludeFeatured;
     });
     return filter === 'upcoming'
       ? list.sort((a, b) => new Date(a.datetime).getTime() - new Date(b.datetime).getTime())
@@ -77,7 +80,11 @@ export default function EventsPage() {
               </button>
             </div>
           </div>
+        </div>
 
+        {filter === 'upcoming' && <FeaturedEventSpotlight />}
+
+        <div className="max-w-3xl mx-auto">
           {filteredEvents.length === 0 ? (
             <p className="text-center text-muted-foreground py-12">
               {filter === 'past' ? t('emptyPast') : t('emptyUpcoming')}
