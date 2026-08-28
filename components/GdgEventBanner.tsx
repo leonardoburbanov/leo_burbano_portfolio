@@ -13,6 +13,7 @@ const DEVFEST_URL =
 export default function GdgEventBanner() {
   const pathname = usePathname();
   const t = useTranslations('FeaturedEvent');
+  const tEvents = useTranslations('EventsPage');
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -50,7 +51,7 @@ export default function GdgEventBanner() {
             />
             <p className="min-w-0 flex-1 text-xs font-medium leading-snug text-neutral-100 sm:text-sm">
               <span className="font-semibold text-white">Google DevFest Quito 2026:</span>{' '}
-              26 sept, 9:58 · Campus USFQ, Cumbayá · Por GDG Quito
+              26 sept, 9:58 · Campus USFQ, Cumbayá · Por GDG Quito · {tEvents('free')}
             </p>
             <span className="hidden shrink-0 rounded-md bg-white/10 px-3 py-1.5 text-xs font-semibold text-white group-hover:bg-white/20 transition-colors sm:inline-block">
               {t('getTickets')}

@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { MapPin } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import FeaturedEventSpotlight from '@/components/FeaturedEventSpotlight';
+import EventFreeBadge from '@/components/EventFreeBadge';
 import { events } from '@/data/events';
 
 type Filter = 'upcoming' | 'past';
@@ -117,9 +118,12 @@ export default function EventsPage() {
                     >
                       <div className="flex gap-4">
                         <div className="flex-1 min-w-0">
-                          <p className="text-sm text-muted-foreground mb-1">
-                            {formatTime(event.datetime)}
-                          </p>
+                          <div className="flex flex-wrap items-center gap-2 mb-1">
+                            <p className="text-sm text-muted-foreground">
+                              {formatTime(event.datetime)}
+                            </p>
+                            {event.free && <EventFreeBadge />}
+                          </div>
                           <h2 className="text-base sm:text-lg font-semibold text-foreground group-hover:text-primary transition-colors leading-snug mb-2">
                             {event.title}
                           </h2>

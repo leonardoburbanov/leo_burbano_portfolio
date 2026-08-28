@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { Calendar, MapPin } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
+import EventFreeBadge from '@/components/EventFreeBadge';
 import { getFeaturedEvent } from '@/data/events';
 
 export default function FeaturedEventSpotlight() {
@@ -44,9 +45,12 @@ export default function FeaturedEventSpotlight() {
               </div>
               <div className="flex flex-1 flex-col justify-between gap-4 p-5 sm:p-6">
                 <div>
-                  <span className="inline-block mb-3 rounded-full bg-primary/15 px-3 py-1 text-xs font-semibold text-primary">
-                    {t('badge')}
-                  </span>
+                  <div className="flex flex-wrap items-center gap-2 mb-3">
+                    <span className="inline-block rounded-full bg-primary/15 px-3 py-1 text-xs font-semibold text-primary">
+                      {t('badge')}
+                    </span>
+                    {event.free && <EventFreeBadge />}
+                  </div>
                   <h2 className="text-xl sm:text-2xl font-bold text-foreground group-hover:text-primary transition-colors leading-snug mb-2">
                     {event.title}
                   </h2>
