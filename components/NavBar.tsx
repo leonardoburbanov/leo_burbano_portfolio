@@ -14,12 +14,12 @@ export default function NavBar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [bannerVisible, setBannerVisible] = useState(false);
 
-  // Check if we're on a blog page
   const isBlogPage = pathname?.startsWith('/blog') || false;
+  const isEventsPage = pathname?.startsWith('/events') || false;
 
   useEffect(() => {
     const checkBanner = () =>
-      setBannerVisible(pathname === '/' && localStorage.getItem('gdg-banner-dismissed') !== 'true');
+      setBannerVisible(pathname === '/' && localStorage.getItem('devfest-banner-dismissed') !== 'true');
     checkBanner();
     window.addEventListener('gdg-banner-dismissed', checkBanner);
     return () => window.removeEventListener('gdg-banner-dismissed', checkBanner);
@@ -61,24 +61,28 @@ export default function NavBar() {
 
           {/* Navigation Links */}
           <div className="hidden md:flex items-center space-x-8">
-            {isBlogPage ? (
-              // Blog navigation
+            {isBlogPage || isEventsPage ? (
               <>
-                <Link 
-                  href="/blog" 
-                  className="text-muted-foreground hover:text-foreground transition-colors font-medium"
-                >
-                  {t('blog')}
-                </Link>
                 <Link 
                   href="/" 
                   className="text-muted-foreground hover:text-foreground transition-colors font-medium"
                 >
                   {t('portfolio')}
                 </Link>
+                <Link 
+                  href="/events" 
+                  className="text-muted-foreground hover:text-foreground transition-colors font-medium"
+                >
+                  {t('events')}
+                </Link>
+                <Link 
+                  href="/blog" 
+                  className="text-muted-foreground hover:text-foreground transition-colors font-medium"
+                >
+                  {t('blog')}
+                </Link>
               </>
             ) : (
-              // Portfolio navigation
               <>
                 <a 
                   href="#home" 
@@ -92,6 +96,12 @@ export default function NavBar() {
                 >
                   {t('projects')}
                 </a>
+                <Link 
+                  href="/events" 
+                  className="text-muted-foreground hover:text-foreground transition-colors font-medium"
+                >
+                  {t('events')}
+                </Link>
                 <Link 
                   href="/blog" 
                   className="text-muted-foreground hover:text-foreground transition-colors font-medium"

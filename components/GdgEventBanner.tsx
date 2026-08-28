@@ -2,10 +2,12 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { Link, usePathname } from '@/i18n/routing';
+import { usePathname } from '@/i18n/routing';
 import { ChevronRight, X } from 'lucide-react';
 
-const STORAGE_KEY = 'gdg-banner-dismissed';
+const STORAGE_KEY = 'devfest-banner-dismissed';
+const DEVFEST_URL =
+  'https://discover.multiticketing.com/gdg-quito/events/google-quito-devfest?ref=WTWE32Y0';
 
 export default function GdgEventBanner() {
   const pathname = usePathname();
@@ -30,25 +32,27 @@ export default function GdgEventBanner() {
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
       <div className="relative">
-        <Link
-          href="/projects/gemini-enterprise-sales-agent"
+        <a
+          href={DEVFEST_URL}
+          target="_blank"
+          rel="noopener noreferrer"
           className="group block border-b border-border/60 bg-gradient-to-r from-neutral-900 via-neutral-900 to-neutral-800 px-4 py-3 pr-12 transition-colors hover:from-neutral-800 hover:via-neutral-900 hover:to-neutral-800 sm:px-6 sm:pr-14"
         >
           <div className="container mx-auto flex items-center gap-3 sm:gap-4">
             <Image
-              src="/gdg_logo.png"
-              alt="Google Developer Groups"
+              src="/event_images/devfest.png"
+              alt="Google DevFest Quito 2026"
               width={36}
               height={36}
-              className="h-8 w-8 shrink-0 object-contain sm:h-9 sm:w-9"
+              className="h-8 w-8 shrink-0 rounded object-cover sm:h-9 sm:w-9"
             />
             <p className="min-w-0 flex-1 text-xs font-medium leading-snug text-neutral-100 sm:text-sm">
-              <span className="font-semibold text-white">Build with AI - Atenas del Ecuador 2026:</span>{' '}
-              Construye un Agente de IA que vende productos, Usando Gemini Enterprise Agent Platform
+              <span className="font-semibold text-white">Google DevFest Quito 2026:</span>{' '}
+              26 sept, 9:58 · Campus USFQ, Cumbayá · Por GDG Quito
             </p>
             <ChevronRight className="h-4 w-4 shrink-0 text-neutral-400 transition-transform group-hover:translate-x-0.5 group-hover:text-white sm:h-5 sm:w-5" />
           </div>
-        </Link>
+        </a>
 
         <button
           onClick={dismiss}

@@ -2,8 +2,17 @@
   "NavBar": {
     "home": "Home",
     "projects": "Projects",
+    "events": "Events",
     "blog": "Blog",
     "portfolio": "Portfolio"
+  },
+  "EventsPage": {
+    "title": "Events",
+    "upcoming": "Upcoming",
+    "past": "Past",
+    "hostedBy": "By",
+    "emptyPast": "No past events yet.",
+    "emptyUpcoming": "No upcoming events."
   },
   "HeroSection": {
     "profile": {
