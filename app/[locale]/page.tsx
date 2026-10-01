@@ -1,5 +1,3 @@
-import GdgEventBanner from '../../components/GdgEventBanner';
-import FeaturedEventSpotlight from '../../components/FeaturedEventSpotlight';
 import HeroSection from '../../components/HeroSection';
 import NavBar from '../../components/NavBar';
 import ProjectsSection from '../../components/ProjectsSection';
@@ -7,10 +5,8 @@ import ProjectsSection from '../../components/ProjectsSection';
 export default async function Home() {
   return (
     <main>
-      <GdgEventBanner />
       <NavBar />
       <HeroSection />
-      <FeaturedEventSpotlight />
       <ProjectsSection />
     </main>
   );
