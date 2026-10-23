@@ -13,14 +13,19 @@ export default function HeroSection() {
 
       <div className="mx-auto grid w-full max-w-[1080px] flex-1 items-center gap-6 px-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-4">
         <div className="order-2 text-center lg:order-1 lg:text-left">
-          <h1 className="display resolve text-[clamp(3.25rem,8vw,6rem)]">{t('name')}</h1>
+          <h1 className="display resolve text-[clamp(2.5rem,5.4vw,4.25rem)]" style={{ fontWeight: 600 }}>
+            {t('name')}
+          </h1>
           <p
-            className="display resolve mt-3 text-[clamp(1.6rem,3.4vw,2.6rem)] text-blue-gradient pb-1"
-            style={{ animationDelay: '120ms' }}
+            className="display resolve mt-3 text-[clamp(1.2rem,2.3vw,1.85rem)] text-blue-gradient pb-1"
+            style={{ animationDelay: '120ms', fontWeight: 500 }}
           >
             {t('title')}
           </p>
-          <p className="lead resolve mx-auto mt-6 max-w-[34ch] lg:mx-0" style={{ animationDelay: '240ms' }}>
+          <p
+            className="lead resolve mx-auto mt-5 max-w-[40ch] !text-[clamp(1.0625rem,1.5vw,1.25rem)] lg:mx-0"
+            style={{ animationDelay: '240ms' }}
+          >
             {t('valueProp')}
           </p>
           <div

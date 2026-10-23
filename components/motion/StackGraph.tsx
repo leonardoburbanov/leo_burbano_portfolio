@@ -9,6 +9,7 @@ const GROUPS = ['ai', 'backend', 'data', 'cloud'] as const;
 const NOISE_RADIUS = 1.9; // std of the node noise, in world units
 const DOT_NOISE = 1.1; // std of the edge-dot noise
 const DOTS_PER_EDGE = 12;
+const NODE = 1.0; // sprite size in world units (a logo disc)
 const BLUE: [number, number, number] = [61 / 255, 110 / 255, 245 / 255];
 const CYAN: [number, number, number] = [92 / 255, 203 / 255, 230 / 255];
 
@@ -32,6 +33,9 @@ function makeTexture(src: string, renderer: THREE.WebGLRenderer): Promise<THREE.
     const ctx = canvas.getContext('2d')!;
     const texture = new THREE.CanvasTexture(canvas);
     texture.colorSpace = THREE.SRGBColorSpace;
+    texture.minFilter = THREE.LinearMipmapLinearFilter;
+    texture.magFilter = THREE.LinearFilter;
+    texture.generateMipmaps = true;
     texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
     const paint = (img?: HTMLImageElement) => {
       ctx.clearRect(0, 0, size, size);
@@ -40,7 +44,7 @@ function makeTexture(src: string, renderer: THREE.WebGLRenderer): Promise<THREE.
       ctx.arc(size / 2, size / 2, size / 2 - 6, 0, Math.PI * 2);
       ctx.fill();
       if (img) {
-        const box = size * 0.5;
+        const box = size * 0.66; // logo fills two thirds of the disc
         const k = Math.min(box / img.naturalWidth, box / img.naturalHeight) || 1;
         const w = (img.naturalWidth || box) * k;
         const h = (img.naturalHeight || box) * k;
@@ -96,18 +100,18 @@ export default function StackGraph() {
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100);
-    camera.position.set(0, 0, 15);
+    camera.position.set(0, 0, 14.5);
     const world = new THREE.Group();
     scene.add(world);
 
     // --- x0: the clean layout (four clusters on a tetrahedron) -------------------------------
     const n = stackNodes.length;
-    const k = 3.3 / Math.sqrt(3);
+    const k = 3.6 / Math.sqrt(3);
     const centers = [[1, 1, 1], [1, -1, -1], [-1, 1, -1], [-1, -1, 1]].map(([x, y, z]) => new THREE.Vector3(x * k, y * k, z * k));
     const x0: THREE.Vector3[] = new Array(n);
     GROUPS.forEach((g, gi) => {
       const members = stackNodes.map((node, i) => ({ node, i })).filter((m) => m.node.group === g);
-      const local = sphere(members.length, 0.85 + members.length * 0.09, gi);
+      const local = sphere(members.length, 1.05 + members.length * 0.1, gi);
       members.forEach((m, j) => (x0[m.i] = centers[gi].clone().add(local[j])));
     });
 
@@ -119,7 +123,7 @@ export default function StackGraph() {
     stackNodes.forEach((node, i) => {
       const material = new THREE.SpriteMaterial({ transparent: true, opacity: 0, depthWrite: false });
       const sprite = new THREE.Sprite(material);
-      sprite.scale.setScalar(0.78);
+      sprite.scale.setScalar(NODE);
       sprite.position.copy(x0[i]);
       sprite.userData = { index: i, loaded: false };
       world.add(sprite);
@@ -255,7 +259,7 @@ export default function StackGraph() {
         const target = i === hovered ? 1.25 : 1;
         const s = sprite.userData.s ?? 1;
         sprite.userData.s = s + (target - s) * Math.min(1, dt * 12);
-        sprite.scale.setScalar(0.78 * (0.85 + 0.15 * signal) * sprite.userData.s);
+        sprite.scale.setScalar(NODE * (0.88 + 0.12 * signal) * sprite.userData.s);
         (sprite.material as THREE.SpriteMaterial).opacity = sprite.userData.loaded ? 0.5 + 0.5 * signal : 0;
       });
 
