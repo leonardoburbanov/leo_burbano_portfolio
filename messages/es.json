@@ -356,15 +356,8 @@
   },
   "Contact": {
     "title": "Hablemos",
-    "description": "¿Buscas un Senior o Staff AI Engineer? Escríbeme y te respondo, o contáctame por LinkedIn.",
-    "name": "Nombre",
-    "company": "Empresa",
-    "message": "Mensaje",
-    "send": "Enviar mensaje",
-    "sending": "Enviando…",
-    "success": "¡Gracias! Tu mensaje fue enviado. Te responderé pronto.",
-    "error": "Algo salió mal. Inténtalo de nuevo o escríbeme por LinkedIn.",
-    "honeypot": "Deja este campo vacío"
+    "description": "¿Buscas un Senior o Staff AI Engineer? La mejor forma de contactarme es por LinkedIn.",
+    "cta": "Escríbeme por LinkedIn"
   },
   "Footer": {
     "content": "Contenido",

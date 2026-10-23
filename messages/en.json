@@ -356,15 +356,8 @@
   },
   "Contact": {
     "title": "Let's talk",
-    "description": "Hiring for a Senior or Staff AI Engineer role? Send me a note and I'll get back to you, or reach me on LinkedIn.",
-    "name": "Name",
-    "company": "Company",
-    "message": "Message",
-    "send": "Send message",
-    "sending": "Sending…",
-    "success": "Thanks! Your message is on its way. I'll reply soon.",
-    "error": "Something went wrong. Please try again or reach me on LinkedIn.",
-    "honeypot": "Leave this field empty"
+    "description": "Hiring for a Senior or Staff AI Engineer role? The best way to reach me is on LinkedIn.",
+    "cta": "Message me on LinkedIn"
   },
   "Footer": {
     "content": "Content",
