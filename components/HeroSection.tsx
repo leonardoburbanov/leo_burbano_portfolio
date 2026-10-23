@@ -1,13 +1,11 @@
-import Image from 'next/image';
 import { ChevronRight, LinkedinIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import CompanyLogo from '@/components/CompanyLogo';
-import NeuralNet from '@/components/motion/NeuralNet';
+import DiffusionPortrait from '@/components/motion/DiffusionPortrait';
 import { heroData } from '@/data/hero-section';
 
 export default function HeroSection() {
   const t = useTranslations('HeroSection');
-  const tokens = t.raw('tokens') as string[];
 
   return (
     <section id="home" className="relative flex min-h-[100svh] flex-col overflow-hidden pt-24 pb-12 scroll-mt-12">
@@ -40,20 +38,13 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* The network's output node is the portrait: the tokens of the claim flow into it. */}
-        <div className="resolve relative order-1 mx-auto aspect-[6/5] w-full max-w-[600px] lg:order-2" style={{ animationDelay: '200ms' }}>
-          <NeuralNet tokens={tokens} />
-          <div className="absolute left-[78%] top-1/2 aspect-square w-[34%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[image:var(--gradient-blue)] p-[3px]">
-            <Image
-              src={heroData.avatar}
-              alt={t('avatarAlt')}
-              width={240}
-              height={240}
-              priority
-              sizes="(min-width: 1024px) 200px, 34vw"
-              className="h-full w-full rounded-full object-cover"
-            />
-          </div>
+        {/* The portrait is rendered as a diffusion process: noise resolves into the image and back. */}
+        <div className="resolve order-1 mx-auto w-full max-w-[520px] lg:order-2" style={{ animationDelay: '200ms' }}>
+          <DiffusionPortrait
+            src={heroData.avatar}
+            alt={t('portraitAlt')}
+            labels={{ denoising: t('denoising'), noising: t('noising'), settled: t('settled') }}
+          />
         </div>
       </div>
 

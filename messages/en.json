@@ -23,7 +23,10 @@
     "hostedBy": "By"
   },
   "HeroSection": {
-    "tokens": ["production","LLM","agents","that","sell"],
+    "portraitAlt": "Portrait of Leonardo Burbano, rendered as a diffusion process",
+    "denoising": "denoising",
+    "noising": "adding noise",
+    "settled": "x₀ · t = 0",
     "name": "Leonardo Burbano",
     "title": "Senior AI Engineer & Tech Lead",
     "valueProp": "I build production LLM agents that sell: multi-agent systems handling 1M+ requests/day for 1,500+ businesses in 20+ countries.",
