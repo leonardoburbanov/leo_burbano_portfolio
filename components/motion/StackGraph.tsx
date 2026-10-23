@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { crossLinks, stackNodes } from '@/data/tech-stack';
-import { alphaBar, diffusionSeconds, gaussian, smooth, STEPS, T_NOISE, timeline } from '@/lib/diffusion';
+import { alphaBar, diffusionSeconds, gaussian, smooth, T_NOISE, timeline } from '@/lib/diffusion';
 
 const GROUPS = ['ai', 'backend', 'data', 'cloud'] as const;
 const NOISE_RADIUS = 1.9; // std of the node noise, in world units
@@ -75,16 +75,14 @@ function makeDotTexture(): THREE.CanvasTexture {
 }
 
 type Tip = { name: string; x: number; y: number } | null;
-type Props = { labels: { denoising: string; noising: string; settled: string } };
 
 // The stack as the same diffusion process as the hero portrait: grouped = x0 (clean image),
 // scattered = Gaussian noise. Nodes follow x_t = sqrt(abar_t) * x0 + sqrt(1 - abar_t) * eps,
 // and the edges are chains of dots that dissolve into the same noise. Both read the shared
 // page clock (lib/diffusion.ts), so hero and stack are always in the same phase.
-export default function StackGraph({ labels }: Props) {
+export default function StackGraph() {
   const hostRef = useRef<HTMLDivElement>(null);
   const [tip, setTip] = useState<Tip>(null);
-  const [hud, setHud] = useState('');
 
   useEffect(() => {
     const host = hostRef.current;
@@ -239,7 +237,6 @@ export default function StackGraph({ labels }: Props) {
     const clock = new THREE.Clock();
     let spin = 0;
     let raf = 0;
-    let lastHud = '';
     const MAX = 5.4; // keep noisy nodes inside the frame
 
     const update = (t: number, blend: number, dt: number) => {
@@ -286,13 +283,9 @@ export default function StackGraph({ labels }: Props) {
         if (!needsRender) return;
         update(0, 1, dt || 0.016);
         needsRender = false;
-        if (lastHud !== labels.settled) {
-          lastHud = labels.settled;
-          setHud(labels.settled);
-        }
       } else {
         if (!visible || document.hidden) return;
-        const { t, phase, cycle, into } = timeline(diffusionSeconds());
+        const { t, cycle, into } = timeline(diffusionSeconds());
         if (cycle !== lastCycle) {
           lastCycle = cycle;
           nodeFrom = nodeTo;
@@ -306,11 +299,6 @@ export default function StackGraph({ labels }: Props) {
         spin += dt * (hovered >= 0 ? 0.02 : 0.08);
         world.rotation.y = spin;
         world.rotation.x = Math.sin(spin * 1.7) * 0.12;
-        const label = phase === 'settled' ? labels.settled : `${phase === 'denoising' ? labels.denoising : labels.noising} · t = ${Math.round(t * STEPS)}`;
-        if (label !== lastHud) {
-          lastHud = label;
-          setHud(label);
-        }
       }
       renderer.render(scene, camera);
     };
@@ -332,7 +320,7 @@ export default function StackGraph({ labels }: Props) {
       renderer.dispose();
       renderer.domElement.remove();
     };
-  }, [labels.denoising, labels.noising, labels.settled]);
+  }, []);
 
   return (
     <div ref={hostRef} aria-hidden="true" className="relative h-full w-full">
@@ -344,7 +332,6 @@ export default function StackGraph({ labels }: Props) {
           {tip.name}
         </span>
       )}
-      <span className="tabular pointer-events-none absolute inset-x-0 bottom-0 text-center text-[13px] text-muted-foreground">{hud}</span>
     </div>
   );
 }

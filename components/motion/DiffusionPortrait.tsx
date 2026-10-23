@@ -1,13 +1,11 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
-import { alphaBar, diffusionSeconds, gaussian, smooth, STEPS, timeline } from '@/lib/diffusion';
+import { useEffect, useRef } from 'react';
+import { alphaBar, diffusionSeconds, gaussian, smooth, timeline } from '@/lib/diffusion';
 
 type Props = {
   src: string;
   alt: string;
-  /** "denoising" / "noising" / settled label templates are passed in so the HUD is translated. */
-  labels: { denoising: string; noising: string; settled: string };
   className?: string;
 };
 
@@ -18,9 +16,8 @@ const LIGHT: Palette = { shadow: [47, 98, 232], light: [29, 29, 31], invert: tru
 // The portrait as a halftone of dots whose state follows the DDPM forward process
 // x_t = sqrt(abar_t) * x0 + sqrt(1 - abar_t) * eps. No dot travels along a path: every frame is
 // the interpolated state, so the image comes in and out of focus rather than swarming.
-export default function DiffusionPortrait({ src, alt, labels, className = '' }: Props) {
+export default function DiffusionPortrait({ src, alt, className = '' }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [hud, setHud] = useState('');
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -41,7 +38,6 @@ export default function DiffusionPortrait({ src, alt, labels, className = '' }: 
     let palette: Palette = document.documentElement.classList.contains('dark') ? DARK : LIGHT;
     let visible = true;
     let raf = 0;
-    let lastHud = '';
     let pointer: { x: number; y: number } | null = null;
     let lastCycle = -1;
 
@@ -106,7 +102,7 @@ export default function DiffusionPortrait({ src, alt, labels, className = '' }: 
     const frame = () => {
       raf = requestAnimationFrame(frame);
       if (!visible || document.hidden) return;
-      const { t, phase, cycle } = timeline(diffusionSeconds());
+      const { t, cycle } = timeline(diffusionSeconds());
       if (cycle !== lastCycle) {
         lastCycle = cycle;
         resample();
@@ -126,12 +122,6 @@ export default function DiffusionPortrait({ src, alt, labels, className = '' }: 
         }
       }
       draw(t);
-      const step = Math.round(t * STEPS);
-      const label = phase === 'settled' ? labels.settled : `${phase === 'denoising' ? labels.denoising : labels.noising} · t = ${step}`;
-      if (label !== lastHud) {
-        lastHud = label;
-        setHud(label);
-      }
     };
 
     // --- source image -> luminance grid ------------------------------------------------------
@@ -164,7 +154,6 @@ export default function DiffusionPortrait({ src, alt, labels, className = '' }: 
       ready = true;
       if (reduce) {
         draw(0);
-        setHud(labels.settled);
       }
     };
     img.src = src;
@@ -206,14 +195,11 @@ export default function DiffusionPortrait({ src, alt, labels, className = '' }: 
       canvas.removeEventListener('pointerleave', leave);
       canvas.removeEventListener('pointerup', leave);
     };
-  }, [src, labels.denoising, labels.noising, labels.settled]);
+  }, [src]);
 
   return (
     <figure className={`m-0 ${className}`}>
       <canvas ref={canvasRef} role="img" aria-label={alt} className="block aspect-square w-full touch-pan-y" />
-      <figcaption aria-hidden="true" className="tabular mt-3 h-5 text-center text-[13px] text-muted-foreground">
-        {hud}
-      </figcaption>
     </figure>
   );
 }

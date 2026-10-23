@@ -24,9 +24,6 @@
   },
   "HeroSection": {
     "portraitAlt": "Retrato de Leonardo Burbano, generado como un proceso de difusión",
-    "denoising": "eliminando ruido",
-    "noising": "añadiendo ruido",
-    "settled": "x₀ · t = 0",
     "name": "Leonardo Burbano",
     "title": "Senior AI Engineer & Tech Lead",
     "valueProp": "Construyo agentes LLM en producción que venden: sistemas multiagente que atienden más de 1M de solicitudes al día para más de 1.500 negocios en más de 20 países.",
@@ -291,7 +288,7 @@
   "Stack": {
     "title": "Mi stack",
     "description": "Las herramientas con las que llevo agentes de IA a producción.",
-    "hint": "El mismo proceso de difusión del retrato. Pasa el cursor por un nodo para ver su nombre.",
+    "hint": "Pasa el cursor por un nodo para ver su nombre.",
     "groups": {
       "ai": "IA y LLMs",
       "backend": "Lenguajes y backend",

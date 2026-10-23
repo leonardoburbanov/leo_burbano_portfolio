@@ -43,7 +43,6 @@ export default function HeroSection() {
           <DiffusionPortrait
             src={heroData.avatar}
             alt={t('portraitAlt')}
-            labels={{ denoising: t('denoising'), noising: t('noising'), settled: t('settled') }}
           />
         </div>
       </div>

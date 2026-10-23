@@ -24,9 +24,6 @@
   },
   "HeroSection": {
     "portraitAlt": "Portrait of Leonardo Burbano, rendered as a diffusion process",
-    "denoising": "denoising",
-    "noising": "adding noise",
-    "settled": "x₀ · t = 0",
     "name": "Leonardo Burbano",
     "title": "Senior AI Engineer & Tech Lead",
     "valueProp": "I build production LLM agents that sell: multi-agent systems handling 1M+ requests/day for 1,500+ businesses in 20+ countries.",
@@ -291,7 +288,7 @@
   "Stack": {
     "title": "My stack",
     "description": "The tools I use to ship AI agents to production.",
-    "hint": "Same diffusion process as the portrait. Hover a node to see its name.",
+    "hint": "Hover a node to see its name.",
     "groups": {
       "ai": "AI & LLMs",
       "backend": "Languages & backend",

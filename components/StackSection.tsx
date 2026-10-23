@@ -6,7 +6,6 @@ import { stackGroups } from '@/data/tech-stack';
 
 export default function StackSection() {
   const t = useTranslations('Stack');
-  const hero = useTranslations('HeroSection');
 
   return (
     <section id="stack" className="relative overflow-hidden py-20 sm:py-28 scroll-mt-12">
@@ -27,7 +26,7 @@ export default function StackSection() {
 
         <Reveal className="mx-auto w-full max-w-[560px]">
           <div className="aspect-square w-full">
-            <StackGraph labels={{ denoising: hero('denoising'), noising: hero('noising'), settled: hero('settled') }} />
+            <StackGraph />
           </div>
           <p className="mt-4 text-center text-sm text-muted-foreground">{t('hint')}</p>
         </Reveal>
