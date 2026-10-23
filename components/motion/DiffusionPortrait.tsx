@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { alphaBar, diffusionSeconds, gaussian, smooth, STEPS, timeline } from '@/lib/diffusion';
 
 type Props = {
   src: string;
@@ -9,43 +10,6 @@ type Props = {
   labels: { denoising: string; noising: string; settled: string };
   className?: string;
 };
-
-// Cycle (seconds): pure noise, reverse process (denoise), crisp portrait, forward process (noise).
-const T_NOISE = 0.6;
-const T_REVERSE = 3.8;
-const T_HOLD = 4.5;
-const T_FORWARD = 2.2;
-const CYCLE = T_NOISE + T_REVERSE + T_HOLD + T_FORWARD;
-const STEPS = 1000;
-
-// Cosine noise schedule (Nichol & Dhariwal): alpha-bar as a function of t in [0, 1].
-const alphaBar = (t: number) => {
-  const f = (x: number) => Math.cos(((x + 0.008) / 1.008) * (Math.PI / 2)) ** 2;
-  return f(t) / f(0);
-};
-
-// Box-Muller
-const gaussian = () => {
-  const u = 1 - Math.random();
-  const v = Math.random();
-  return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
-};
-
-const smooth = (x: number) => x * x * (3 - 2 * x);
-
-/** Returns the diffusion time t in [0, 1] (1 = pure noise) and the phase for a moment in the cycle. */
-function timeline(sec: number): { t: number; phase: 'denoising' | 'noising' | 'settled' } {
-  const c = sec % CYCLE;
-  if (c < T_NOISE) return { t: 1, phase: 'denoising' };
-  if (c < T_NOISE + T_REVERSE) {
-    // Detail resolves late in real sampling: ease so most of the change happens near the end.
-    const k = (c - T_NOISE) / T_REVERSE;
-    return { t: 1 - smooth(Math.pow(k, 1.35)), phase: 'denoising' };
-  }
-  if (c < T_NOISE + T_REVERSE + T_HOLD) return { t: 0, phase: 'settled' };
-  const k = (c - T_NOISE - T_REVERSE - T_HOLD) / T_FORWARD;
-  return { t: smooth(k), phase: 'noising' };
-}
 
 type Palette = { shadow: [number, number, number]; light: [number, number, number]; invert: boolean };
 const DARK: Palette = { shadow: [61, 110, 245], light: [245, 245, 247], invert: false };
@@ -77,7 +41,6 @@ export default function DiffusionPortrait({ src, alt, labels, className = '' }: 
     let palette: Palette = document.documentElement.classList.contains('dark') ? DARK : LIGHT;
     let visible = true;
     let raf = 0;
-    let start = performance.now();
     let lastHud = '';
     let pointer: { x: number; y: number } | null = null;
     let lastCycle = -1;
@@ -140,16 +103,14 @@ export default function DiffusionPortrait({ src, alt, labels, className = '' }: 
       void signal;
     };
 
-    const frame = (now: number) => {
+    const frame = () => {
       raf = requestAnimationFrame(frame);
       if (!visible || document.hidden) return;
-      const sec = (now - start) / 1000;
-      const cycle = Math.floor(sec / CYCLE);
+      const { t, phase, cycle } = timeline(diffusionSeconds());
       if (cycle !== lastCycle) {
         lastCycle = cycle;
         resample();
       }
-      const { t, phase } = timeline(sec);
       // pointer noise decays; while the pointer is over a cell it keeps adding
       for (let i = 0; i < kick.length; i++) kick[i] *= 0.94;
       if (pointer) {
@@ -201,7 +162,6 @@ export default function DiffusionPortrait({ src, alt, labels, className = '' }: 
       }
       resample();
       ready = true;
-      start = performance.now();
       if (reduce) {
         draw(0);
         setHud(labels.settled);

@@ -291,7 +291,7 @@
   "Stack": {
     "title": "My stack",
     "description": "The tools I use to ship AI agents to production.",
-    "hint": "Hover a node to see its name.",
+    "hint": "Same diffusion process as the portrait. Hover a node to see its name.",
     "groups": {
       "ai": "AI & LLMs",
       "backend": "Languages & backend",

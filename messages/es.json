@@ -291,7 +291,7 @@
   "Stack": {
     "title": "Mi stack",
     "description": "Las herramientas con las que llevo agentes de IA a producción.",
-    "hint": "Pasa el cursor por un nodo para ver su nombre.",
+    "hint": "El mismo proceso de difusión del retrato. Pasa el cursor por un nodo para ver su nombre.",
     "groups": {
       "ai": "IA y LLMs",
       "backend": "Lenguajes y backend",
