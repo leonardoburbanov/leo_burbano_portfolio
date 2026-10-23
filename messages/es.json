@@ -1,10 +1,12 @@
 {
   "NavBar": {
-    "home": "Inicio",
+    "caseStudy": "Caso de estudio",
+    "experience": "Experiencia",
     "projects": "Proyectos",
-    "events": "Eventos",
+    "speaking": "Charlas",
     "blog": "Blog",
-    "portfolio": "Portafolio"
+    "contact": "Contacto",
+    "menu": "Abrir menú"
   },
   "EventsPage": {
     "title": "Eventos",
@@ -21,43 +23,33 @@
     "hostedBy": "Por"
   },
   "HeroSection": {
-    "profile": {
-      "name": "Leonardo Burbano",
-      "title": "Tech Lead, Ingeniero Senior de IA y Machine Learning",
-      "description": "Transformando flujos de trabajo complejos de IA en soluciones simples, confiables y escalables.",
-      "avatar": {
-        "alt": "Leonardo Burbano",
-        "fallback": "LB"
-      }
-    },
-    "buttons": {
-      "exploreProjects": "Explorar Proyectos de ML e IA"
-    }
+    "name": "Leonardo Burbano",
+    "title": "Senior AI Engineer & Tech Lead",
+    "valueProp": "Construyo agentes LLM en producción que venden: sistemas multiagente que atienden más de 1M de solicitudes al día para más de 1.500 negocios en más de 20 países.",
+    "proofLabel": "He trabajado en",
+    "avatarAlt": "Leonardo Burbano",
+    "ctaLinkedIn": "Conectar en LinkedIn",
+    "ctaCaseStudy": "Ver caso de estudio"
   },
   "ProjectsSection": {
-    "title": "Proyectos Destacados",
-    "description": "Aquí hay algunos de los proyectos en los que he trabajado, mostrando mi experiencia en IA, machine learning e ingeniería de software.",
+    "title": "Proyectos",
+    "description": "Proyectos personales donde exploro la orquestación de agentes y las plataformas empresariales de agentes.",
     "buttons": {
       "code": "Código",
       "backend": "Backend",
       "frontend": "Frontend",
-      "liveDemo": "Demo en Vivo",
-      "comingSoon": "Próximamente",
-      "presentation": "Presentación",
-      "viewMore": "Ver Más Proyectos"
+      "liveDemo": "Demo",
+      "presentation": "Diapositivas del taller",
+      "viewMore": "Más en GitHub"
     },
     "projects": {
       "navbe-ai": {
         "title": "Navbe",
-        "description": "El cerebro de flujos de trabajo para agentes de IA y equipos — programa workflows recurrentes con contexto persistente vía MCP. Backend FastAPI y dashboard Next.js."
+        "description": "Los agentes de IA pierden el contexto entre ejecuciones y no se pueden programar como trabajo real. Construí un orquestador de workflows basado en MCP: los agentes crean y programan flujos recurrentes con herramientas MCP, con un motor en FastAPI y un dashboard en Next.js."
       },
       "gemini-enterprise-sales-agent": {
-        "title": "Agente de Ventas con Gemini Enterprise",
-        "description": "Workshop e implementación de referencia de un agente de ventas con Google ADK y la plataforma Gemini Enterprise, con clientes FastAPI y Next.js y despliegue en la nube."
-      },
-      "small-llm-finetuning": {
-        "title": "Fine-tuning de un LLM Pequeño",
-        "description": "Fine-tuning personalizado de modelos de lenguaje pequeños para tareas específicas de dominio con rendimiento optimizado y requisitos de recursos reducidos"
+        "title": "Agente de ventas con Gemini Enterprise",
+        "description": "Agente de ventas de referencia para equipos que adoptan Gemini Enterprise Agent Platform de Google. Hecho con Google ADK: multiagente con un subagente para objeciones de precio, desplegado en Agent Engine con trazas; enseñado en un taller práctico."
       }
     }
   },
@@ -274,8 +266,8 @@
     }
   },
   "Metadata": {
-    "title": "Leonardo Burbano - Ingeniero Senior de IA y Machine Learning",
-    "description": "Portafolio de Leonardo Burbano, un ingeniero senior de IA y machine learning especializado en productos y servicios impulsados por IA."
+    "title": "Leonardo Burbano — Senior AI Engineer | Agentes LLM en producción",
+    "description": "Senior AI Engineer & Tech Lead que construye sistemas multiagente LLM en producción con más de 1M de solicitudes al día para más de 1.500 negocios."
   },
   "Blog": {
     "title": "Blog",
@@ -284,6 +276,102 @@
     "backToBlog": "Volver al Blog",
     "noPosts": "Aún no hay publicaciones. ¡Vuelve pronto!",
     "author": "Autor"
+  },
+  "CaseStudy": {
+    "eyebrow": "Caso de estudio destacado",
+    "title": "Agentes de ventas con IA de Mercately",
+    "problemTitle": "Problema",
+    "problem": "Las pymes de LatAm pierden ventas porque no pueden responder a tiempo los mensajes de WhatsApp, Instagram y Messenger.",
+    "roleTitle": "Mi rol",
+    "role": "Tech Lead de un equipo de IA de 7 ingenieros. Soy responsable del ciclo de vida de la IA de punta a punta: investigación → arquitectura → despliegue → iteración.",
+    "architectureTitle": "Arquitectura",
+    "architecture": [
+      "Sistema multiagente con LangGraph: un agente de ventas principal que orquesta subagentes especialistas",
+      "RAG sobre el catálogo y la base de conocimiento de cada negocio",
+      "Enrutamiento de LLM entre varios proveedores: OpenAI, Anthropic y Gemini",
+      "Framework de evaluación para lanzar cambios de prompts y modelos con seguridad",
+      "Observabilidad y trazas en cada conversación"
+    ],
+    "diagramPlaceholder": "Diagrama de arquitectura próximamente",
+    "diagramAlt": "Arquitectura del sistema multiagente de ventas de Mercately",
+    "resultsTitle": "Resultados",
+    "metrics": {
+      "requests": "solicitudes / día",
+      "businesses": "negocios",
+      "countries": "países",
+      "cost": "menos costo de inferencia"
+    },
+    "stackTitle": "Stack"
+  },
+  "Experience": {
+    "title": "Experiencia",
+    "present": "Actualidad",
+    "earlierTitle": "Antes",
+    "earlier": "Consultoría en datos e IA (Bummi AI, Fate Sistemas, ARKHO/Cencosud), Workers Benefit Fund, handytec (4,5 años).",
+    "fullProfile": "Experiencia completa en LinkedIn",
+    "roles": {
+      "mercately": {
+        "role": "Senior AI Engineer & Tech Lead",
+        "period": "ago 2025 – actualidad",
+        "impact": "Agentes de ventas LLM en producción con más de 1M de solicitudes al día; 50% menos costo de inferencia."
+      },
+      "taxflow": {
+        "role": "Senior AI Engineer",
+        "period": "feb – ago 2025",
+        "impact": "Conversión de documentos tributarios a formularios 10 veces más rápida; seguimiento a clientes 4 veces más rápido (Vertex AI, Gemini, LangChain)."
+      },
+      "thoughtworks": {
+        "role": "Senior ML Engineer",
+        "period": "abr 2024 – feb 2025",
+        "impact": "Alertas de desabastecimiento con ML que ahorraron más de 1M USD a una aerolínea importante."
+      }
+    }
+  },
+  "Speaking": {
+    "title": "Charlas y comunidad",
+    "description": "Comparto lo que aprendo llevando agentes a producción.",
+    "allEvents": "Eventos a los que asistiré",
+    "items": {
+      "devfest": {
+        "name": "Google DevFest Quito 2026",
+        "detail": "Charla: “Mercately + Gemini” · más de 2.700 asistentes"
+      },
+      "buildWithAiQuito": {
+        "name": "Build with AI 2026 — GDG Quito, EPN",
+        "detail": "Taller práctico de sistemas multiagente"
+      },
+      "buildWithAiCuenca": {
+        "name": "Build with AI Cuenca 2026",
+        "detail": "Taller de agente de ventas con Gemini Enterprise"
+      },
+      "techWeek": {
+        "name": "Ecuador Tech Week 2026",
+        "detail": "Panelista"
+      }
+    }
+  },
+  "LatestPosts": {
+    "title": "Artículos recientes",
+    "allPosts": "Todos los artículos"
+  },
+  "Contact": {
+    "title": "Hablemos",
+    "description": "¿Buscas un Senior o Staff AI Engineer? Escríbeme y te respondo, o contáctame por LinkedIn.",
+    "name": "Nombre",
+    "company": "Empresa",
+    "message": "Mensaje",
+    "send": "Enviar mensaje",
+    "sending": "Enviando…",
+    "success": "¡Gracias! Tu mensaje fue enviado. Te responderé pronto.",
+    "error": "Algo salió mal. Inténtalo de nuevo o escríbeme por LinkedIn.",
+    "honeypot": "Deja este campo vacío"
+  },
+  "Footer": {
+    "content": "Contenido",
+    "rights": "Todos los derechos reservados."
+  },
+  "OgImage": {
+    "title": "Senior AI Engineer & Tech Lead",
+    "metric": "Agentes LLM en producción · 1M+ solicitudes/día · 1.500+ negocios · 20+ países"
   }
 }
-

@@ -1,35 +1,38 @@
 'use client';
 
-import { Globe } from 'lucide-react';
 import { useLocale } from 'next-intl';
 import { useRouter, usePathname } from '@/i18n/routing';
+
+const locales = [
+  { code: 'en', label: 'EN', name: 'English' },
+  { code: 'es', label: 'ES', name: 'Español' },
+] as const;
 
 export default function LanguageToggle() {
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
 
-  const toggleLanguage = () => {
-    const newLocale = locale === 'en' ? 'es' : 'en';
-    
-    // Navigate to the same path but with the new locale
-    router.replace(pathname, { locale: newLocale });
-  };
-
   return (
-    <button
-      onClick={toggleLanguage}
-      className="p-2 text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-accent"
-      aria-label={`Switch to ${locale === 'en' ? 'Spanish' : 'English'}`}
-      title={`Current: ${locale === 'en' ? 'English' : 'Español'}`}
-    >
-      <div className="relative w-5 h-5">
-        <Globe className="w-5 h-5" />
-        <span className="absolute -bottom-1 -right-1 text-[10px] font-bold bg-primary text-primary-foreground rounded-full w-4 h-4 flex items-center justify-center">
-          {locale.toUpperCase()}
-        </span>
-      </div>
-    </button>
+    <div className="inline-flex items-center rounded-md border border-border p-0.5 text-xs font-semibold" role="group" aria-label="Language">
+      {locales.map(({ code, label, name }) => {
+        const isActive = locale === code;
+        return (
+          <button
+            key={code}
+            type="button"
+            lang={code}
+            onClick={() => !isActive && router.replace(pathname, { locale: code })}
+            aria-pressed={isActive}
+            title={name}
+            className={`px-2 py-1 rounded transition-colors ${
+              isActive ? 'bg-primary text-primary-foreground' : 'text-muted-foreground hover:text-foreground'
+            }`}
+          >
+            {label}
+          </button>
+        );
+      })}
+    </div>
   );
 }
-

@@ -1,6 +1,3 @@
-'use client';
-
-import { useState, useEffect } from 'react';
 import { Github, ExternalLink, ArrowRight, Presentation } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
@@ -8,48 +5,24 @@ import { projects } from '@/data/projects';
 
 export default function ProjectsSection() {
   const t = useTranslations('ProjectsSection');
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    const element = document.getElementById('projects');
-    if (element) {
-      observer.observe(element);
-    }
-
-    return () => observer.disconnect();
-  }, []);
 
   return (
-    <section id="projects" className="py-20 bg-gradient-to-b from-background to-muted/20 scroll-mt-28">
+    <section id="projects" className="py-20 scroll-mt-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`text-center mb-16 transition-all duration-1000 overflow-visible ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`}>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent mb-4 leading-tight break-words overflow-visible">
+        <div className="max-w-5xl mx-auto mb-12">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent mb-4 leading-tight">
             {t('title')}
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-3xl">
             {t('description')}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {projects.map((project, index) => (
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          {projects.map((project) => (
             <div
               key={project.id}
-              className={`group relative bg-card border border-border rounded-xl p-6 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
-              style={{ transitionDelay: `${index * 200}ms` }}
+              className="group relative bg-card border border-border rounded-xl p-6 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10"
             >
               {/* Project header */}
               <div className="flex items-start justify-between mb-4">
@@ -77,12 +50,6 @@ export default function ProjectsSection() {
 
               {/* Project links */}
               <div className="flex flex-wrap gap-3">
-                {project.comingSoon ? (
-                  <span className="inline-flex items-center px-4 py-2 bg-muted text-muted-foreground rounded-lg border border-border text-sm font-medium">
-                    {t('buttons.comingSoon')}
-                  </span>
-                ) : (
-                  <>
                 {project.githubUrl && (
                   <a
                     href={project.githubUrl}
@@ -140,8 +107,6 @@ export default function ProjectsSection() {
                     <span className="text-sm font-medium">{t('buttons.presentation')}</span>
                   </Link>
                 )}
-                  </>
-                )}
               </div>
 
               {/* Hover effect overlay */}
@@ -151,9 +116,7 @@ export default function ProjectsSection() {
         </div>
 
         {/* View more projects CTA */}
-        <div className={`text-center mt-12 transition-all duration-1000 delay-500 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`}>
+        <div className="max-w-5xl mx-auto mt-8">
           <a
             href="https://github.com/leonardoburbanov"
             target="_blank"

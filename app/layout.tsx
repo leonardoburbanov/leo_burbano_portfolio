@@ -3,16 +3,12 @@ import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import { ThemeProvider } from "../components/ThemeProvider";
-import { getTranslations, getLocale } from 'next-intl/server';
+import { getLocale } from 'next-intl/server';
+import { SITE_URL } from '@/lib/site';
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations('Metadata');
-
-  return {
-    title: t('title'),
-    description: t('description'),
-  };
-}
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+};
 
 export default async function RootLayout({
   children,

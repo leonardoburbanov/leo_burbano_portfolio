@@ -7,11 +7,6 @@ import SlideFrame from '../SlideFrame';
 
 const TITLE_LINKS = [
   {
-    key: 'frontend',
-    href: 'https://nextjs-agent-client-363304624491.us-central1.run.app',
-    icon: ExternalLink,
-  },
-  {
     key: 'backendRepo',
     href: 'https://github.com/leonardoburbanov/gemini-enterprise-agent-platform-workshop',
     icon: Github,

@@ -1,89 +1,15 @@
-import { allPosts } from "content-collections";
 import { Calendar, User, Tag } from "lucide-react";
 import { getTranslations, getLocale } from "next-intl/server";
 import { Link } from '@/i18n/routing';
 import NavBar from "@/components/NavBar";
-
-type BlogPost = {
-  title: string;
-  title_es?: string;
-  summary: string;
-  summary_es?: string;
-  date: string;
-  author?: string;
-  tags?: string[];
-  tags_es?: string[];
-  locale?: string;
-  slug?: string;
-  mdx: unknown;
-  _meta: {
-    path: string;
-  };
-  [key: string]: unknown;
-};
+import Footer from "@/components/Footer";
+import { getLocalizedPosts } from "@/lib/posts";
 
 export default async function BlogPage() {
   const t = await getTranslations('Blog');
   const locale = await getLocale();
   
-  // Helper function to extract slug from post
-  const getPostSlug = (post: BlogPost): string => {
-    // First try to use the slug from frontmatter
-    if (post.slug) {
-      return post.slug;
-    }
-    // Otherwise extract from path
-    const path = post._meta.path || '';
-    // Remove .es or .en suffix (path doesn't include .mdx)
-    return path.replace(/\.(en|es)$/, '');
-  };
-  
-  // Filter posts by locale and get unique posts by slug
-  // Prefer posts in current locale, fallback to English
-  const postsBySlug = new Map<string, BlogPost>();
-  
-  // First pass: add posts in current locale
-  allPosts.forEach((post: BlogPost) => {
-    // Ensure we have a valid locale (default to 'en' if not set)
-    const postLocale = (post.locale && (post.locale === 'en' || post.locale === 'es')) 
-      ? post.locale 
-      : 'en';
-    const postSlug = getPostSlug(post);
-    
-    // Only add if it matches current locale exactly
-    if (postLocale === locale) {
-      postsBySlug.set(postSlug, post);
-    }
-  });
-  
-  // Second pass: add English posts as fallback for missing slugs (only if locale is not 'en')
-  if (locale !== 'en') {
-    allPosts.forEach((post: BlogPost) => {
-      const postLocale = post.locale || 'en';
-      const postSlug = getPostSlug(post);
-      
-      // Only add English posts if we don't already have this slug
-      if (postLocale === 'en' && !postsBySlug.has(postSlug)) {
-        postsBySlug.set(postSlug, post);
-      }
-    });
-  }
-  
-  // Helper function to get localized field
-  const getLocalizedField = (post: BlogPost, field: 'title' | 'summary' | 'tags'): string | string[] | undefined => {
-    const postWithIndex = post as unknown as BlogPost & { [key: string]: string | string[] | undefined };
-    if (locale === 'es' && postWithIndex[`${field}_es`]) {
-      return postWithIndex[`${field}_es`];
-    }
-    return postWithIndex[field];
-  };
-  
-  // Convert map to array and sort by date (newest first)
-  const sortedPosts = Array.from(postsBySlug.values()).sort((a: BlogPost, b: BlogPost) => {
-    const dateA = new Date(a.date).getTime();
-    const dateB = new Date(b.date).getTime();
-    return dateB - dateA;
-  });
+  const sortedPosts = getLocalizedPosts(locale);
 
   return (
     <>
@@ -102,7 +28,7 @@ export default async function BlogPage() {
 
           <div className="space-y-8">
             {sortedPosts.map((post) => {
-              const postSlug = getPostSlug(post);
+              const postSlug = post.slug;
               return (
               <article
                 key={postSlug}
@@ -110,12 +36,12 @@ export default async function BlogPage() {
               >
                 <Link href={`/blog/${postSlug}`}>
                   <h2 className="text-2xl font-semibold text-foreground mb-3 hover:text-primary transition-colors">
-                    {getLocalizedField(post, 'title') as string}
+                    {post.title}
                   </h2>
                 </Link>
                 
                 <p className="text-muted-foreground mb-4 leading-relaxed">
-                  {getLocalizedField(post, 'summary') as string}
+                  {post.summary}
                 </p>
 
                 <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-4">
@@ -138,7 +64,7 @@ export default async function BlogPage() {
                   )}
 
                   {(() => {
-                    const tags = (getLocalizedField(post, 'tags') as string[] | undefined) || post.tags || [];
+                    const tags = post.tags;
                     return tags.length > 0 ? (
                       <div className="flex items-center gap-2 flex-wrap">
                         <Tag className="w-4 h-4" />
@@ -176,6 +102,7 @@ export default async function BlogPage() {
         </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

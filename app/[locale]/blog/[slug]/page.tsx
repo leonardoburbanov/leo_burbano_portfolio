@@ -5,6 +5,7 @@ import { Calendar, User, Tag, ArrowLeft } from "lucide-react";
 import { getTranslations, getLocale } from "next-intl/server";
 import { Link } from '@/i18n/routing';
 import NavBar from "@/components/NavBar";
+import Footer from "@/components/Footer";
 
 type BlogPost = {
   title: string;
@@ -189,6 +190,7 @@ export default async function BlogPostPage({
         </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

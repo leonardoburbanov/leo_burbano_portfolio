@@ -1,10 +1,12 @@
 {
   "NavBar": {
-    "home": "Home",
+    "caseStudy": "Case study",
+    "experience": "Experience",
     "projects": "Projects",
-    "events": "Events",
+    "speaking": "Speaking",
     "blog": "Blog",
-    "portfolio": "Portfolio"
+    "contact": "Contact",
+    "menu": "Toggle menu"
   },
   "EventsPage": {
     "title": "Events",
@@ -21,43 +23,33 @@
     "hostedBy": "By"
   },
   "HeroSection": {
-    "profile": {
-      "name": "Leonardo Burbano",
-      "title": "Tech Lead, Senior AI and Machine Learning Engineer",
-      "description": "Turning complex AI workflows into simple, reliable and scalable solutions.",
-      "avatar": {
-        "alt": "Leonardo Burbano",
-        "fallback": "LB"
-      }
-    },
-    "buttons": {
-      "exploreProjects": "Explore ML & AI Projects"
-    }
+    "name": "Leonardo Burbano",
+    "title": "Senior AI Engineer & Tech Lead",
+    "valueProp": "I build production LLM agents that sell — multi-agent systems handling 1M+ requests/day for 1,500+ businesses in 20+ countries.",
+    "proofLabel": "Built at",
+    "avatarAlt": "Leonardo Burbano",
+    "ctaLinkedIn": "Connect on LinkedIn",
+    "ctaCaseStudy": "View case study"
   },
   "ProjectsSection": {
-    "title": "Featured Projects",
-    "description": "Here are some of the projects I've worked on, showcasing my expertise in AI, machine learning, and software engineering.",
+    "title": "Projects",
+    "description": "Side projects where I explore agent orchestration and enterprise agent platforms.",
     "buttons": {
       "code": "Code",
       "backend": "Backend",
       "frontend": "Frontend",
-      "liveDemo": "Live Demo",
-      "comingSoon": "Coming soon",
-      "presentation": "Presentation",
-      "viewMore": "View More Projects"
+      "liveDemo": "Live demo",
+      "presentation": "Workshop slides",
+      "viewMore": "More on GitHub"
     },
     "projects": {
       "navbe-ai": {
         "title": "Navbe",
-        "description": "The workflow brain for AI agents and teams — schedule recurring workflows with persistent context via MCP. Built with a FastAPI orchestrator and Next.js dashboard."
+        "description": "AI agents lose context between runs and can't be scheduled like real work. I built an MCP-based workflow orchestrator: agents create and schedule recurring flows through MCP tools, with a FastAPI engine and a Next.js dashboard."
       },
       "gemini-enterprise-sales-agent": {
         "title": "Gemini Enterprise Sales Agent",
-        "description": "Workshop and reference implementation of a sales agent built with Google ADK and the Gemini Enterprise platform, with FastAPI and Next.js clients and cloud deployment."
-      },
-      "small-llm-finetuning": {
-        "title": "Fine-tuning a Small LLM",
-        "description": "Custom fine-tuning of small language models for domain-specific tasks with optimized performance and reduced resource requirements"
+        "description": "Reference sales agent for teams adopting Google's Gemini Enterprise Agent Platform. Built with Google ADK: multi-agent with a price-objection sub-agent, deployed on Agent Engine with tracing; taught as a hands-on workshop."
       }
     }
   },
@@ -274,8 +266,8 @@
     }
   },
   "Metadata": {
-    "title": "Leonardo Burbano - Senior AI and Machine Learning Engineer",
-    "description": "Portfolio of Leonardo Burbano, a senior AI and machine learning engineer specialized in AI-powered products and services."
+    "title": "Leonardo Burbano — Senior AI Engineer | Production LLM Agents",
+    "description": "Senior AI Engineer & Tech Lead building production multi-agent LLM systems that handle 1M+ requests/day for 1,500+ businesses. Open to Senior/Staff AI Engineer roles with US teams."
   },
   "Blog": {
     "title": "Blog",
@@ -284,6 +276,102 @@
     "backToBlog": "Back to Blog",
     "noPosts": "No blog posts yet. Check back soon!",
     "author": "Author"
+  },
+  "CaseStudy": {
+    "eyebrow": "Featured case study",
+    "title": "Mercately AI Sales Agents",
+    "problemTitle": "Problem",
+    "problem": "SMBs in LatAm lose sales because they can't answer WhatsApp, Instagram and Messenger messages fast enough.",
+    "roleTitle": "My role",
+    "role": "Tech Lead of a 7-engineer AI team. I own the AI lifecycle end to end: research → architecture → deployment → iteration.",
+    "architectureTitle": "Architecture",
+    "architecture": [
+      "Multi-agent LangGraph system: a main sales agent orchestrating specialist sub-agents",
+      "RAG over each business's catalog and knowledge base",
+      "Multi-provider LLM routing across OpenAI, Anthropic and Gemini",
+      "Evaluation framework to ship prompt and model changes safely",
+      "Observability and tracing across every conversation"
+    ],
+    "diagramPlaceholder": "Architecture diagram coming soon",
+    "diagramAlt": "Architecture of the Mercately multi-agent sales system",
+    "resultsTitle": "Results",
+    "metrics": {
+      "requests": "requests / day",
+      "businesses": "businesses",
+      "countries": "countries",
+      "cost": "lower inference cost"
+    },
+    "stackTitle": "Stack"
+  },
+  "Experience": {
+    "title": "Experience",
+    "present": "Present",
+    "earlierTitle": "Earlier",
+    "earlier": "Data & AI consulting (Bummi AI, Fate Sistemas, ARKHO/Cencosud), Workers Benefit Fund, handytec (4.5 yrs).",
+    "fullProfile": "Full experience on LinkedIn",
+    "roles": {
+      "mercately": {
+        "role": "Senior AI Engineer & Tech Lead",
+        "period": "Aug 2025 – Present",
+        "impact": "Production LLM sales agents at 1M+ requests/day; 50% inference cost reduction."
+      },
+      "taxflow": {
+        "role": "Senior AI Engineer",
+        "period": "Feb – Aug 2025",
+        "impact": "10x faster tax-document-to-form conversion; 4x faster client follow-ups (Vertex AI, Gemini, LangChain)."
+      },
+      "thoughtworks": {
+        "role": "Senior ML Engineer",
+        "period": "Apr 2024 – Feb 2025",
+        "impact": "ML stock-out alerts that saved $1M+ for a major airline."
+      }
+    }
+  },
+  "Speaking": {
+    "title": "Speaking & Community",
+    "description": "I share what I learn shipping agents to production.",
+    "allEvents": "Events I'm attending",
+    "items": {
+      "devfest": {
+        "name": "Google DevFest Quito 2026",
+        "detail": "Talk: “Mercately + Gemini” · 2,700+ attendees"
+      },
+      "buildWithAiQuito": {
+        "name": "Build with AI 2026 — GDG Quito, EPN",
+        "detail": "Hands-on multi-agent workshop"
+      },
+      "buildWithAiCuenca": {
+        "name": "Build with AI Cuenca 2026",
+        "detail": "Gemini Enterprise sales agent workshop"
+      },
+      "techWeek": {
+        "name": "Ecuador Tech Week 2026",
+        "detail": "Panelist"
+      }
+    }
+  },
+  "LatestPosts": {
+    "title": "Latest writing",
+    "allPosts": "All posts"
+  },
+  "Contact": {
+    "title": "Let's talk",
+    "description": "Hiring for a Senior or Staff AI Engineer role? Send me a note and I'll get back to you, or reach me on LinkedIn.",
+    "name": "Name",
+    "company": "Company",
+    "message": "Message",
+    "send": "Send message",
+    "sending": "Sending…",
+    "success": "Thanks! Your message is on its way. I'll reply soon.",
+    "error": "Something went wrong. Please try again or reach me on LinkedIn.",
+    "honeypot": "Leave this field empty"
+  },
+  "Footer": {
+    "content": "Content",
+    "rights": "All rights reserved."
+  },
+  "OgImage": {
+    "title": "Senior AI Engineer & Tech Lead",
+    "metric": "Production LLM agents · 1M+ requests/day · 1,500+ businesses · 20+ countries"
   }
 }
-
