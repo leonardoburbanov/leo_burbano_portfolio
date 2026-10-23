@@ -25,7 +25,7 @@
   "HeroSection": {
     "name": "Leonardo Burbano",
     "title": "Senior AI Engineer & Tech Lead",
-    "valueProp": "I build production LLM agents that sell — multi-agent systems handling 1M+ requests/day for 1,500+ businesses in 20+ countries.",
+    "valueProp": "I build production LLM agents that sell: multi-agent systems handling 1M+ requests/day for 1,500+ businesses in 20+ countries.",
     "proofLabel": "Built at",
     "avatarAlt": "Leonardo Burbano",
     "ctaLinkedIn": "Connect on LinkedIn",
@@ -68,7 +68,7 @@
     "slides": {
       "title": {
         "gdg": "Google Developer Group",
-        "gdgChapter": "Guayaquil – Cuenca",
+        "gdgChapter": "Guayaquil - Cuenca",
         "heading": "Gemini Enterprise Sales Agent",
         "subtitle": "Using",
         "platform": "Gemini Enterprise Agent Platform",
@@ -259,14 +259,14 @@
           "github": "github.com/leonardoburbanov"
         },
         "resources": {
-          "platformDiagram": "Gemini Enterprise Agent Platform — diagram",
-          "adkIntegrations": "ADK — Tools and Integrations"
+          "platformDiagram": "Gemini Enterprise Agent Platform diagram",
+          "adkIntegrations": "ADK: Tools and Integrations"
         }
       }
     }
   },
   "Metadata": {
-    "title": "Leonardo Burbano — Senior AI Engineer | Production LLM Agents",
+    "title": "Leonardo Burbano | Senior AI Engineer, Production LLM Agents",
     "description": "Senior AI Engineer & Tech Lead building production multi-agent LLM systems that handle 1M+ requests/day for 1,500+ businesses. Open to Senior/Staff AI Engineer roles with US teams."
   },
   "Blog": {
@@ -312,17 +312,17 @@
     "roles": {
       "mercately": {
         "role": "Senior AI Engineer & Tech Lead",
-        "period": "Aug 2025 – Present",
+        "period": "Aug 2025 - Present",
         "impact": "Production LLM sales agents at 1M+ requests/day; 50% inference cost reduction."
       },
       "taxflow": {
         "role": "Senior AI Engineer",
-        "period": "Feb – Aug 2025",
+        "period": "Feb - Aug 2025",
         "impact": "10x faster tax-document-to-form conversion; 4x faster client follow-ups (Vertex AI, Gemini, LangChain)."
       },
       "thoughtworks": {
         "role": "Senior ML Engineer",
-        "period": "Apr 2024 – Feb 2025",
+        "period": "Apr 2024 - Feb 2025",
         "impact": "ML stock-out alerts that saved $1M+ for a major airline."
       }
     }
@@ -337,7 +337,7 @@
         "detail": "Talk: “Mercately + Gemini” · 2,700+ attendees"
       },
       "buildWithAiQuito": {
-        "name": "Build with AI 2026 — GDG Quito, EPN",
+        "name": "Build with AI 2026, GDG Quito (EPN)",
         "detail": "Hands-on multi-agent workshop"
       },
       "buildWithAiCuenca": {

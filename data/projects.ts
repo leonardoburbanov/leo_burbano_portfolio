@@ -16,7 +16,7 @@ export const projects: Project[] = [
   {
     id: "navbe-ai",
     title: "Navbe",
-    description: "The workflow brain for AI agents and teams — schedule recurring workflows with persistent context via MCP. Built with a FastAPI orchestrator and Next.js dashboard.",
+    description: "The workflow brain for AI agents and teams. Schedule recurring workflows with persistent context via MCP. Built with a FastAPI orchestrator and Next.js dashboard.",
     technologies: ["Python", "FastAPI", "FastMCP", "Next.js", "React", "TypeScript", "DuckDB"],
     githubUrl: "https://github.com/leonardoburbanov/navbe_ai_orchestrator_backend",
     frontendGithubUrl: "https://github.com/leonardoburbanov/navbe_ai_orchestrator_frontend",

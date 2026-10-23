@@ -3,7 +3,7 @@ import { getTranslations } from 'next-intl/server';
 
 // Generated 1200×630 share card. To use a custom design instead, delete this
 // file (and twitter-image.tsx) and add app/[locale]/opengraph-image.png.
-export const alt = 'Leonardo Burbano — Senior AI Engineer & Tech Lead';
+export const alt = 'Leonardo Burbano, Senior AI Engineer & Tech Lead';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 

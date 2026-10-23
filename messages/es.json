@@ -68,7 +68,7 @@
     "slides": {
       "title": {
         "gdg": "Google Developer Group",
-        "gdgChapter": "Guayaquil – Cuenca",
+        "gdgChapter": "Guayaquil - Cuenca",
         "heading": "Construye un Agente de IA que vende productos",
         "subtitle": "Usando",
         "platform": "Gemini Enterprise Agent Platform",
@@ -259,14 +259,14 @@
           "github": "github.com/leonardoburbanov"
         },
         "resources": {
-          "platformDiagram": "Gemini Enterprise Agent Platform — diagrama",
-          "adkIntegrations": "ADK — Tools and Integrations"
+          "platformDiagram": "Diagrama de Gemini Enterprise Agent Platform",
+          "adkIntegrations": "ADK: Tools and Integrations"
         }
       }
     }
   },
   "Metadata": {
-    "title": "Leonardo Burbano — Senior AI Engineer | Agentes LLM en producción",
+    "title": "Leonardo Burbano | Senior AI Engineer, agentes LLM en producción",
     "description": "Senior AI Engineer & Tech Lead que construye sistemas multiagente LLM en producción con más de 1M de solicitudes al día para más de 1.500 negocios."
   },
   "Blog": {
@@ -312,17 +312,17 @@
     "roles": {
       "mercately": {
         "role": "Senior AI Engineer & Tech Lead",
-        "period": "ago 2025 – actualidad",
+        "period": "ago 2025 - actualidad",
         "impact": "Agentes de ventas LLM en producción con más de 1M de solicitudes al día; 50% menos costo de inferencia."
       },
       "taxflow": {
         "role": "Senior AI Engineer",
-        "period": "feb – ago 2025",
+        "period": "feb - ago 2025",
         "impact": "Conversión de documentos tributarios a formularios 10 veces más rápida; seguimiento a clientes 4 veces más rápido (Vertex AI, Gemini, LangChain)."
       },
       "thoughtworks": {
         "role": "Senior ML Engineer",
-        "period": "abr 2024 – feb 2025",
+        "period": "abr 2024 - feb 2025",
         "impact": "Alertas de desabastecimiento con ML que ahorraron más de 1M USD a una aerolínea importante."
       }
     }
@@ -337,7 +337,7 @@
         "detail": "Charla: “Mercately + Gemini” · más de 2.700 asistentes"
       },
       "buildWithAiQuito": {
-        "name": "Build with AI 2026 — GDG Quito, EPN",
+        "name": "Build with AI 2026, GDG Quito (EPN)",
         "detail": "Taller práctico de sistemas multiagente"
       },
       "buildWithAiCuenca": {
