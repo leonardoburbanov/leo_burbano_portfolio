@@ -361,7 +361,8 @@
     "slides": "Diapositivas",
     "event": "Evento",
     "slidesNote": "Diapositivas en español",
-    "eyebrow": "Charlas"
+    "eyebrow": "Charlas",
+    "slidesPdf": "Diapositivas (PDF)"
   },
   "LatestPosts": {
     "title": "Artículos recientes",
@@ -387,7 +388,9 @@
     "eyebrow": "En LinkedIn",
     "title": "Publicaciones recientes",
     "follow": "Seguir en LinkedIn",
-    "viewPost": "Ver en LinkedIn"
+    "viewPost": "Ver en LinkedIn",
+    "cardTitle": "Publicación en LinkedIn",
+    "cardCta": "Leer la publicación"
   },
   "Diagram": {
     "title": "Arquitectura multi-tenant de agentes de ventas con IA",

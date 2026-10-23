@@ -1,4 +1,4 @@
-import { ArrowUpRight, CalendarDays, Mic, Presentation } from 'lucide-react';
+import { ArrowUpRight, CalendarDays, Download, Mic, Presentation } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import SectionHeading from '@/components/SectionHeading';
@@ -10,6 +10,14 @@ const chipClass =
   'inline-flex items-center gap-2 rounded-full border border-border bg-secondary px-3.5 py-1.5 text-sm font-medium text-secondary-foreground transition-colors hover:bg-accent';
 
 function ChipLink({ href, children }: { href: string; children: React.ReactNode }) {
+  // PDFs in /public are plain files: no locale prefix, offered as a download.
+  if (href.endsWith('.pdf')) {
+    return (
+      <a href={href} download target="_blank" rel="noopener noreferrer" className={chipClass}>
+        {children}
+      </a>
+    );
+  }
   return href.startsWith('/') ? (
     <Link href={href} className={chipClass}>
       {children}
@@ -53,9 +61,13 @@ export default function SpeakingSection() {
                       <div className="mt-auto flex flex-wrap items-center gap-2">
                         {slides && (
                           <ChipLink href={slides}>
-                            <Presentation className="h-4 w-4" aria-hidden="true" />
-                            {t('slides')}
-                            <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                            {slides.endsWith('.pdf') ? (
+                              <Download className="h-4 w-4" aria-hidden="true" />
+                            ) : (
+                              <Presentation className="h-4 w-4" aria-hidden="true" />
+                            )}
+                            {slides.endsWith('.pdf') ? t('slidesPdf') : t('slides')}
+                            {!slides.endsWith('.pdf') && <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />}
                           </ChipLink>
                         )}
                         {url && (

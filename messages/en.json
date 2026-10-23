@@ -361,7 +361,8 @@
     "slides": "Slides",
     "event": "Event",
     "slidesNote": "Slides in Spanish",
-    "eyebrow": "Talks"
+    "eyebrow": "Talks",
+    "slidesPdf": "Slides (PDF)"
   },
   "LatestPosts": {
     "title": "Latest writing",
@@ -387,7 +388,9 @@
     "eyebrow": "On LinkedIn",
     "title": "Recent posts",
     "follow": "Follow on LinkedIn",
-    "viewPost": "View on LinkedIn"
+    "viewPost": "View on LinkedIn",
+    "cardTitle": "Post on LinkedIn",
+    "cardCta": "Read the post"
   },
   "Diagram": {
     "title": "Multi-tenant AI sales agent architecture",

@@ -4,7 +4,7 @@ export const speaking = [
   {
     id: 'devfest',
     url: 'https://discover.multiticketing.com/gdg-quito/events/google-quito-devfest?ref=WTWE32Y0',
-    slides: 'https://drive.google.com/file/d/1sSf6DEovXX8MpT_selT3WclKhbI4VE-j/view?usp=drivesdk',
+    slides: '/talks/devfest-quito-2026-mercately-gemini.pdf',
   },
   { id: 'buildWithAiQuito' },
   { id: 'buildWithAiCuenca', slides: '/projects/gemini-enterprise-sales-agent' },
