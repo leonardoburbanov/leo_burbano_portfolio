@@ -23,6 +23,7 @@
     "hostedBy": "By"
   },
   "HeroSection": {
+    "tokens": ["production","LLM","agents","that","sell"],
     "name": "Leonardo Burbano",
     "title": "Senior AI Engineer & Tech Lead",
     "valueProp": "I build production LLM agents that sell: multi-agent systems handling 1M+ requests/day for 1,500+ businesses in 20+ countries.",
@@ -30,7 +31,6 @@
     "avatarAlt": "Leonardo Burbano",
     "ctaLinkedIn": "Connect on LinkedIn",
     "ctaCaseStudy": "View case study",
-    "badge": "Open to Senior/Staff AI Engineer roles with US teams",
     "scroll": "Scroll"
   },
   "ProjectsSection": {
@@ -275,7 +275,7 @@
   },
   "Metadata": {
     "title": "Leonardo Burbano | Senior AI Engineer, Production LLM Agents",
-    "description": "Senior AI Engineer & Tech Lead building production multi-agent LLM systems that handle 1M+ requests/day for 1,500+ businesses. Open to Senior/Staff AI Engineer roles with US teams."
+    "description": "Senior AI Engineer & Tech Lead building production multi-agent LLM systems that handle 1M+ requests/day for 1,500+ businesses."
   },
   "Blog": {
     "title": "Blog",
@@ -285,9 +285,20 @@
     "noPosts": "No blog posts yet. Check back soon!",
     "author": "Author"
   },
+  "Stack": {
+    "title": "My stack",
+    "description": "The tools I use to ship AI agents to production.",
+    "hint": "Hover a node to see its name.",
+    "groups": {
+      "ai": "AI & LLMs",
+      "backend": "Languages & backend",
+      "data": "Data & MLOps",
+      "cloud": "Cloud"
+    }
+  },
   "CaseStudy": {
     "eyebrow": "Featured case study",
-    "title": "Mercately AI Sales Agents",
+    "title": "Mercately AI <g>Sales Agents</g>",
     "problemTitle": "Problem",
     "problem": "SMBs in LatAm lose sales because they can't answer WhatsApp, Instagram and Messenger messages fast enough.",
     "roleTitle": "My role",
@@ -339,7 +350,7 @@
   "Speaking": {
     "title": "Speaking & Community",
     "description": "I share what I learn shipping agents to production.",
-    "allEvents": "Events I'm attending",
+    "allEvents": "Community events",
     "items": {
       "devfest": {
         "name": "Google DevFest Quito 2026",
@@ -360,7 +371,6 @@
     },
     "slides": "Slides",
     "event": "Event",
-    "slidesNote": "Slides in Spanish",
     "eyebrow": "Talks",
     "slidesPdf": "Slides (PDF)"
   },
@@ -371,7 +381,7 @@
   },
   "Contact": {
     "title": "Let's talk",
-    "description": "Hiring for a Senior or Staff AI Engineer role? The best way to reach me is on LinkedIn.",
+    "description": "Building AI agents, hiring, or organizing an event? The best way to reach me is on LinkedIn.",
     "cta": "Message me on LinkedIn",
     "eyebrow": "Contact",
     "youtube": "Watch on YouTube"
@@ -388,6 +398,8 @@
     "eyebrow": "On LinkedIn",
     "title": "Recent posts",
     "follow": "Follow on LinkedIn",
+    "headline": "Senior AI Engineer | Production LLM Agents",
+    "more": "… more",
     "viewPost": "View on LinkedIn",
     "cardTitle": "Post on LinkedIn",
     "cardCta": "Read the post"

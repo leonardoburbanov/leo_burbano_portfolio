@@ -12,14 +12,14 @@ interface ThemeContextType {
 const STORAGE_KEY = 'portfolio-theme';
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-// Light by default. The inline script in app/layout.tsx applies a saved "dark"
+// Dark by default. The inline script in app/layout.tsx applies a saved "light"
 // choice before first paint; this provider keeps React state in sync with it.
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>('light');
+  const [theme, setTheme] = useState<Theme>('dark');
 
   useEffect(() => {
     try {
-      if (localStorage.getItem(STORAGE_KEY) === 'dark') setTheme('dark');
+      if (localStorage.getItem(STORAGE_KEY) === 'light') setTheme('light');
     } catch {}
   }, []);
 

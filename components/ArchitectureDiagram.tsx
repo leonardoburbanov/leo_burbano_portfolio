@@ -13,7 +13,7 @@ type BoxProps = {
   size?: number;
 };
 
-function Box({ x, y, w, h, label, strong = false, size = 14 }: BoxProps) {
+function Box({ x, y, w, h, label, strong = false, size = 15 }: BoxProps) {
   return (
     <g>
       <rect
@@ -21,9 +21,11 @@ function Box({ x, y, w, h, label, strong = false, size = 14 }: BoxProps) {
         y={y}
         width={w}
         height={h}
-        rx={12}
-        className={strong ? 'fill-primary stroke-primary' : 'fill-card stroke-border'}
-        strokeWidth={1.5}
+        rx={3}
+        className={strong ? '' : 'fill-transparent stroke-foreground/25'}
+        fill={strong ? 'url(#dg-blue)' : undefined}
+        stroke={strong ? 'none' : undefined}
+        strokeWidth={1}
       />
       <text
         x={x + w / 2}
@@ -32,7 +34,8 @@ function Box({ x, y, w, h, label, strong = false, size = 14 }: BoxProps) {
         dominantBaseline="central"
         fontSize={size}
         fontWeight={strong ? 600 : 500}
-        className={strong ? 'fill-primary-foreground' : 'fill-foreground'}
+        className={strong ? '' : 'fill-foreground'}
+        fill={strong ? '#fff' : undefined}
       >
         {label}
       </text>
@@ -41,7 +44,7 @@ function Box({ x, y, w, h, label, strong = false, size = 14 }: BoxProps) {
 }
 
 function Flow({ d }: { d: string }) {
-  return <path d={d} fill="none" strokeWidth={2} className="stroke-muted-foreground/70 dg-flow" />;
+  return <path d={d} fill="none" strokeWidth={1.25} className="stroke-blue-400/60 dg-flow" />;
 }
 
 export default function ArchitectureDiagram() {
@@ -49,32 +52,25 @@ export default function ArchitectureDiagram() {
 
   const channels = ['WhatsApp', 'Instagram', 'Messenger', 'TikTok'];
   const connectors = [t('catalog'), t('calendar'), t('payments')];
-  const tenants = [t('tenantA'), t('tenantB'), t('tenantN')];
-
+  
   return (
     <svg
-      viewBox="0 0 960 540"
+      viewBox="0 0 960 520"
       role="img"
       aria-labelledby="arch-title arch-desc"
       className="w-full h-auto font-sans"
     >
+      <defs>
+        <linearGradient id="dg-blue" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0" stopColor="#3d6ef5" />
+          <stop offset="1" stopColor="#5ccbe6" />
+        </linearGradient>
+      </defs>
       <title id="arch-title">{t('title')}</title>
       <desc id="arch-desc">{t('desc')}</desc>
 
-      {/* Tenant layers stacked behind the shared harness */}
-      <rect x={270} y={80} width={470} height={360} rx={22} className="fill-muted/50 stroke-border" strokeWidth={1.5} />
-      <rect x={260} y={90} width={470} height={360} rx={22} className="fill-muted/80 stroke-border" strokeWidth={1.5} />
-      {tenants.map((label, i) => (
-        <g key={label}>
-          <rect x={286 + i * 104} y={46} width={96} height={26} rx={13} className="fill-card stroke-border" strokeWidth={1.5} />
-          <text x={334 + i * 104} y={59} textAnchor="middle" dominantBaseline="central" fontSize={12} fontWeight={500} className="fill-muted-foreground">
-            {label}
-          </text>
-        </g>
-      ))}
-
       {/* Channels -> harness */}
-      <text x={24} y={138} fontSize={12} fontWeight={600} letterSpacing={1.4} className="fill-muted-foreground">
+      <text x={24} y={138} fontSize={13} fontWeight={600} letterSpacing={1.4} className="fill-muted-foreground">
         {t('channels').toUpperCase()}
       </text>
       {channels.map((label, i) => {
@@ -88,8 +84,8 @@ export default function ArchitectureDiagram() {
       })}
 
       {/* Shared harness */}
-      <rect x={250} y={100} width={470} height={360} rx={22} className="fill-background stroke-foreground/60" strokeWidth={2} />
-      <text x={273} y={130} fontSize={13} fontWeight={700} letterSpacing={1.4} className="fill-foreground">
+      <rect x={250} y={100} width={470} height={360} rx={4} className="fill-transparent stroke-blue-400/70" strokeWidth={1} />
+      <text x={273} y={130} fontSize={14} fontWeight={700} letterSpacing={1.4} className="fill-foreground">
         {t('harness').toUpperCase()}
       </text>
 
@@ -97,19 +93,19 @@ export default function ArchitectureDiagram() {
       {[270, 420, 570].map((x) => (
         <Flow key={x} d={`M485 202 C 485 222, ${x + 65} 218, ${x + 65} 240`} />
       ))}
-      <Box x={270} y={240} w={130} h={48} label={t('sales')} size={13} />
-      <Box x={420} y={240} w={130} h={48} label={t('scheduling')} size={13} />
-      <Box x={570} y={240} w={130} h={48} label={t('support')} size={13} />
+      <Box x={270} y={240} w={130} h={48} label={t('sales')} size={14} />
+      <Box x={420} y={240} w={130} h={48} label={t('scheduling')} size={14} />
+      <Box x={570} y={240} w={130} h={48} label={t('support')} size={14} />
 
-      <Box x={270} y={318} w={130} h={48} label={t('llm')} size={13} />
-      <Box x={420} y={318} w={130} h={48} label={t('memory')} size={13} />
-      <Box x={570} y={318} w={130} h={48} label={t('tools')} size={13} />
+      <Box x={270} y={318} w={130} h={48} label={t('llm')} size={14} />
+      <Box x={420} y={318} w={130} h={48} label={t('memory')} size={14} />
+      <Box x={570} y={318} w={130} h={48} label={t('tools')} size={14} />
 
-      <Box x={270} y={392} w={210} h={44} label={t('guardrails')} size={13} />
-      <Box x={490} y={392} w={210} h={44} label={t('observability')} size={13} />
+      <Box x={270} y={392} w={210} h={44} label={t('guardrails')} size={14} />
+      <Box x={490} y={392} w={210} h={44} label={t('observability')} size={14} />
 
       {/* Harness -> connectors */}
-      <text x={760} y={166} fontSize={12} fontWeight={600} letterSpacing={1.4} className="fill-muted-foreground">
+      <text x={760} y={166} fontSize={13} fontWeight={600} letterSpacing={1.4} className="fill-muted-foreground">
         {t('connectors').toUpperCase()}
       </text>
       {connectors.map((label, i) => {

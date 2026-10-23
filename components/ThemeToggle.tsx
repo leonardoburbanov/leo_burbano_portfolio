@@ -16,11 +16,11 @@ export default function ThemeToggle() {
   if (!mounted) {
     return (
       <button
-        className="p-2 text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-accent"
+        className="p-1 text-muted-foreground hover:text-foreground transition-colors"
         aria-label="Loading theme toggle"
       >
-        <div className="relative w-5 h-5">
-          <Sun className="absolute inset-0 w-5 h-5 opacity-50" />
+        <div className="relative w-4 h-4">
+          <Sun className="absolute inset-0 w-4 h-4 opacity-50" />
         </div>
       </button>
     );
@@ -29,19 +29,19 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-accent"
+      className="p-1 text-muted-foreground hover:text-foreground transition-colors"
       aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
     >
-      <div className="relative w-5 h-5">
+      <div className="relative w-4 h-4">
         <Sun 
-          className={`absolute inset-0 w-5 h-5 transition-all duration-300 ${
+          className={`absolute inset-0 w-4 h-4 transition-all duration-300 ${
             theme === 'light' 
               ? 'opacity-100 rotate-0 scale-100' 
               : 'opacity-0 rotate-90 scale-0'
           }`}
         />
         <Moon 
-          className={`absolute inset-0 w-5 h-5 transition-all duration-300 ${
+          className={`absolute inset-0 w-4 h-4 transition-all duration-300 ${
             theme === 'dark' 
               ? 'opacity-100 rotate-0 scale-100' 
               : 'opacity-0 -rotate-90 scale-0'

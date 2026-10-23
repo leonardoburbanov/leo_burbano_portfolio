@@ -2,6 +2,7 @@ import { setRequestLocale } from 'next-intl/server';
 import HeroSection from '../../components/HeroSection';
 import NavBar from '../../components/NavBar';
 import CaseStudySection from '../../components/CaseStudySection';
+import StackSection from '../../components/StackSection';
 import ExperienceSection from '../../components/ExperienceSection';
 import LinkedInPostsSection from '../../components/LinkedInPostsSection';
 import ProjectsSection from '../../components/ProjectsSection';
@@ -21,6 +22,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       <NavBar />
       <main>
         <HeroSection />
+        <StackSection />
         <CaseStudySection />
         <ExperienceSection />
         <LinkedInPostsSection />

@@ -12,9 +12,9 @@ export default function Footer() {
   ].filter((link) => link.href);
 
   return (
-    <footer className="border-t border-border py-10">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
-        <p className="text-sm text-muted-foreground">
+    <footer className="border-t border-border py-8">
+      <div className="mx-auto max-w-[1080px] px-5 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <p className="text-xs text-muted-foreground">
           © {new Date().getFullYear()} Leonardo Burbano. {t('rights')}
         </p>
         <ul className="flex flex-wrap justify-center gap-x-6 gap-y-3">
@@ -24,7 +24,7 @@ export default function Footer() {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground transition-colors"
               >
                 <Icon className="w-4 h-4" aria-hidden="true" />
                 {label}

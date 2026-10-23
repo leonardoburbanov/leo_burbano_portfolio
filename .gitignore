@@ -42,3 +42,9 @@ next-env.d.ts
 
 # content collections
 .content-collections
+# impeccable review captures and local tool config
+.impeccable/review/
+.impeccable/mocks/
+.impeccable/build/
+.claude/
+.impeccable/questions/

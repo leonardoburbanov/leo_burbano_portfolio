@@ -1,4 +1,4 @@
-import { Calendar, User, Tag } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { getTranslations, getLocale } from "next-intl/server";
 import { Link } from '@/i18n/routing';
 import NavBar from "@/components/NavBar";
@@ -14,94 +14,42 @@ export default async function BlogPage() {
   return (
     <>
       <NavBar />
-      <div className="min-h-screen pt-20 pb-20 bg-gradient-to-b from-background to-muted/20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12 overflow-visible">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent mb-4 leading-tight break-words overflow-visible">
-              {t('title')}
-            </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              {t('description')}
-            </p>
-          </div>
+      <main className="min-h-screen pt-32 pb-28">
+        <div className="mx-auto max-w-[1080px] px-5">
+          <h1 className="display text-[clamp(3rem,8vw,5.5rem)]">{t('title')}</h1>
+          <p className="lead mt-6 max-w-2xl">{t('description')}</p>
 
-          <div className="space-y-8">
-            {sortedPosts.map((post) => {
-              const postSlug = post.slug;
-              return (
-              <article
-                key={postSlug}
-                className="bg-card border border-border rounded-xl p-6 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10"
-              >
-                <Link href={`/blog/${postSlug}`}>
-                  <h2 className="text-2xl font-semibold text-foreground mb-3 hover:text-primary transition-colors">
-                    {post.title}
-                  </h2>
-                </Link>
-                
-                <p className="text-muted-foreground mb-4 leading-relaxed">
-                  {post.summary}
-                </p>
-
-                <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-4">
-                  <div className="flex items-center gap-2">
-                    <Calendar className="w-4 h-4" />
-                    <time dateTime={post.date}>
-                      {new Date(post.date).toLocaleDateString(locale, {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric'
-                      })}
-                    </time>
-                  </div>
-                  
-                  {post.author && (
-                    <div className="flex items-center gap-2">
-                      <User className="w-4 h-4" />
-                      <span>{post.author}</span>
-                    </div>
-                  )}
-
-                  {(() => {
-                    const tags = post.tags;
-                    return tags.length > 0 ? (
-                      <div className="flex items-center gap-2 flex-wrap">
-                        <Tag className="w-4 h-4" />
-                        <div className="flex gap-2 flex-wrap">
-                          {tags.map((tag: string) => (
-                            <span
-                              key={tag}
-                              className="px-2 py-1 bg-secondary text-secondary-foreground rounded-full text-xs font-medium border border-border/50"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    ) : null;
-                  })()}
-                </div>
-
+          <ul className="mt-16">
+            {sortedPosts.map((post) => (
+              <li key={post.slug}>
                 <Link
-                  href={`/blog/${postSlug}`}
-                  className="inline-flex items-center text-primary hover:text-primary/80 font-medium transition-colors"
+                  href={`/blog/${post.slug}`}
+                  className="group grid gap-3 border-t border-border py-10 md:grid-cols-[180px_minmax(0,1fr)_auto] md:gap-10"
                 >
-                  {t('readMore')} →
+                  <time dateTime={post.date} className="tabular text-[15px] text-muted-foreground md:pt-1.5">
+                    {new Date(post.date).toLocaleDateString(locale, { year: 'numeric', month: 'long', day: 'numeric' })}
+                  </time>
+                  <div>
+                    <h2 className="text-[clamp(1.5rem,2.8vw,2.1rem)] font-semibold tracking-[-0.025em] leading-tight transition-colors group-hover:text-blue-400">
+                      {post.title}
+                    </h2>
+                    <p className="mt-3 max-w-[62ch] text-[17px] leading-relaxed text-muted-foreground">{post.summary}</p>
+                    {post.tags.length > 0 && (
+                      <p className="mt-4 text-[15px] text-muted-foreground">{post.tags.join('  ·  ')}</p>
+                    )}
+                  </div>
+                  <ChevronRight
+                    className="hidden h-5 w-5 text-muted-foreground transition-transform group-hover:translate-x-1 md:mt-2 md:block"
+                    aria-hidden="true"
+                  />
                 </Link>
-              </article>
-              );
-            })}
-          </div>
+              </li>
+            ))}
+          </ul>
 
-          {sortedPosts.length === 0 && (
-            <div className="text-center py-12">
-              <p className="text-muted-foreground">{t('noPosts')}</p>
-            </div>
-          )}
+          {sortedPosts.length === 0 && <p className="border-t border-border py-12 text-muted-foreground">{t('noPosts')}</p>}
         </div>
-        </div>
-      </div>
+      </main>
       <Footer />
     </>
   );

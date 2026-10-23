@@ -39,7 +39,7 @@ export default async function OpengraphImage({
             {t('metric')}
           </div>
           <div style={{ display: 'flex', fontSize: 26, color: '#737373' }}>
-            Mercately (Techstars) · Taxflow (San Francisco) · Thoughtworks
+            Mercately (Techstars) · Houston AI (San Francisco) · Thoughtworks
           </div>
         </div>
       </div>

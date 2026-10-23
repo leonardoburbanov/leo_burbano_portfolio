@@ -1,7 +1,7 @@
 import { allPosts } from "content-collections";
 import { notFound } from "next/navigation";
 import { MDXContent } from "@content-collections/mdx/react";
-import { Calendar, User, Tag, ArrowLeft } from "lucide-react";
+import { ArrowLeft } from 'lucide-react';
 import { getTranslations, getLocale } from "next-intl/server";
 import { Link } from '@/i18n/routing';
 import NavBar from "@/components/NavBar";
@@ -106,90 +106,37 @@ export default async function BlogPostPage({
   return (
     <>
       <NavBar />
-      <div className="min-h-screen pt-20 pb-20 bg-gradient-to-b from-background to-muted/20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
-          {/* Back button */}
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span>{t('backToBlog')}</span>
+      <main className="min-h-screen pt-32 pb-28">
+        <div className="mx-auto max-w-[760px] px-5">
+          <Link href="/blog" className="link-chevron text-[15px]">
+            <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+            {t('backToBlog')}
           </Link>
 
-          {/* Article header */}
-          <article className="bg-card border border-border rounded-xl p-8 lg:p-12">
-            <header className="mb-8 overflow-visible">
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent mb-4 leading-tight break-words overflow-visible">
-                {getLocalizedField('title') as string}
-              </h1>
-
-              <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-6">
-                <div className="flex items-center gap-2">
-                  <Calendar className="w-4 h-4" />
-                  <time dateTime={post.date}>
-                    {new Date(post.date).toLocaleDateString(locale, {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric'
-                    })}
-                  </time>
-                </div>
-                
-                {post.author && (
-                  <div className="flex items-center gap-2">
-                    <User className="w-4 h-4" />
-                    <span>{post.author}</span>
-                  </div>
-                )}
-
+          <article className="mt-10">
+            <header className="mb-12 border-b border-border pb-10">
+              <h1 className="display text-[clamp(2.5rem,6vw,4rem)]">{getLocalizedField('title') as string}</h1>
+              {getLocalizedField('summary') && (
+                <p className="lead mt-6">{getLocalizedField('summary') as string}</p>
+              )}
+              <p className="mt-6 text-[15px] text-muted-foreground">
+                <time dateTime={post.date}>
+                  {new Date(post.date).toLocaleDateString(locale, { year: 'numeric', month: 'long', day: 'numeric' })}
+                </time>
+                {post.author && <> · {post.author}</>}
                 {(() => {
                   const tags = (getLocalizedField('tags') as string[] | undefined) || post.tags || [];
-                  return tags.length > 0 ? (
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <Tag className="w-4 h-4" />
-                      <div className="flex gap-2 flex-wrap">
-                        {tags.map((tag: string) => (
-                          <span
-                            key={tag}
-                            className="px-2 py-1 bg-secondary text-secondary-foreground rounded-full text-xs font-medium border border-border/50"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  ) : null;
+                  return tags.length > 0 ? <> · {tags.join(', ')}</> : null;
                 })()}
-              </div>
-
-              {getLocalizedField('summary') && (
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  {getLocalizedField('summary') as string}
-                </p>
-              )}
+              </p>
             </header>
 
-            {/* Article content */}
-            <div className="prose prose-invert max-w-none">
+            <div className="prose max-w-none">
               <MDXContent code={post.mdx} />
             </div>
           </article>
-
-          {/* Navigation */}
-          <div className="mt-8 flex justify-center">
-            <Link
-              href="/blog"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-secondary text-secondary-foreground rounded-lg hover:bg-accent transition-colors border border-border"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              <span>{t('backToBlog')}</span>
-            </Link>
-          </div>
         </div>
-        </div>
-      </div>
+      </main>
       <Footer />
     </>
   );

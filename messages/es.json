@@ -23,6 +23,7 @@
     "hostedBy": "Por"
   },
   "HeroSection": {
+    "tokens": ["agentes","LLM","en","producción","que","venden"],
     "name": "Leonardo Burbano",
     "title": "Senior AI Engineer & Tech Lead",
     "valueProp": "Construyo agentes LLM en producción que venden: sistemas multiagente que atienden más de 1M de solicitudes al día para más de 1.500 negocios en más de 20 países.",
@@ -30,7 +31,6 @@
     "avatarAlt": "Leonardo Burbano",
     "ctaLinkedIn": "Conectar en LinkedIn",
     "ctaCaseStudy": "Ver caso de estudio",
-    "badge": "Abierto a roles Senior/Staff AI Engineer con equipos de EE. UU.",
     "scroll": "Desliza"
   },
   "ProjectsSection": {
@@ -285,9 +285,20 @@
     "noPosts": "Aún no hay publicaciones. ¡Vuelve pronto!",
     "author": "Autor"
   },
+  "Stack": {
+    "title": "Mi stack",
+    "description": "Las herramientas con las que llevo agentes de IA a producción.",
+    "hint": "Pasa el cursor por un nodo para ver su nombre.",
+    "groups": {
+      "ai": "IA y LLMs",
+      "backend": "Lenguajes y backend",
+      "data": "Datos y MLOps",
+      "cloud": "Nube"
+    }
+  },
   "CaseStudy": {
     "eyebrow": "Caso de estudio destacado",
-    "title": "Agentes de ventas con IA de Mercately",
+    "title": "<g>Agentes de ventas con IA</g> de Mercately",
     "problemTitle": "Problema",
     "problem": "Las pymes de LatAm pierden ventas porque no pueden responder a tiempo los mensajes de WhatsApp, Instagram y Messenger.",
     "roleTitle": "Mi rol",
@@ -339,7 +350,7 @@
   "Speaking": {
     "title": "Charlas y comunidad",
     "description": "Comparto lo que aprendo llevando agentes a producción.",
-    "allEvents": "Eventos a los que asistiré",
+    "allEvents": "Eventos de la comunidad",
     "items": {
       "devfest": {
         "name": "Google DevFest Quito 2026",
@@ -360,7 +371,6 @@
     },
     "slides": "Diapositivas",
     "event": "Evento",
-    "slidesNote": "Diapositivas en español",
     "eyebrow": "Charlas",
     "slidesPdf": "Diapositivas (PDF)"
   },
@@ -371,7 +381,7 @@
   },
   "Contact": {
     "title": "Hablemos",
-    "description": "¿Buscas un Senior o Staff AI Engineer? La mejor forma de contactarme es por LinkedIn.",
+    "description": "¿Construyes agentes de IA, estás contratando u organizas un evento? La mejor forma de contactarme es por LinkedIn.",
     "cta": "Escríbeme por LinkedIn",
     "eyebrow": "Contacto",
     "youtube": "Ver en YouTube"
@@ -388,6 +398,8 @@
     "eyebrow": "En LinkedIn",
     "title": "Publicaciones recientes",
     "follow": "Seguir en LinkedIn",
+    "headline": "Senior AI Engineer | Production LLM Agents",
+    "more": "… más",
     "viewPost": "Ver en LinkedIn",
     "cardTitle": "Publicación en LinkedIn",
     "cardCta": "Leer la publicación"

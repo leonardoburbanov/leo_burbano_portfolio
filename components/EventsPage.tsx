@@ -2,11 +2,10 @@
 
 import { useMemo, useState } from 'react';
 import Image from 'next/image';
-import { MapPin } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import FeaturedEventSpotlight from '@/components/FeaturedEventSpotlight';
 import EventFreeBadge from '@/components/EventFreeBadge';
-import { events } from '@/data/events';
+import { events, getFeaturedEvent } from '@/data/events';
 
 type Filter = 'upcoming' | 'past';
 
@@ -50,109 +49,80 @@ export default function EventsPage() {
       hour12: false,
     }).format(new Date(datetime));
 
+  const tabClass = (active: boolean) =>
+    `pb-2 text-[17px] transition-colors border-b ${
+      active ? 'border-foreground text-foreground' : 'border-transparent text-muted-foreground hover:text-foreground'
+    }`;
+
   return (
-    <div className="min-h-screen pt-20 pb-20 bg-gradient-to-b from-background to-muted/20">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between mb-10">
-            <h1 className="text-3xl sm:text-4xl font-bold text-foreground">{t('title')}</h1>
-            <div className="inline-flex rounded-lg border border-border bg-muted/40 p-1">
-              <button
-                type="button"
-                onClick={() => setFilter('upcoming')}
-                className={`rounded-md px-4 py-1.5 text-sm font-medium transition-colors ${
-                  filter === 'upcoming'
-                    ? 'bg-background text-foreground shadow-sm'
-                    : 'text-muted-foreground hover:text-foreground'
-                }`}
-              >
-                {t('upcoming')}
-              </button>
-              <button
-                type="button"
-                onClick={() => setFilter('past')}
-                className={`rounded-md px-4 py-1.5 text-sm font-medium transition-colors ${
-                  filter === 'past'
-                    ? 'bg-background text-foreground shadow-sm'
-                    : 'text-muted-foreground hover:text-foreground'
-                }`}
-              >
-                {t('past')}
-              </button>
-            </div>
-          </div>
+    <main className="min-h-screen pt-32 pb-28">
+      <div className="mx-auto max-w-[1080px] px-5">
+        <h1 className="display text-[clamp(3rem,8vw,5.5rem)]">{t('title')}</h1>
+        <div className="mt-10 flex gap-8" role="tablist">
+          <button type="button" role="tab" aria-selected={filter === 'upcoming'} onClick={() => setFilter('upcoming')} className={tabClass(filter === 'upcoming')}>
+            {t('upcoming')}
+          </button>
+          <button type="button" role="tab" aria-selected={filter === 'past'} onClick={() => setFilter('past')} className={tabClass(filter === 'past')}>
+            {t('past')}
+          </button>
         </div>
 
-        {filter === 'upcoming' && <FeaturedEventSpotlight />}
+        <div className="mt-12">
+          {filter === 'upcoming' && <FeaturedEventSpotlight />}
 
-        <div className="max-w-3xl mx-auto">
           {filteredEvents.length === 0 ? (
-            <p className="text-center text-muted-foreground py-12">
-              {filter === 'past' ? t('emptyPast') : t('emptyUpcoming')}
-            </p>
+            filter === 'past' || !getFeaturedEvent() ? (
+              <p className="border-t border-border py-12 text-[17px] text-muted-foreground">
+                {filter === 'past' ? t('emptyPast') : t('emptyUpcoming')}
+              </p>
+            ) : null
           ) : (
-            <div className="space-y-0">
-              {filteredEvents.map((event, index) => {
+            <ul>
+              {filteredEvents.map((event) => {
                 const { dayMonth, weekday } = formatDateLabel(event.datetime);
-                const isLast = index === filteredEvents.length - 1;
-
                 return (
-                  <div key={event.id} className="flex gap-4 sm:gap-6">
-                    <div className="w-16 sm:w-20 shrink-0 pt-4 text-right">
-                      <p className="text-sm sm:text-base font-semibold text-foreground leading-tight">
-                        {dayMonth}
-                      </p>
-                      <p className="text-xs text-muted-foreground capitalize mt-0.5">{weekday}</p>
-                    </div>
-
-                    <div className="relative flex flex-col items-center">
-                      <div className="mt-5 h-2.5 w-2.5 rounded-full bg-border ring-4 ring-background" />
-                      {!isLast && <div className="w-px flex-1 bg-border min-h-8" />}
-                    </div>
-
+                  <li key={event.id}>
                     <a
                       href={event.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group flex-1 min-w-0 mb-6 bg-card border border-border rounded-xl p-4 sm:p-5 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10"
+                      className="group grid grid-cols-[minmax(0,1fr)_auto] gap-6 border-t border-border py-8 md:grid-cols-[160px_minmax(0,1fr)_auto] md:gap-10"
                     >
-                      <div className="flex gap-4">
-                        <div className="flex-1 min-w-0">
-                          <div className="flex flex-wrap items-center gap-2 mb-1">
-                            <p className="text-sm text-muted-foreground">
-                              {formatTime(event.datetime)}
-                            </p>
-                            {event.free && <EventFreeBadge />}
-                          </div>
-                          <h2 className="text-base sm:text-lg font-semibold text-foreground group-hover:text-primary transition-colors leading-snug mb-2">
-                            {event.title}
-                          </h2>
-                          <p className="text-sm text-muted-foreground mb-2">
-                            {t('hostedBy')} {event.hosts}
-                          </p>
-                          <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
-                            <MapPin className="h-3.5 w-3.5 shrink-0" />
-                            <span>{event.location}</span>
-                          </div>
-                        </div>
-                        <div className="shrink-0">
-                          <Image
-                            src={event.image}
-                            alt={event.title}
-                            width={80}
-                            height={80}
-                            className="h-16 w-16 sm:h-20 sm:w-20 rounded-lg object-cover"
-                          />
-                        </div>
+                      <div className="col-span-2 md:col-span-1">
+                        <p className="tabular text-[17px] font-semibold">{dayMonth}</p>
+                        <p className="text-[15px] capitalize text-muted-foreground">
+                          {weekday} · {formatTime(event.datetime)}
+                        </p>
                       </div>
+                      <div className="min-w-0">
+                        <h2 className="text-[clamp(1.35rem,2.4vw,1.75rem)] font-semibold tracking-[-0.02em] leading-snug transition-colors group-hover:text-blue-400">
+                          {event.title}
+                        </h2>
+                        <p className="mt-1 text-[15px] text-muted-foreground">
+                          {event.location} · {t('hostedBy')} {event.hosts}
+                          {event.free && (
+                            <>
+                              {'  ·  '}
+                              <EventFreeBadge />
+                            </>
+                          )}
+                        </p>
+                      </div>
+                      <Image
+                        src={event.image}
+                        alt=""
+                        width={96}
+                        height={96}
+                        className="h-16 w-16 rounded-xl object-cover md:h-20 md:w-20"
+                      />
                     </a>
-                  </div>
+                  </li>
                 );
               })}
-            </div>
+            </ul>
           )}
         </div>
       </div>
-    </div>
+    </main>
   );
 }

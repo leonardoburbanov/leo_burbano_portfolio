@@ -29,7 +29,7 @@ export default function ScrollProgress() {
 
   return (
     <div aria-hidden="true" className="fixed top-0 left-0 right-0 z-50 h-0.5">
-      <div ref={barRef} className="h-full origin-left bg-foreground" style={{ transform: 'scaleX(0)' }} />
+      <div ref={barRef} className="h-full origin-left" style={{ transform: 'scaleX(0)', backgroundImage: 'var(--gradient-blue)' }} />
     </div>
   );
 }

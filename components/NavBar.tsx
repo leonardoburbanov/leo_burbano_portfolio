@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
 import { Github, Instagram, LinkedinIcon, Menu, X, Youtube } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { Link, usePathname } from '@/i18n/routing';
@@ -65,9 +64,7 @@ export default function NavBar() {
   }, [isHome]);
 
   const linkClass = (isActive: boolean) =>
-    `rounded-full px-3 py-1.5 text-sm font-medium transition-colors ${
-      isActive ? 'bg-accent text-foreground' : 'text-muted-foreground hover:text-foreground hover:bg-accent/60'
-    }`;
+    `text-[13px] tracking-[-0.005em] transition-colors ${isActive ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'}`;
 
   const navLinks = (
     <>
@@ -83,74 +80,73 @@ export default function NavBar() {
   );
 
   return (
-    <nav className="fixed inset-x-0 top-3 z-40 px-3">
-      <div
-        className={`mx-auto max-w-6xl rounded-3xl border px-3 sm:px-4 transition-all duration-300 ${
-          isScrolled || isMenuOpen
-            ? 'border-border bg-background/80 backdrop-blur-xl shadow-lg shadow-foreground/5'
-            : 'border-transparent bg-transparent'
-        }`}
-      >
-        <div className="flex h-14 items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 rounded-full pr-2 hover:opacity-80 transition-opacity">
-            <Image src="/foto_white.png" alt="" width={32} height={32} className="h-8 w-8 rounded-full object-cover" />
-            <span className="hidden min-[400px]:inline whitespace-nowrap font-semibold text-lg">Leonardo Burbano</span>
-          </Link>
+    <nav
+      className={`fixed inset-x-0 top-0 z-40 transition-colors duration-300 ${
+        isScrolled || isMenuOpen
+          ? 'border-b border-border bg-background/75 backdrop-blur-xl backdrop-saturate-150'
+          : 'border-b border-transparent'
+      }`}
+    >
+      <div className="mx-auto flex h-12 max-w-[1080px] items-center justify-between px-5">
+        <Link href="/" className="text-[15px] font-semibold tracking-[-0.02em] hover:opacity-70 transition-opacity">
+          Leonardo Burbano
+        </Link>
 
-          <div className="hidden lg:flex items-center gap-1">{navLinks}</div>
+        <div className="hidden lg:flex items-center gap-7">{navLinks}</div>
 
-          <div className="flex items-center gap-1 sm:gap-2">
-            <div className="hidden xl:flex items-center">
-              {socials.map(({ href, label, Icon }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 text-muted-foreground hover:text-foreground transition-colors rounded-full hover:bg-accent"
-                  aria-label={label}
-                >
-                  <Icon className="w-4 h-4" />
-                </a>
-              ))}
-            </div>
+        <div className="flex items-center gap-3">
+          <div className="hidden xl:flex items-center gap-3">
+            {socials.map(({ href, label, Icon }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                aria-label={label}
+              >
+                <Icon className="h-4 w-4" />
+              </a>
+            ))}
+          </div>
 
-            <LanguageToggle />
-            <ThemeToggle />
+          <LanguageToggle />
+          <ThemeToggle />
 
-            <button
-              type="button"
-              onClick={() => setIsMenuOpen((open) => !open)}
-              aria-expanded={isMenuOpen}
-              aria-controls="mobile-menu"
-              aria-label={t('menu')}
-              className="lg:hidden p-2 text-muted-foreground hover:text-foreground transition-colors rounded-full hover:bg-accent"
-            >
-              {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
+          <button
+            type="button"
+            onClick={() => setIsMenuOpen((open) => !open)}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-menu"
+            aria-label={t('menu')}
+            className="lg:hidden -mr-1 p-1 text-muted-foreground hover:text-foreground transition-colors"
+          >
+            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
+      </div>
+
+      {isMenuOpen && (
+        <div id="mobile-menu" className="lg:hidden mx-auto max-w-[1080px] px-5 pb-8 pt-2">
+          <div className="flex flex-col gap-4 [&>a]:text-2xl [&>a]:font-semibold [&>a]:tracking-[-0.02em] [&>a]:text-foreground">
+            {navLinks}
+          </div>
+          <div className="mt-8 flex items-center gap-5">
+            {socials.map(({ href, label, Icon }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                aria-label={label}
+              >
+                <Icon className="h-5 w-5" />
+              </a>
+            ))}
           </div>
         </div>
-
-        {isMenuOpen && (
-          <div id="mobile-menu" className="lg:hidden flex flex-col items-start gap-1 pb-4 pt-1">
-            {navLinks}
-            <div className="mt-2 flex items-center gap-1">
-              {socials.map(({ href, label, Icon }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 text-muted-foreground hover:text-foreground transition-colors rounded-full hover:bg-accent"
-                  aria-label={label}
-                >
-                  <Icon className="w-4 h-4" />
-                </a>
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
+      )}
     </nav>
   );
 }

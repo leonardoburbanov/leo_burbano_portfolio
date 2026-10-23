@@ -1,11 +1,8 @@
 import { useLocale, useTranslations } from 'next-intl';
-import { Network, UserRound } from 'lucide-react';
 import ArchitectureDiagram from '@/components/ArchitectureDiagram';
 import CompanyLogo from '@/components/CompanyLogo';
-import SectionHeading from '@/components/SectionHeading';
 import CountUp from '@/components/motion/CountUp';
 import Reveal from '@/components/motion/Reveal';
-import SpotlightCard from '@/components/motion/SpotlightCard';
 import { caseStudy } from '@/data/case-study';
 
 export default function CaseStudySection() {
@@ -14,85 +11,56 @@ export default function CaseStudySection() {
   const architecture = t.raw('architecture') as string[];
 
   return (
-    <section id="case-study" className="relative py-24 scroll-mt-20">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
-          <SectionHeading eyebrow={t('eyebrow')} title={t('title')} />
+    <section id="case-study" className="relative py-20 sm:py-28 scroll-mt-12">
+      <div className="mx-auto max-w-[1080px] px-5">
+        <Reveal className="max-w-3xl">
+          <CompanyLogo id="mercately" height={26} />
+          <h2 className="headline mt-8">
+            {t.rich('title', { g: (chunks) => <span className="text-blue-gradient">{chunks}</span> })}
+          </h2>
+        </Reveal>
 
-          <div className="grid gap-4 lg:grid-cols-2">
-            <Reveal>
-              <SpotlightCard className="h-full p-6 sm:p-8">
-                <div className="mb-4 flex items-center gap-3">
-                  <span className="rounded-xl bg-secondary p-2.5 text-secondary-foreground">
-                    <Network className="h-5 w-5" aria-hidden="true" />
-                  </span>
-                  <h3 className="text-lg font-semibold text-foreground">{t('problemTitle')}</h3>
-                </div>
-                <p className="text-muted-foreground leading-relaxed">{t('problem')}</p>
-              </SpotlightCard>
-            </Reveal>
-            <Reveal delay={100}>
-              <SpotlightCard className="h-full p-6 sm:p-8">
-                <div className="mb-4 flex items-center gap-3">
-                  <span className="rounded-xl bg-secondary p-2.5 text-secondary-foreground">
-                    <UserRound className="h-5 w-5" aria-hidden="true" />
-                  </span>
-                  <h3 className="text-lg font-semibold text-foreground">{t('roleTitle')}</h3>
-                </div>
-                <p className="text-muted-foreground leading-relaxed">{t('role')}</p>
-              </SpotlightCard>
-            </Reveal>
-          </div>
-
-          <Reveal className="mt-4">
-            <SpotlightCard className="p-6 sm:p-8">
-              <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
-                <h3 className="text-lg font-semibold text-foreground">{t('architectureTitle')}</h3>
-                <CompanyLogo id="mercately" height={20} />
-              </div>
-              <div className="grid gap-8 lg:grid-cols-5 lg:items-center">
-                <ul className="space-y-3 lg:col-span-2">
-                  {architecture.map((item) => (
-                    <li key={item} className="flex gap-3 text-muted-foreground leading-relaxed">
-                      <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-foreground/60" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                <div className="lg:col-span-3 rounded-xl border border-border bg-background p-3 sm:p-5">
-                  <ArchitectureDiagram />
-                </div>
-              </div>
-            </SpotlightCard>
+        <div className="mt-14 grid gap-10 sm:mt-20 md:grid-cols-2 md:gap-16">
+          <Reveal>
+            <p className="lead">
+              <strong>{t('problemTitle')}.</strong> {t('problem')}
+            </p>
           </Reveal>
+          <Reveal delay={120}>
+            <p className="lead">
+              <strong>{t('roleTitle')}.</strong> {t('role')}
+            </p>
+          </Reveal>
+        </div>
 
-          <h3 className="mt-12 mb-4 text-lg font-semibold text-foreground">{t('resultsTitle')}</h3>
-          <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-            {caseStudy.metrics.map((metric, index) => (
-              <Reveal key={metric.labelKey} delay={index * 90}>
-                <SpotlightCard className="h-full p-5 sm:p-6 text-center">
-                  <p className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground tabular-nums">
-                    <CountUp to={metric.to} suffix={metric.suffix} locale={locale} />
-                  </p>
-                  <p className="mt-2 text-sm text-muted-foreground">{t(`metrics.${metric.labelKey}`)}</p>
-                </SpotlightCard>
+        <h3 className="sr-only">{t('resultsTitle')}</h3>
+        <dl className="mt-20 grid grid-cols-2 gap-x-8 border-t border-border lg:grid-cols-4 sm:mt-28">
+          {caseStudy.metrics.map((metric, index) => (
+            <Reveal key={metric.labelKey} delay={index * 80} className="border-b border-border py-8 lg:border-b-0">
+              <dd className="display tabular text-[clamp(2.5rem,5vw,4rem)]">
+                <CountUp to={metric.to} suffix={metric.suffix} locale={locale} />
+              </dd>
+              <dt className="mt-2 text-[17px] text-muted-foreground">{t(`metrics.${metric.labelKey}`)}</dt>
+            </Reveal>
+          ))}
+        </dl>
+
+        <div className="mt-24 sm:mt-32">
+          <Reveal>
+            <h3 className="text-[clamp(1.75rem,3.2vw,2.5rem)] font-semibold tracking-[-0.025em] leading-tight">
+              {t('architectureTitle')}
+            </h3>
+          </Reveal>
+          <Reveal delay={100} className="mt-10 sm:mt-14">
+            <ArchitectureDiagram />
+          </Reveal>
+          <ul className="mt-14 grid gap-x-12 md:grid-cols-2">
+            {architecture.map((item, index) => (
+              <Reveal as="li" key={item} delay={index * 60}>
+                <p className="border-t border-border py-5 text-[17px] leading-relaxed text-muted-foreground">{item}</p>
               </Reveal>
             ))}
-          </div>
-
-          <Reveal className="mt-10">
-            <h3 className="mb-3 text-lg font-semibold text-foreground">{t('stackTitle')}</h3>
-            <div className="flex flex-wrap gap-2">
-              {caseStudy.stack.map((tech) => (
-                <span
-                  key={tech}
-                  className="rounded-full border border-border bg-secondary px-3.5 py-1.5 text-sm font-medium text-secondary-foreground transition-colors hover:bg-accent"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </Reveal>
+          </ul>
         </div>
       </div>
     </section>

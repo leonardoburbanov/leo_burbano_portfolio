@@ -14,7 +14,7 @@ export default function LanguageToggle() {
   const pathname = usePathname();
 
   return (
-    <div className="inline-flex items-center rounded-md border border-border p-0.5 text-xs font-semibold" role="group" aria-label="Language">
+    <div className="inline-flex items-center gap-1.5 text-[13px]" role="group" aria-label="Language">
       {locales.map(({ code, label, name }) => {
         const isActive = locale === code;
         return (
@@ -25,8 +25,8 @@ export default function LanguageToggle() {
             onClick={() => !isActive && router.replace(pathname, { locale: code })}
             aria-pressed={isActive}
             title={name}
-            className={`px-2 py-1 rounded transition-colors ${
-              isActive ? 'bg-primary text-primary-foreground' : 'text-muted-foreground hover:text-foreground'
+            className={`transition-colors ${
+              isActive ? 'text-foreground font-semibold' : 'text-muted-foreground hover:text-foreground'
             }`}
           >
             {label}
