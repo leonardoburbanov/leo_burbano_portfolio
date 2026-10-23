@@ -1,11 +1,9 @@
 export const caseStudy = {
-  // Drop the diagram in /public (e.g. /case-study/mercately-architecture.svg) and set its path here.
-  architectureDiagram: null as string | null,
   metrics: [
-    { value: '1M+', labelKey: 'requests' },
-    { value: '1,500+', labelKey: 'businesses' },
-    { value: '20+', labelKey: 'countries' },
-    { value: '50%', labelKey: 'cost' },
+    { to: 1, suffix: 'M+', labelKey: 'requests' },
+    { to: 1500, suffix: '+', labelKey: 'businesses' },
+    { to: 20, suffix: '+', labelKey: 'countries' },
+    { to: 50, suffix: '%', labelKey: 'cost' },
   ],
   stack: ['Python', 'TypeScript', 'LangGraph', 'RAG', 'MCP', 'Google Cloud', 'FastAPI', 'NestJS', 'Next.js'],
 } as const;

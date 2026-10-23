@@ -1,6 +1,9 @@
 import { ArrowRight } from 'lucide-react';
 import { getLocale, getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/routing';
+import SectionHeading from '@/components/SectionHeading';
+import Reveal from '@/components/motion/Reveal';
+import SpotlightCard from '@/components/motion/SpotlightCard';
 import { getLocalizedPosts } from '@/lib/posts';
 
 export default async function LatestPostsSection() {
@@ -11,33 +14,31 @@ export default async function LatestPostsSection() {
   if (posts.length === 0) return null;
 
   return (
-    <section id="writing" className="py-20 scroll-mt-20">
+    <section id="writing" className="relative py-24 scroll-mt-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent mb-10 leading-tight">
-            {t('title')}
-          </h2>
-          <div className="grid gap-6 md:grid-cols-3">
-            {posts.map((post) => (
-              <Link
-                key={post.slug}
-                href={`/blog/${post.slug}`}
-                className="group bg-card border border-border rounded-xl p-6 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10"
-              >
-                <time dateTime={post.date} className="text-sm text-muted-foreground">
-                  {new Date(post.date).toLocaleDateString(locale, { year: 'numeric', month: 'short', day: 'numeric' })}
-                </time>
-                <h3 className="text-lg font-semibold text-foreground mt-2 mb-2 group-hover:text-primary transition-colors">
-                  {post.title}
-                </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{post.summary}</p>
-              </Link>
+        <div className="max-w-6xl mx-auto">
+          <SectionHeading eyebrow={t('eyebrow')} title={t('title')} />
+          <div className="grid gap-5 md:grid-cols-3">
+            {posts.map((post, index) => (
+              <Reveal key={post.slug} delay={index * 100}>
+                <Link href={`/blog/${post.slug}`} className="group block h-full">
+                  <SpotlightCard className="h-full p-6">
+                    <time dateTime={post.date} className="text-sm text-muted-foreground">
+                      {new Date(post.date).toLocaleDateString(locale, { year: 'numeric', month: 'short', day: 'numeric' })}
+                    </time>
+                    <h3 className="mt-2 mb-2 text-lg font-semibold text-foreground">{post.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{post.summary}</p>
+                  </SpotlightCard>
+                </Link>
+              </Reveal>
             ))}
           </div>
-          <Link href="/blog" className="inline-flex items-center gap-2 mt-8 font-medium text-foreground hover:opacity-80 transition-opacity">
-            {t('allPosts')}
-            <ArrowRight className="w-4 h-4" aria-hidden="true" />
-          </Link>
+          <Reveal className="mt-10">
+            <Link href="/blog" className="group inline-flex items-center gap-2 font-medium text-foreground">
+              {t('allPosts')}
+              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
+            </Link>
+          </Reveal>
         </div>
       </div>
     </section>

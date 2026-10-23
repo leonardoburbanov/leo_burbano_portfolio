@@ -6,8 +6,7 @@ export const socialLinks = {
   linkedin: 'https://www.linkedin.com/in/leoburbano',
   github: 'https://github.com/leonardoburbanov',
   instagram: 'https://www.instagram.com/leo.burbano.ai/',
-  // Set the channel URL once it is live; the link stays hidden while empty.
-  youtube: '',
+  youtube: 'https://www.youtube.com/@LeoBurbanoAI',
 } as const;
 
 // Path for a locale under `localePrefix: 'as-needed'` (English has no prefix).

@@ -29,7 +29,9 @@
     "proofLabel": "He trabajado en",
     "avatarAlt": "Leonardo Burbano",
     "ctaLinkedIn": "Conectar en LinkedIn",
-    "ctaCaseStudy": "Ver caso de estudio"
+    "ctaCaseStudy": "Ver caso de estudio",
+    "badge": "Abierto a roles Senior/Staff AI Engineer con equipos de EE. UU.",
+    "scroll": "Desliza"
   },
   "ProjectsSection": {
     "title": "Proyectos",
@@ -40,7 +42,8 @@
       "frontend": "Frontend",
       "liveDemo": "Demo",
       "presentation": "Diapositivas del taller",
-      "viewMore": "Más en GitHub"
+      "viewMore": "Más en GitHub",
+      "comingSoon": "Próximamente"
     },
     "projects": {
       "navbe-ai": {
@@ -50,8 +53,13 @@
       "gemini-enterprise-sales-agent": {
         "title": "Agente de ventas con Gemini Enterprise",
         "description": "Agente de ventas de referencia para equipos que adoptan Gemini Enterprise Agent Platform de Google. Hecho con Google ADK: multiagente con un subagente para objeciones de precio, desplegado en Agent Engine con trazas; enseñado en un taller práctico."
+      },
+      "small-llm-finetuning": {
+        "title": "Fine-tuning de un LLM pequeño",
+        "description": "Fine-tuning de modelos de lenguaje pequeños para tareas de un dominio específico, con buen rendimiento y una fracción del cómputo."
       }
-    }
+    },
+    "eyebrow": "Proyectos personales"
   },
   "GeminiPresentation": {
     "backToProjects": "Volver a proyectos",
@@ -325,7 +333,8 @@
         "period": "abr 2024 - feb 2025",
         "impact": "Alertas de desabastecimiento con ML que ahorraron más de 1M USD a una aerolínea importante."
       }
-    }
+    },
+    "eyebrow": "Trayectoria"
   },
   "Speaking": {
     "title": "Charlas y comunidad",
@@ -348,16 +357,23 @@
         "name": "Ecuador Tech Week 2026",
         "detail": "Panelista"
       }
-    }
+    },
+    "slides": "Diapositivas",
+    "event": "Evento",
+    "slidesNote": "Diapositivas en español",
+    "eyebrow": "Charlas"
   },
   "LatestPosts": {
     "title": "Artículos recientes",
-    "allPosts": "Todos los artículos"
+    "allPosts": "Todos los artículos",
+    "eyebrow": "Blog"
   },
   "Contact": {
     "title": "Hablemos",
     "description": "¿Buscas un Senior o Staff AI Engineer? La mejor forma de contactarme es por LinkedIn.",
-    "cta": "Escríbeme por LinkedIn"
+    "cta": "Escríbeme por LinkedIn",
+    "eyebrow": "Contacto",
+    "youtube": "Ver en YouTube"
   },
   "Footer": {
     "content": "Contenido",
@@ -366,5 +382,34 @@
   "OgImage": {
     "title": "Senior AI Engineer & Tech Lead",
     "metric": "Agentes LLM en producción · 1M+ solicitudes/día · 1.500+ negocios · 20+ países"
+  },
+  "LinkedInPosts": {
+    "eyebrow": "En LinkedIn",
+    "title": "Publicaciones recientes",
+    "follow": "Seguir en LinkedIn",
+    "viewPost": "Ver en LinkedIn"
+  },
+  "Diagram": {
+    "title": "Arquitectura multi-tenant de agentes de ventas con IA",
+    "desc": "Los canales de mensajería alimentan un arnés de agente compartido: un agente orquestador con subagentes de ventas, agendamiento y soporte, enrutamiento de LLM, contexto y memoria, herramientas y skills, límites y observabilidad. El arnés se conecta a catálogo, calendario y pagos, y mantiene aislado a cada negocio como un tenant.",
+    "channels": "Canales",
+    "harness": "Arnés del agente",
+    "orchestrator": "Agente orquestador",
+    "sales": "Ventas",
+    "scheduling": "Agendamiento",
+    "support": "Soporte",
+    "llm": "Enrutamiento LLM",
+    "memory": "Contexto y memoria",
+    "tools": "Tools y skills",
+    "guardrails": "Límites y reglas",
+    "observability": "Evals y monitoreo",
+    "connectors": "Conectores",
+    "catalog": "Catálogo y CRM",
+    "calendar": "Calendario",
+    "payments": "Pagos",
+    "tenantA": "Negocio A",
+    "tenantB": "Negocio B",
+    "tenantN": "Negocio N",
+    "caption": "Un arnés compartido. Configuración, conocimiento y límites aislados por negocio."
   }
 }

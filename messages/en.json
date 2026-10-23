@@ -29,7 +29,9 @@
     "proofLabel": "Built at",
     "avatarAlt": "Leonardo Burbano",
     "ctaLinkedIn": "Connect on LinkedIn",
-    "ctaCaseStudy": "View case study"
+    "ctaCaseStudy": "View case study",
+    "badge": "Open to Senior/Staff AI Engineer roles with US teams",
+    "scroll": "Scroll"
   },
   "ProjectsSection": {
     "title": "Projects",
@@ -40,7 +42,8 @@
       "frontend": "Frontend",
       "liveDemo": "Live demo",
       "presentation": "Workshop slides",
-      "viewMore": "More on GitHub"
+      "viewMore": "More on GitHub",
+      "comingSoon": "Coming soon"
     },
     "projects": {
       "navbe-ai": {
@@ -50,8 +53,13 @@
       "gemini-enterprise-sales-agent": {
         "title": "Gemini Enterprise Sales Agent",
         "description": "Reference sales agent for teams adopting Google's Gemini Enterprise Agent Platform. Built with Google ADK: multi-agent with a price-objection sub-agent, deployed on Agent Engine with tracing; taught as a hands-on workshop."
+      },
+      "small-llm-finetuning": {
+        "title": "Fine-tuning a Small LLM",
+        "description": "Custom fine-tuning of small language models for domain-specific tasks, tuned for performance at a fraction of the compute."
       }
-    }
+    },
+    "eyebrow": "Side projects"
   },
   "GeminiPresentation": {
     "backToProjects": "Back to projects",
@@ -325,7 +333,8 @@
         "period": "Apr 2024 - Feb 2025",
         "impact": "ML stock-out alerts that saved $1M+ for a major airline."
       }
-    }
+    },
+    "eyebrow": "Career"
   },
   "Speaking": {
     "title": "Speaking & Community",
@@ -348,16 +357,23 @@
         "name": "Ecuador Tech Week 2026",
         "detail": "Panelist"
       }
-    }
+    },
+    "slides": "Slides",
+    "event": "Event",
+    "slidesNote": "Slides in Spanish",
+    "eyebrow": "Talks"
   },
   "LatestPosts": {
     "title": "Latest writing",
-    "allPosts": "All posts"
+    "allPosts": "All posts",
+    "eyebrow": "Blog"
   },
   "Contact": {
     "title": "Let's talk",
     "description": "Hiring for a Senior or Staff AI Engineer role? The best way to reach me is on LinkedIn.",
-    "cta": "Message me on LinkedIn"
+    "cta": "Message me on LinkedIn",
+    "eyebrow": "Contact",
+    "youtube": "Watch on YouTube"
   },
   "Footer": {
     "content": "Content",
@@ -366,5 +382,34 @@
   "OgImage": {
     "title": "Senior AI Engineer & Tech Lead",
     "metric": "Production LLM agents · 1M+ requests/day · 1,500+ businesses · 20+ countries"
+  },
+  "LinkedInPosts": {
+    "eyebrow": "On LinkedIn",
+    "title": "Recent posts",
+    "follow": "Follow on LinkedIn",
+    "viewPost": "View on LinkedIn"
+  },
+  "Diagram": {
+    "title": "Multi-tenant AI sales agent architecture",
+    "desc": "Messaging channels feed a shared agent harness: an orchestrator agent with sales, scheduling and support sub-agents, LLM routing, context and memory, tools and skills, guardrails and observability. The harness connects to catalog, calendar and payments, and keeps each business isolated as a tenant.",
+    "channels": "Channels",
+    "harness": "Agent harness",
+    "orchestrator": "Orchestrator agent",
+    "sales": "Sales",
+    "scheduling": "Scheduling",
+    "support": "Support",
+    "llm": "LLM routing",
+    "memory": "Context & memory",
+    "tools": "Tools & skills",
+    "guardrails": "Guardrails & limits",
+    "observability": "Evals & observability",
+    "connectors": "Connectors",
+    "catalog": "Catalog & CRM",
+    "calendar": "Calendar",
+    "payments": "Payments",
+    "tenantA": "Business A",
+    "tenantB": "Business B",
+    "tenantN": "Business N",
+    "caption": "One shared harness. Isolated configuration, knowledge and limits per business."
   }
 }

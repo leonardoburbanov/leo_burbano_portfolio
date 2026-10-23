@@ -9,49 +9,32 @@ interface ThemeContextType {
   toggleTheme: () => void;
 }
 
+const STORAGE_KEY = 'portfolio-theme';
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
+// Light by default. The inline script in app/layout.tsx applies a saved "dark"
+// choice before first paint; this provider keeps React state in sync with it.
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>('dark');
-  const [mounted, setMounted] = useState(false);
+  const [theme, setTheme] = useState<Theme>('light');
 
   useEffect(() => {
-    // Get the current theme from localStorage or default to dark
-    const savedTheme = localStorage.getItem('theme') as Theme;
-    
-    if (savedTheme && (savedTheme === 'light' || savedTheme === 'dark')) {
-      setTheme(savedTheme);
-    } else {
-      // No saved theme, default to dark and save it
-      setTheme('dark');
-      localStorage.setItem('theme', 'dark');
-    }
-    setMounted(true);
+    try {
+      if (localStorage.getItem(STORAGE_KEY) === 'dark') setTheme('dark');
+    } catch {}
   }, []);
 
-  useEffect(() => {
-    if (mounted) {
-      // Update document class when theme changes
-      document.documentElement.classList.toggle('dark', theme === 'dark');
-      localStorage.setItem('theme', theme);
-    }
-  }, [theme, mounted]);
-
   const toggleTheme = () => {
-    setTheme(prev => prev === 'light' ? 'dark' : 'light');
+    setTheme((prev) => {
+      const next: Theme = prev === 'light' ? 'dark' : 'light';
+      document.documentElement.classList.toggle('dark', next === 'dark');
+      try {
+        localStorage.setItem(STORAGE_KEY, next);
+      } catch {}
+      return next;
+    });
   };
 
-  // Provide a default context during SSR
-  const contextValue: ThemeContextType = {
-    theme,
-    toggleTheme,
-  };
-
-  return (
-    <ThemeContext.Provider value={contextValue}>
-      {children}
-    </ThemeContext.Provider>
-  );
+  return <ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>;
 }
 
 export function useTheme() {
@@ -60,4 +43,4 @@ export function useTheme() {
     throw new Error('useTheme must be used within a ThemeProvider');
   }
   return context;
-} 
+}

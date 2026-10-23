@@ -22,17 +22,7 @@ export default async function RootLayout({
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  // Force dark theme for testing
-                  localStorage.setItem('theme', 'dark');
-                  document.documentElement.classList.add('dark');
-                } catch (e) {
-                  document.documentElement.classList.add('dark');
-                }
-              })()
-            `,
+            __html: `(function(){var d=document.documentElement;d.classList.add('js');try{if(localStorage.getItem('portfolio-theme')==='dark')d.classList.add('dark');}catch(e){}})()`,
           }}
         />
       </head>

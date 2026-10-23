@@ -9,6 +9,7 @@ export interface Project {
   frontendLiveUrl?: string;
   image?: string;
   featured?: boolean;
+  comingSoon?: boolean;
   presentationPath?: string;
 }
 
@@ -30,6 +31,14 @@ export const projects: Project[] = [
     technologies: ["Python", "FastAPI", "Google ADK", "Gemini Enterprise", "Next.js", "TypeScript"],
     githubUrl: "https://github.com/leonardoburbanov/gemini-enterprise-agent-platform-workshop",
     presentationPath: "/projects/gemini-enterprise-sales-agent",
+    featured: true
+  },
+  {
+    id: "small-llm-finetuning",
+    title: "Fine-tuning a Small LLM",
+    description: "Custom fine-tuning of small language models for domain-specific tasks with optimized performance and reduced resource requirements",
+    technologies: ["Python", "PyTorch", "Transformers", "Hugging Face", "Machine Learning", "NLP"],
+    comingSoon: true,
     featured: true
   }
 ] as const; 
