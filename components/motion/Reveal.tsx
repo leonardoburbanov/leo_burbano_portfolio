@@ -9,7 +9,7 @@ type RevealProps = {
   as?: 'div' | 'li' | 'section';
 };
 
-// Fades content in once it scrolls into view. Without JS the content stays visible (see .reveal in globals.css).
+// Brings content in (rise + focus) once it is well inside the viewport. Without JS the content stays visible (see .reveal in globals.css).
 export default function Reveal({ children, delay = 0, className = '', as: Tag = 'div' }: RevealProps) {
   const ref = useRef<HTMLElement>(null);
 
@@ -23,7 +23,7 @@ export default function Reveal({ children, delay = 0, className = '', as: Tag = 
           observer.disconnect();
         }
       },
-      { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
+      { threshold: 0.1, rootMargin: '0px 0px -12% 0px' }
     );
     observer.observe(el);
     return () => observer.disconnect();
