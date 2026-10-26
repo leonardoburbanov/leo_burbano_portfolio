@@ -38,7 +38,7 @@ export const projects: Project[] = [
     title: "Fine-tuning a Small LLM",
     description: "Custom fine-tuning of small language models for domain-specific tasks with optimized performance and reduced resource requirements",
     technologies: ["Python", "PyTorch", "Transformers", "Hugging Face", "Machine Learning", "NLP"],
-    comingSoon: true,
+    githubUrl: "https://github.com/leonardoburbanov/small-llm-advanced",
     featured: true
   }
 ] as const; 
