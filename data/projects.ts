@@ -21,7 +21,7 @@ export const projects: Project[] = [
     technologies: ["Python", "FastAPI", "FastMCP", "Next.js", "React", "TypeScript", "DuckDB"],
     githubUrl: "https://github.com/leonardoburbanov/navbe_ai_orchestrator_backend",
     frontendGithubUrl: "https://github.com/leonardoburbanov/navbe_ai_orchestrator_frontend",
-    liveUrl: "https://navbeaiorchestratorwebpage.vercel.app/",
+    liveUrl: "https://navbeai.com",
     featured: true
   },
   {
